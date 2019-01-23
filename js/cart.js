@@ -171,8 +171,9 @@
 		var k2 = cart["k2"][0] * cartItem[1];
 		var k3 = cart["k3"][0] * cartItem[2];
         var k4 = cart["k4"][0] * cartItem[3];
+        var k5 = cart["k5"][0] * cartItem[4];
         //var k5 = cart["k5"] * cartItem[4];
-		var q = k1 + k2 + k3 + k4; // + k5;
+		var q = k1 + k2 + k3 + k4 + k5; // + k5;
 		
 		ttl = (q * exchangeRate);
 		//ttl = Math.floor(ttl);
@@ -367,7 +368,7 @@
         var qty = $("#" + sku + "-qty").val();
         //Update JSON value
         cart[sku][0] = qty;
-        console.log("CRUD " + cartItem[sku.replace("k","")-1]);
+        //console.log("" + cartItem[sku.replace("k","")-1]);
         cart[sku][2] = cartItem[sku.replace("k","")-1];
         //If item value is greater than 0, set checkmark to visible
         var a;
@@ -385,7 +386,10 @@
         var totalItemsInCart = parseInt($("#k1-qty").val()) + 
             parseInt($("#k2-qty").val()) +
             parseInt($("#k3-qty").val()) +
-            parseInt($("#k4-qty").val());
+            parseInt($("#k4-qty").val()) +
+            parseInt($("#k5-qty").val()) +
+            parseInt($("#k6-qty").val());
+        
         $("#number-of-items-in-cart").html("(" + totalItemsInCart + ")");
         $("#you-have-number-of-items-in-cart").html("(" + totalItemsInCart + ")");
         if(totalItemsInCart == 1){

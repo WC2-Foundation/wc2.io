@@ -53,6 +53,7 @@
     cartItem[1] = "28.95";
     cartItem[2] = "32.95";
     cartItem[3] = "9.95";
+    cartItem[4] = "9.95";
 
 	var arrayOfImages = [];
 	arrayOfImages[0] = "images/main_image_lights_off.png";
@@ -88,58 +89,28 @@
         cartTabs: [
             {
                 tabName: "Standard - 28&ldquo;", cartItems: [
-                    {
-                        items: [
-                            {
-                                columns: [
-                                    {title: "Krane - "},{title:"Ibycus"},{title: "$24.95 x"}
-                                ]
-                            },{
-                                columns: [
-                                    {title: "Krane - "},{title:"Pyramís"},{title: "$28.95 x"}
-                                ]
-                            },{
-                                columns: [
-                                    {title: "Krane - "},{title:"Electrum"},{title: "$32.95 x"}
-                                ]
-                            }
-                            
-                        ],
-                    }
-                ],
+                    {items: [
+                            {columns: [{title: "Krane - "},{title:"Ibycus"},{title: "$24.95 x"}]},
+                            {columns: [{title: "Krane - "},{title:"Pyramís"},{title: "$28.95 x"}]},
+                            {columns: [{title: "Krane - "},{title:"Electrum"},{title: "$32.95 x"}]}
+                        ]}
+                    ]
             },
             {  
                 tabName: "Large - 34&ldquo;", cartItems: [
-                    {
-                        items: [
-                            {
-                                columns: [
-                                    {title: "w one"},{title:"w two"},{title: "w three"}
-                                ]
-                            },{
-                                columns: [
-                                    {title: "w one2"},{title:"w two2"},{title: "w three2"}
-                                ]
-                            }
-                            
-                        ],
-                    }
-                ]  
+                    {items: [
+                            {columns: [{title: "Krane - "},{title:"Ibycus"},{title: "$28.95 x"}]},
+                            {columns: [{title: "Krane - "},{title:"Pyramís"},{title: "$32.95 x"}]},
+                            {columns: [{title: "Krane - "},{title:"Electrum"},{title: "$36.95 x"}]} 
+                        ]}
+                    ]  
             },
             {  
                 tabName: "Accessories", cartItems: [
                     {
                         items: [
-                            {
-                                columns: [
-                                    {title: "w one"},{title:"w two"},{title: "w three"}
-                                ]
-                            },{
-                                columns: [
-                                    {title: "w one2"},{title:"w two2"},{title: "w three2"}
-                                ]
-                            }
-                            
+                            {columns: [{title: "Tablet Extension"},{title:""},{title: "9.95"}]},
+                            {columns: [{title: "Replacement Part - "},{title:"w two2"},{title: "w three2"}]}  
                         ],
                     }
                 ]  
@@ -156,10 +127,10 @@
         function createCartRow(productName,productModel,productPrice){
             mg++;
             console.log(mg);
-            var returnCart = '<div id = "k1" class="grid-container">' +
+            var returnCart = '<div id = "k' + mg + '" class="grid-container">' +
             '    <div class="grid-item">' +
-            '        <i class="fas fa-check" id = "checkmark-k' + mg + '"></i>' +
-            '        <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>' +
+            '        <i class="fas fa-check checkmarks" id = "checkmark-k' + mg + '"></i>' +
+            '        <i class="fas fa-shopping-cart" style = "padding-left:5px;"></i>' +
             '    </div>' +
             '    <div class="grid-item-center">' +
             '        ' + productName + '  <a href = "#ibycus" class = "thumbnail-links" id = "krane-model-' + productModel.toLowerCase() + '" >' + productModel + '</a>'+
@@ -169,37 +140,52 @@
             '        <div id = "cartItem-' + mg + '" >' + productPrice + '</div>' +
             '    </div>'+
             '    <div class="grid-item">'+
-            '        <input type="number" tabindex = "1" id = "k' + mg + '-qty" onClick="" onChange="addItemToCart(\'k' + mg + '\');" value = "0" min="0" max="10000" >'+
+            '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'k' + mg + '\');" value = "0" min="0" max="10000" >'+
             '    </div>'+
             '</div>';
             
             return returnCart;
         }
- 
         
-
+   
+        m = carticus.cartTabs;
+        for(n in m){
+            tabName = m[n].tabName;
+            console.log(tabName);
+            $("#cart-outter-container").append('<div class = "cart-tabs" id = "cart-container-' + n + '"></div>');
+        }
+        
         
         //console.log(carticus.cartTabs[x].cartItems[0].item[0].title);
         m = carticus.cartTabs;
-        //for(n in m){ 
-            tabName = m[0].tabName;
+        for(n in m){
+            tabName = m[n].tabName;
             console.log("Tab Name: " + tabName);
-            w = m[0].cartItems;
-                for(j in w){ 
+            w = m[n].cartItems;
+                for(j in w){
                     //console.log(w[j].items);
                     y = w[j].items;
                     for(p in y){
                         //console.log("-------------->" + y[p].columns);
                         a = y[p].columns;
                         newItem = createCartRow(a[0].title,a[1].title,a[2].title);
-                        $("#cart-container").append(newItem);
+                        console.log("--->" + "#cart-container-" + n);
+                        $("#cart-container-" + n).append(newItem);
                         for(g in a){
                             console.log("----------------------->" + a[g].title);
                         }
                     }
                 }
-        //}
+        }
+        
+        m = carticus.cartTabs;
+        for(n in m){
+            tabName = m[n].tabName;
+            console.log(tabName);
+            $("#cart-container-" + n).addClass("cart-tabs");
+        }
 
+        $("#cart-container-0").show();
         
         setOrderDetailInputs(true);
         $("#k1-qty").val(0);
@@ -269,6 +255,8 @@
 			}, "jsonp");
 
 	}
+        
+        $("cart-container-0").addClass("cart-tabs");
 		
     var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     window.requestAnimationFrame = requestAnimationFrame;

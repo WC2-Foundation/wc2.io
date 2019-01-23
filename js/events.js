@@ -14,35 +14,35 @@ $(document).ready(function () {
         });
     
         var clickedTab = "tab1";
-        $(".cart-tabs").on('click', function(){
-             $(".cart-tabs").each(function(){$(this).css("background-color","#1B1B1B");})
+        $(".cart-tab-buttons").on('click', function(){
+             $(".cart-tab-buttons").each(function(){$(this).css("background-color","#1B1B1B");})
             $(this).css("background-color","forestgreen");
             clickedTab = this.id;
             
-            $("#cart-container").hide();
-            $("#cart-container2").hide();
-            $("#cart-container3").hide();
+            $("#cart-container-0").hide();
+            $("#cart-container-1").hide();
+            $("#cart-container-2").hide();
             
             if(clickedTab == "tab1"){
                 console.log("tab1");
-                $("#cart-container").show();
+                $("#cart-container-0").show();
             };
             if(clickedTab == "tab2"){
                 console.log("tab2");
-                $("#cart-container2").show();
+                $("#cart-container-1").show();
             };
             if(clickedTab == "tab3"){
                 console.log("tab3");
-                $("#cart-container3").show();
+                $("#cart-container-2").show();
             };
             
         });
     
-         $(".cart-tabs").hover(function(){
+         $(".cart-tab-buttons").hover(function(){
             $(this).css("background-color","darkgreen");
 		});    
     
-        $(".cart-tabs").mouseout(function(){
+        $(".cart-tab-buttons").mouseout(function(){
             $(this).css("background-color","#1B1B1B");
             
             if(this.id == clickedTab){
