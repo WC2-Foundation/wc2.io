@@ -253,7 +253,7 @@
                         <div id="orderForm1">
                             
                             <div style = "width:100%;text-align: center">
-                                <button id = "tab1" class = "cart-tabs">Standard - 28"</button><button id = "tab2" class = "cart-tabs">Large - 34"</button><button id = "tab3" class = "cart-tabs">Accessories</button>
+                                <button id = "tab1" class = "cart-tab-buttons">Standard - 28"</button><button id = "tab2" class = "cart-tab-buttons">Large - 34"</button><button id = "tab3" class = "cart-tab-buttons">Accessories</button>
                             </div>
                             
                             <div id = "order-form-container">
@@ -262,265 +262,12 @@
                                 <div class="order-form-labels" id="quantity-label" data-languagekey="quantity-label" ></div>
 								
                                 
-                                
-                                <div id = "cart-outter-container"> 
-
-                                    
-
-      <div id = "electrum" class = "thumbnails" ></div>
-                                            <div id = "pyramís" class = "thumbnails" ></div>
-                                            <div id = "ibycus" class = "thumbnails" ></div>                                                       
-                                    
-                                    
-                                    
-                                     <div id = "cart-container" >
-                                         
-                                         
-                                         
-  
-                                         
-                                         
-                                         
-                                         
-                                         
-                                         
-                                         
-                                         
-                                         
-
-                                    <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
-
-                                  
-                                         
-                                         
-                            </div>                                   
-                                    
-                                    
-                                    
-   
-                                  
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                     <div id = "cart-container2">
-
-                                    <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
-
-
-                                    <div id = "k1" class="grid-container">
-                                        <div class="grid-item">
-                                            <i class="fas fa-check" id = "checkmark-k1"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-ibycus" >Ibycus</a>
-                                            
-                                        </div>
-                                        <div class="grid-item-right">
-                                             <!-- <select id = "size-k1" class = "size-dropdown">
-                                                  <option value = "28">regular (28")</option>
-                                                  <option value = "34">large (34")</option>
-                                            </select>-->
-                                            <div id = "cartItem-0" >$28.95 x</div>
-                                        </div>
-                                        <div class="grid-item">
-                                            <input type="number" tabindex = "1" id = "k1-qty" onClick="" onChange="addItemToCart('k1');" value = "0" min="0" max="10000" >
-                                        </div>
+                                    <div id = "cart-outter-container"> 
+                                        <div id = "electrum" class = "thumbnails" ></div>
+                                        <div id = "pyramís" class = "thumbnails" ></div>
+                                        <div id = "ibycus" class = "thumbnails" ></div> 
+                                        <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
                                     </div>
-
-
-                                    <div id = "k2" class="grid-container">
-                                        <div class="grid-item">
-                                            <i class="fas fa-check" id = "checkmark-k2" onChange="addItemToCart('k2');" ></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-
-                                        <div class="grid-item-center">
-                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-pyramís" >Pyramís</a>
-                                            
-                                        </div>
-
-                                        <div class="grid-item-right">
-                                             <!--<select id = "size-k2" class = "size-dropdown">
-                                                  <option value = "28">regular (28")</option>
-                                                  <option value = "34">large (34")</option>
-                                            </select>-->
-                                            <span id = "cartItem-1" >$32.95 x</span>
-                                        </div>
-
-                                        <div class="grid-item">
-                                            <input type="number" tabindex = "2" id = "k2-qty" onClick="" onChange="addItemToCart('k2');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>
-
-                                    <div id = "k3" class="grid-container">
-                                        <div class="grid-item">
-                                            <i class="fas fa-check"  id = "checkmark-k3"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-electrum" >Electrum</a>
-                                            
-                                        </div>
-                                        <div class="grid-item-right">
-                                         <!--<select id = "size-k3" class = "size-dropdown">
-                                                  <option value = "28">regular (28")</option>
-                                                  <option value = "34">large (34")</option>
-                                            </select>-->
-                                            $36.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                            <input type="number" id = "k3-qty" onClick="" onChange="addItemToCart('k3');" value = "0" min="0" max="10000"  >
-                                        </div>
-                                    </div>
-
-                                     <div id = "k4" class="grid-container">
-                                        <div class="grid-item"> 
-                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Tablet Extension
-                                        </div>
-                                        <div class="grid-item-right">
-                                            $9.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>                                   
-    </div>                              
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
- 
-                                    
-                                    
-  
-                                    
-                                    
-                                    
-                                       <div id = "cart-container3">
-
-                                    <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
-
-
-                                    
-
-
-                                   
-
-                                    
-
-                                     <div id = "k4" class="grid-container">
-                                        <div class="grid-item"> 
-                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Tablet Extension
-                                        </div>
-                                        <div class="grid-item-right">
-                                            $9.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>     
-                                           
-                                           
-                                           
-                                           
-                                 <div id = "k4" class="grid-container">
-                                        <div class="grid-item"> 
-                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Replacement Part
-                                        </div>
-                                        <div class="grid-item-right">
-                                            $2.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>  
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                  <div id = "k4" class="grid-container">
-                                        <div class="grid-item"> 
-                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Replacement Part
-                                        </div>
-                                        <div class="grid-item-right">
-                                            $2.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                    <div id = "k4" class="grid-container">
-                                        <div class="grid-item"> 
-                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Replacement Part
-                                        </div>
-                                        <div class="grid-item-right">
-                                            $2.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>                                         
-                                           
-                                           
-                                           
-                                           
-    </div>                                 
-                                    
-                                    
-                                    
-                                    
- 
-                                    
-                                    
-                                    
-                                    
-                                    
-                                   
-                                    
-                                </div>
-                                
-                                
-       
-                                                        
-                                
-                                
-                                
-                                
                                 
                             </div>
                             
@@ -864,21 +611,55 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    
+                                    
+                                     <div id = "cart-container" >
+  
+
+                                    <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
+
+                                  
+                                         
+                                         
+                            </div>                                   
+                                    
+
+                                    
+                                     <div id = "cart-container2">
+
+                                    <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
+
+
                                     <div id = "k1" class="grid-container">
                                         <div class="grid-item">
                                             <i class="fas fa-check" id = "checkmark-k1"></i>
                                             <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
                                         </div>
                                         <div class="grid-item-center">
-                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-ibycus" >Ibycus 28"</a>
-                                            <div id = "ibycus" class = "thumbnails" ></div>
+                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-ibycus" >Ibycus</a>
+                                            
                                         </div>
                                         <div class="grid-item-right">
                                              <!-- <select id = "size-k1" class = "size-dropdown">
                                                   <option value = "28">regular (28")</option>
                                                   <option value = "34">large (34")</option>
                                             </select>-->
-                                            <div id = "cartItem-0" ></div>
+                                            <div id = "cartItem-0" >$28.95 x</div>
                                         </div>
                                         <div class="grid-item">
                                             <input type="number" tabindex = "1" id = "k1-qty" onClick="" onChange="addItemToCart('k1');" value = "0" min="0" max="10000" >
@@ -893,8 +674,8 @@
                                         </div>
 
                                         <div class="grid-item-center">
-                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-pyramís" >Pyramís 28"</a>
-                                            <div id = "pyramís" class = "thumbnails" ></div>
+                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-pyramís" >Pyramís</a>
+                                            
                                         </div>
 
                                         <div class="grid-item-right">
@@ -902,7 +683,7 @@
                                                   <option value = "28">regular (28")</option>
                                                   <option value = "34">large (34")</option>
                                             </select>-->
-                                            <span id = "cartItem-1" ></span>
+                                            <span id = "cartItem-1" >$32.95 x</span>
                                         </div>
 
                                         <div class="grid-item">
@@ -916,15 +697,15 @@
                                             <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
                                         </div>
                                         <div class="grid-item-center">
-                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-electrum" >Electrum 28"</a>
-                                            <div id = "electrum" class = "thumbnails" ></div>
+                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-electrum" >Electrum</a>
+                                            
                                         </div>
                                         <div class="grid-item-right">
                                          <!--<select id = "size-k3" class = "size-dropdown">
                                                   <option value = "28">regular (28")</option>
                                                   <option value = "34">large (34")</option>
                                             </select>-->
-                                            $32.95 x
+                                            $36.95 x
                                         </div>
                                         <div class="grid-item">
                                             <input type="number" id = "k3-qty" onClick="" onChange="addItemToCart('k3');" value = "0" min="0" max="10000"  >
@@ -945,8 +726,103 @@
                                         <div class="grid-item">
                                              <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
                                         </div>
-                                    </div>  
-                                         
-                                         
-       
+                                    </div>                                   
+    </div>                              
+                                    
+                                                                       
+                                    
+                                       <div id = "cart-container3">
 
+                                    <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
+
+
+                                    
+
+
+                                   
+
+                                    
+
+                                     <div id = "k4" class="grid-container">
+                                        <div class="grid-item"> 
+                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
+                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
+                                        </div>
+                                        <div class="grid-item-center">
+                                            Tablet Extension
+                                        </div>
+                                        <div class="grid-item-right">
+                                            $9.95 x
+                                        </div>
+                                        <div class="grid-item">
+                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
+                                        </div>
+                                    </div>     
+                                           
+                                           
+                                           
+                                           
+                                 <div id = "k4" class="grid-container">
+                                        <div class="grid-item"> 
+                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
+                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
+                                        </div>
+                                        <div class="grid-item-center">
+                                            Replacement Part
+                                        </div>
+                                        <div class="grid-item-right">
+                                            $2.95 x
+                                        </div>
+                                        <div class="grid-item">
+                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
+                                        </div>
+                                    </div>  
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                  <div id = "k4" class="grid-container">
+                                        <div class="grid-item"> 
+                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
+                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
+                                        </div>
+                                        <div class="grid-item-center">
+                                            Replacement Part
+                                        </div>
+                                        <div class="grid-item-right">
+                                            $2.95 x
+                                        </div>
+                                        <div class="grid-item">
+                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
+                                        </div>
+                                    </div>                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           
+                                    <div id = "k4" class="grid-container">
+                                        <div class="grid-item"> 
+                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
+                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
+                                        </div>
+                                        <div class="grid-item-center">
+                                            Replacement Part
+                                        </div>
+                                        <div class="grid-item-right">
+                                            $2.95 x
+                                        </div>
+                                        <div class="grid-item">
+                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
+                                        </div>
+                                    </div>                                         
+                                           
+                                           
+                                           
+                                           
+    </div>                                 
+                                    
+  
