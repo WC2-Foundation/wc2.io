@@ -55,7 +55,7 @@
 
 </head>
 <body>
-	<div id = "tagalongBar-container" style = "display: inline-block;  width: 100%; position: fixed; height: 100px;z-index: 5000;display: none;text-align: center;">
+	<div id = "tagalongBar-container" >
 		<div id = "tagalongBar">
 				<div id = "tag-along-logo" ></div>
 				<button class = "tagalong-buttons" id = "tagalong-nav-1" data-languagekey="nav1" ></button>
@@ -84,7 +84,7 @@
             <div id="language-picker"></div>
         </div>
         
-        <div style = "top:-20px;display: flex;flex-direction: column;position: relative">
+        <div id = "landing-container">
             <div id="nav1" data-languagekey="nav1" class="nav-button"></div>
             <div id="nav2" data-languagekey="nav2" class="nav-button"></div>
             <div id="nav3" data-languagekey="nav3" class="nav-button"></div>
@@ -110,7 +110,7 @@
 	
 	<div class = "heading" data-languagekey = "welcome-to" ></div>
 
-	<div style = "font-family: 'Comfortaa', cursive;font-size: 22px; letter-spacing: 1px; word-spacing: 2px; width:850px;margin-top: 35px;text-align: center;">
+	<div id = "krane-about">
 		
 		<span id = "above-laptop" style = "font-weight: bold;" >
 			A Sustainably Built Phone & Tablet Elevator</span>
@@ -125,7 +125,7 @@
 		around the house</span> or even in the <span id = "above-laptop-3" style = "text-decoration: underline;font-weight: bold; cursor: pointer" >kitchen</span>.
 		
 		
-        <div style = "font-family: 'Comfortaa', cursive;font-size: 22px; letter-spacing: 1px; word-spacing: 2px; width:850px;margin-top: 35px;text-align: center;">
+        <div id = "hand-jive">
 
         <i class="fa fa-hand-paper" style = "font-size:28px;"></i>
         <i class="fa fa-hand-paper" style ="font-size:28px;"></i>
@@ -150,8 +150,7 @@
 
 	
 	
-	<div style = "font-family: 'Comfortaa', cursive;width:850px; letter-spacing: 1px;
-    word-spacing: 2px; font-size: 22px;margin-top: 30px;text-align: center;">	
+	<div id = "krane-environs" >	
 		<div class = "rounded-header" >Krane - Material Usage and Sustainability</div>
 		<br><br>
 		<span id = "above-laptop-4" >Something to Feel Good About</span>
@@ -168,14 +167,13 @@
 	</div>
 	
 	
-	<div style = "font-family: 'Comfortaa', cursive; font-weight: bold; font-size: 26px;margin-top: 50px;text-align: center;">
+	<div id = "which-krane">
 		Which size Krane is right for me?
 	</div>
 	
 	<img style = "margin-top:25px;" alt = "Measuring Tape" src = "images/metric_tape_measure.png">
 
-	<div style = "font-family: 'Comfortaa', cursive;letter-spacing: 1px;
-    word-spacing: 2px;width:850px;font-size: 22px;margin-top: 30px;text-align: center;">
+	<div id = "krane-size">
 		Our standard size Krane, which extends up to <span class = "standard-krane-length"></span> <span class = "measurement-string"></span>, is ideally suited for places where your back rests close to
 		where the Krane will be mounted. 
 		<br><br>
@@ -248,7 +246,7 @@
                     <div id = "order-details" class="order-containers">
                         <div id = "items-in-cart" class="order-form-headings-small">You have <span id = "you-have-number-of-items-in-cart">(0)</span> <span id = "item-or-items">items</span> in your cart.
                             <br><span class="order-form-headings-extra-small">Free U.S. shipping on orders over $45.</span>
-                        </div>
+                        </div> 
                         
                         <div id="orderForm1">
                             
@@ -574,255 +572,7 @@
             <br>
             <br>
             <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fkrane.tv%2F" target="_blank">W3C Validator</a> | <a href="https://ssllabs.com/ssltest/analyze.html?d=krane.tv&latest" target="_blank">SSL labs</a>
-        </div>
+        </div> 
     </div>
-    
-    
-    
-
-    
-    
-    
-    
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    
-                                    
-                                     <div id = "cart-container" >
-  
-
-                                    <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
-
-                                  
-                                         
-                                         
-                            </div>                                   
-                                    
-
-                                    
-                                     <div id = "cart-container2">
-
-                                    <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
-
-
-                                    <div id = "k1" class="grid-container">
-                                        <div class="grid-item">
-                                            <i class="fas fa-check" id = "checkmark-k1"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-ibycus" >Ibycus</a>
-                                            
-                                        </div>
-                                        <div class="grid-item-right">
-                                             <!-- <select id = "size-k1" class = "size-dropdown">
-                                                  <option value = "28">regular (28")</option>
-                                                  <option value = "34">large (34")</option>
-                                            </select>-->
-                                            <div id = "cartItem-0" >$28.95 x</div>
-                                        </div>
-                                        <div class="grid-item">
-                                            <input type="number" tabindex = "1" id = "k1-qty" onClick="" onChange="addItemToCart('k1');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>
-
-
-                                    <div id = "k2" class="grid-container">
-                                        <div class="grid-item">
-                                            <i class="fas fa-check" id = "checkmark-k2" onChange="addItemToCart('k2');" ></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-
-                                        <div class="grid-item-center">
-                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-pyramís" >Pyramís</a>
-                                            
-                                        </div>
-
-                                        <div class="grid-item-right">
-                                             <!--<select id = "size-k2" class = "size-dropdown">
-                                                  <option value = "28">regular (28")</option>
-                                                  <option value = "34">large (34")</option>
-                                            </select>-->
-                                            <span id = "cartItem-1" >$32.95 x</span>
-                                        </div>
-
-                                        <div class="grid-item">
-                                            <input type="number" tabindex = "2" id = "k2-qty" onClick="" onChange="addItemToCart('k2');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>
-
-                                    <div id = "k3" class="grid-container">
-                                        <div class="grid-item">
-                                            <i class="fas fa-check"  id = "checkmark-k3"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Krane - &nbsp;<a href = "#ibycus" class = "thumbnail-links" id = "krane-model-electrum" >Electrum</a>
-                                            
-                                        </div>
-                                        <div class="grid-item-right">
-                                         <!--<select id = "size-k3" class = "size-dropdown">
-                                                  <option value = "28">regular (28")</option>
-                                                  <option value = "34">large (34")</option>
-                                            </select>-->
-                                            $36.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                            <input type="number" id = "k3-qty" onClick="" onChange="addItemToCart('k3');" value = "0" min="0" max="10000"  >
-                                        </div>
-                                    </div>
-
-                                     <div id = "k4" class="grid-container">
-                                        <div class="grid-item"> 
-                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Tablet Extension
-                                        </div>
-                                        <div class="grid-item-right">
-                                            $9.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>                                   
-    </div>                              
-                                    
-                                                                       
-                                    
-                                       <div id = "cart-container3">
-
-                                    <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
-
-
-                                    
-
-
-                                   
-
-                                    
-
-                                     <div id = "k4" class="grid-container">
-                                        <div class="grid-item"> 
-                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Tablet Extension
-                                        </div>
-                                        <div class="grid-item-right">
-                                            $9.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>     
-                                           
-                                           
-                                           
-                                           
-                                 <div id = "k4" class="grid-container">
-                                        <div class="grid-item"> 
-                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Replacement Part
-                                        </div>
-                                        <div class="grid-item-right">
-                                            $2.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>  
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                  <div id = "k4" class="grid-container">
-                                        <div class="grid-item"> 
-                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Replacement Part
-                                        </div>
-                                        <div class="grid-item-right">
-                                            $2.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                           
-                                    <div id = "k4" class="grid-container">
-                                        <div class="grid-item"> 
-                                            <i class="fas fa-check"  id = "checkmark-k4"></i>
-                                            <i class="fas fa-shopping-cart" style = "padding-left:10px;"></i>
-                                        </div>
-                                        <div class="grid-item-center">
-                                            Replacement Part
-                                        </div>
-                                        <div class="grid-item-right">
-                                            $2.95 x
-                                        </div>
-                                        <div class="grid-item">
-                                             <input type="number" id = "k4-qty" onClick="" onChange="addItemToCart('k4');" value = "0" min="0" max="10000" >
-                                        </div>
-                                    </div>                                         
-                                           
-                                           
-                                           
-                                           
-    </div>                                 
-                                    
-  
