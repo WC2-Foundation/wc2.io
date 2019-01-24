@@ -41,18 +41,18 @@
             {
                 tabName: "Standard - 28&ldquo;", cartItems: [
                     {items: [
-                            {columns: [{title: "Krane - "},{title:"Ibycus"},{price: "24.95"}]},
-                            {columns: [{title: "Krane - "},{title:"Pyramís"},{price: "28.95"}]},
-                            {columns: [{title: "Krane - "},{title:"Electrum"},{price: "32.95"}]}
+                            {columns: [{title: "Krane - "},{title:"Ibycus"},{size:"Standard"},{price: "24.95"}]},
+                            {columns: [{title: "Krane - "},{title:"Pyramís"},{size:"Standard"},{price: "28.95"}]},
+                            {columns: [{title: "Krane - "},{title:"Electrum"},{size:"Standard"},{price: "32.95"}]}
                         ]}
                     ]
             },
             {  
                 tabName: "Large - 34&ldquo;", cartItems: [
                     {items: [
-                            {columns: [{title: "Krane - "},{title:"Ibycus"},{price: "28.95"}]},
-                            {columns: [{title: "Krane - "},{title:"Pyramís"},{price: "32.95"}]},
-                            {columns: [{title: "Krane - "},{title:"Electrum"},{price: "36.95"}]} 
+                            {columns: [{title: "Krane - "},{title:"Ibycus"},{size:"Large"},{price: "28.95"}]},
+                            {columns: [{title: "Krane - "},{title:"Pyramís"},{size:"Large"},{price: "32.95"}]},
+                            {columns: [{title: "Krane - "},{title:"Electrum"},{size:"Large"},{price: "36.95"}]} 
                         ]}
                     ]  
             },
@@ -60,8 +60,8 @@
                 tabName: "Accessories", cartItems: [
                     {
                         items: [
-                            {columns: [{title: "Tablet Extension"},{title:""},{price: "9.95"}]},
-                            {columns: [{title: "Replacement Part - "},{title:""},{price: "2.95"}]}  
+                            {columns: [{title: "Tablet Extension"},{title:""},{size: ""},{price: "9.95"}]},
+                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"}]}  
                         ],
                     }
                 ]  
@@ -119,10 +119,8 @@
         //languageSearch(true);
 
         
-        function createCartRow(productName,productModel,productPrice){
+        function createCartRow(productName,productModel,productSize,productPrice){
             
-            console.log("add item price to cartItem array: " + mg);
-            cartItem[mg] = productPrice;
             var returnCart = '<div id = "k' + mg + '" class="grid-container">' +
             '    <div class="grid-item">' +
             '        <i class="fas fa-check checkmarks" id = "checkmark-' + mg + '"></i>' +
@@ -131,6 +129,9 @@
             '    <div class="grid-item-center">' +
             '        ' + productName + '  <a href = "#ibycus" class = "thumbnail-links" id = "krane-model-' + productModel.toLowerCase() + '" >' + productModel + '</a>'+
             '        <div id = "ibycus" class = "thumbnails" ></div>' +
+            '    </div>'+
+            '    <div class="grid-item-right">' +
+            '        ' + productSize +
             '    </div>'+
             '    <div class="grid-item-right">' +
             '        <div id = "cartItem-' + mg + '" >' + productPrice + '</div>' +
@@ -143,32 +144,20 @@
             return returnCart;
         }
         
-   
+
+        
         m = carticus.cartTabs;
         for(n in m){
             tabName = m[n].tabName;
-            console.log(tabName);
             $("#cart-outter-container").append('<div class = "cart-tabs" id = "cart-container-' + n + '"></div>');
-        }
-        
-        
-        m = carticus.cartTabs;
-        for(n in m){
-            tabName = m[n].tabName;
-            console.log("Tab Name: " + tabName);
             w = m[n].cartItems;
                 for(j in w){
-                    //console.log(w[j].items);
                     y = w[j].items;
                     for(p in y){
-                        //console.log("-------------->" + y[p].columns);
                         a = y[p].columns;
-                        newItem = createCartRow(a[0].title,a[1].title,a[2].price);
-                        console.log("--->" + "#cart-container-" + n);
+                        cartItem[mg] = a[3].price;
+                        newItem = createCartRow(a[0].title,a[1].title,a[2].size,cartItem[mg]);
                         $("#cart-container-" + n).append(newItem);
-                        for(g in a){
-                            console.log("----------------------->" + a[g].title);
-                        }
                     }
                 }
         }
