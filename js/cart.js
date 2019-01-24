@@ -91,7 +91,6 @@
     function calculateShipping(location){
         if(location == "US"){
                 newTotal = (shippingUS * 1000 / 10);
-            // cartItem[0]
                 calculatedAmount = (newTotal + calculatedTotal);
                 return newTotal;
         }
@@ -126,10 +125,10 @@
 		var kraneqty = $('#k1-qty').val();
 		var extenqty = $('#extensions').html();
         //cartitems = prices
-		var k1 = cart["k1"][0] * cartItem[0];
-		var k2 = cart["k2"][0] * cartItem[1];
-		var k3 = cart["k3"][0] * cartItem[2];
-        var k4 = cart["k4"][0] * cartItem[3];
+		var k1 = cart[0].k[0] * cartItem[0];
+		var k2 = cart[1].k[0] * cartItem[1];
+		var k3 = cart[2].k[0] * cartItem[2];
+        var k4 = cart[3].k[0] * cartItem[3];
         //var k5 = cart["k5"] * cartItem[4];
 		var q = k1 + k2 + k3 + k4; // + k5;
 		
@@ -163,19 +162,20 @@
 		var kraneqty = $('#k1-qty').val();
 		var extenqty = $('#extensions').html();
         //cartitems = prices
-        for(o in cart){
-            console.log("cart array: " + cart["k" + o]);
+        var p = 0;
+        
+        for(E in cart){
+            if(cartItem[E] !== undefined && cart[E].k[0] > 0){
+                console.log("Cart Quantity: " + cart[E].k[0]);
+                console.log("Item Price: " + cartItem[E]);
+                c = (cart[E].k[0] * cartItem[E]);
+                p += c;
+            } 
         }
         
-		var k1 = cart["k1"][0] * cartItem[0];
-		var k2 = cart["k2"][0] * cartItem[1];
-		var k3 = cart["k3"][0] * cartItem[2];
-        var k4 = cart["k4"][0] * cartItem[3];
-        var k5 = cart["k5"][0] * cartItem[4];
-        //var k5 = cart["k5"] * cartItem[4];
-		var q = k1 + k2 + k3 + k4 + k5; // + k5;
-		
-		ttl = (q * exchangeRate);
+        console.log("###" + p);
+		ttl = (p * exchangeRate);
+        console.log("---" + ttl);
 		//ttl = Math.floor(ttl);
         //$("#a").addClass("disableCartItems");
         ttl = ttl.toFixed(2);
@@ -362,14 +362,13 @@
     function addItemToCart(sku,incrementQty = 0){
 
         if(incrementQty){
-            var b = parseInt($("#" + sku + "-qty").val());
+            var b = parseInt($("#k" + sku + "-qty").val());
             $("#" + sku + "-qty").val(b + 1);
         }
-        var qty = $("#" + sku + "-qty").val();
-        //Update JSON value
-        cart[sku][0] = qty;
-        //console.log("" + cartItem[sku.replace("k","")-1]);
-        cart[sku][2] = cartItem[sku.replace("k","")-1];
+        var qty = $("#k" + sku + "-qty").val();
+        cart[sku].k[0] = qty;
+        cart[sku].k[2] = cartItem[sku];
+        //console.log("XXXXXXXXXXXXX" + cart[sku].k[0]);
         //If item value is greater than 0, set checkmark to visible
         var a;
         qty > 0 ? a = "visible" : a = "hidden";
@@ -383,12 +382,12 @@
         $("#checkmark-" + sku).css('visibility',a);
         calculateTotal();
 
-        var totalItemsInCart = parseInt($("#k1-qty").val()) + 
+        var totalItemsInCart = parseInt($("#k0-qty").val()) + 
+            parseInt($("#k1-qty").val()) +
             parseInt($("#k2-qty").val()) +
             parseInt($("#k3-qty").val()) +
             parseInt($("#k4-qty").val()) +
-            parseInt($("#k5-qty").val()) +
-            parseInt($("#k6-qty").val());
+            parseInt($("#k5-qty").val());
         
         $("#number-of-items-in-cart").html("(" + totalItemsInCart + ")");
         $("#you-have-number-of-items-in-cart").html("(" + totalItemsInCart + ")");

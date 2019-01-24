@@ -23,18 +23,51 @@
     var slideContainer = 600;
     var contactInformation = {firstName: "", lastName: "", emailAddress: ""};
 
-    var cart = { 
-        k1: [0,28,0], 
-        k2: [0,28,0], 
-        k3: [0,28,0], 
-        k4: [0,0,0], 
-        k5: [0,0,0],
-        k6: [0,0,0],
-        k7: [0,0,0],
-        k8: [0,0,0],
-        k9: [0,0,0],
-        k10: [0,0,0]
-    };
+    var cart = [
+        {k: [0,28,0]}, 
+        {k: [0,28,0]}, 
+        {k: [0,28,0]}, 
+        {k: [0,0,0]}, 
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]}
+    ]
+    
+        var carticus = {
+        cartTabs: [
+            {
+                tabName: "Standard - 28&ldquo;", cartItems: [
+                    {items: [
+                            {columns: [{title: "Krane - "},{title:"Ibycus"},{price: "24.95"}]},
+                            {columns: [{title: "Krane - "},{title:"Pyramís"},{price: "28.95"}]},
+                            {columns: [{title: "Krane - "},{title:"Electrum"},{price: "32.95"}]}
+                        ]}
+                    ]
+            },
+            {  
+                tabName: "Large - 34&ldquo;", cartItems: [
+                    {items: [
+                            {columns: [{title: "Krane - "},{title:"Ibycus"},{price: "28.95"}]},
+                            {columns: [{title: "Krane - "},{title:"Pyramís"},{price: "32.95"}]},
+                            {columns: [{title: "Krane - "},{title:"Electrum"},{price: "36.95"}]} 
+                        ]}
+                    ]  
+            },
+            {  
+                tabName: "Accessories", cartItems: [
+                    {
+                        items: [
+                            {columns: [{title: "Tablet Extension"},{title:""},{price: "9.95"}]},
+                            {columns: [{title: "Replacement Part - "},{title:""},{price: "2.95"}]}  
+                        ],
+                    }
+                ]  
+            }
+        ]
+    }
 
     var calcTotal; 
 	var containers;
@@ -48,13 +81,6 @@
     var shippingUS = "5.00";
     var shippingInternational = "20.00";
     var cartItem = [];
-
-    cartItem[0] = "24.95";
-    cartItem[1] = "28.95";
-    cartItem[2] = "32.95";
-    cartItem[3] = "9.95";
-    cartItem[4] = "9.95";
-
 	var arrayOfImages = [];
 	arrayOfImages[0] = "images/main_image_lights_off.png";
 	preload(arrayOfImages);
@@ -85,38 +111,7 @@
 
     var parts,canvas,ctx,paymentAPIavailable;
 
-    var carticus = {
-        cartTabs: [
-            {
-                tabName: "Standard - 28&ldquo;", cartItems: [
-                    {items: [
-                            {columns: [{title: "Krane - "},{title:"Ibycus"},{title: "$24.95 x"}]},
-                            {columns: [{title: "Krane - "},{title:"Pyramís"},{title: "$28.95 x"}]},
-                            {columns: [{title: "Krane - "},{title:"Electrum"},{title: "$32.95 x"}]}
-                        ]}
-                    ]
-            },
-            {  
-                tabName: "Large - 34&ldquo;", cartItems: [
-                    {items: [
-                            {columns: [{title: "Krane - "},{title:"Ibycus"},{title: "$28.95 x"}]},
-                            {columns: [{title: "Krane - "},{title:"Pyramís"},{title: "$32.95 x"}]},
-                            {columns: [{title: "Krane - "},{title:"Electrum"},{title: "$36.95 x"}]} 
-                        ]}
-                    ]  
-            },
-            {  
-                tabName: "Accessories", cartItems: [
-                    {
-                        items: [
-                            {columns: [{title: "Tablet Extension"},{title:""},{title: "9.95"}]},
-                            {columns: [{title: "Replacement Part - "},{title:"w two2"},{title: "w three2"}]}  
-                        ],
-                    }
-                ]  
-            }
-        ]
-    }
+
     
     var mg = 0;
 	$(document).ready(function () {
@@ -125,8 +120,9 @@
 
         
         function createCartRow(productName,productModel,productPrice){
-            mg++;
-            console.log(mg);
+            
+            console.log("add item price to cartItem array: " + mg);
+            cartItem[mg] = productPrice;
             var returnCart = '<div id = "k' + mg + '" class="grid-container">' +
             '    <div class="grid-item">' +
             '        <i class="fas fa-check checkmarks" id = "checkmark-k' + mg + '"></i>' +
@@ -140,10 +136,10 @@
             '        <div id = "cartItem-' + mg + '" >' + productPrice + '</div>' +
             '    </div>'+
             '    <div class="grid-item">'+
-            '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'k' + mg + '\');" value = "0" min="0" max="10000" >'+
+            '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "0" min="0" max="10000" >'+
             '    </div>'+
             '</div>';
-            
+            mg++;
             return returnCart;
         }
         
@@ -156,7 +152,6 @@
         }
         
         
-        //console.log(carticus.cartTabs[x].cartItems[0].item[0].title);
         m = carticus.cartTabs;
         for(n in m){
             tabName = m[n].tabName;
@@ -168,7 +163,7 @@
                     for(p in y){
                         //console.log("-------------->" + y[p].columns);
                         a = y[p].columns;
-                        newItem = createCartRow(a[0].title,a[1].title,a[2].title);
+                        newItem = createCartRow(a[0].title,a[1].title,a[2].price);
                         console.log("--->" + "#cart-container-" + n);
                         $("#cart-container-" + n).append(newItem);
                         for(g in a){
@@ -264,13 +259,7 @@
 	canvas = document.getElementById("canvas"),
 	ctx = canvas.getContext("2d");
 	canvas.height = 300; //document.body.offsetHeight;
-	canvas.width = 300;
-
-	//$("#cartItem-0").text(cartItem[0] + " x");
-    //$("#cartItem-1").text(cartItem[1] + " x");
-    //$("#cartItem-0").text(cartItem[2]);
-        
-        
+	canvas.width = 300;    
     parts = [],
     minSpawnTime = 60,
     lastTime = new Date().getTime(),
