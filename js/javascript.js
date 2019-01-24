@@ -125,7 +125,7 @@
             cartItem[mg] = productPrice;
             var returnCart = '<div id = "k' + mg + '" class="grid-container">' +
             '    <div class="grid-item">' +
-            '        <i class="fas fa-check checkmarks" id = "checkmark-k' + mg + '"></i>' +
+            '        <i class="fas fa-check checkmarks" id = "checkmark-' + mg + '"></i>' +
             '        <i class="fas fa-shopping-cart" style = "padding-left:5px;"></i>' +
             '    </div>' +
             '    <div class="grid-item-center">' +

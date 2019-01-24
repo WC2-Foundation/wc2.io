@@ -368,26 +368,18 @@
         var qty = $("#k" + sku + "-qty").val();
         cart[sku].k[0] = qty;
         cart[sku].k[2] = cartItem[sku];
-        //console.log("XXXXXXXXXXXXX" + cart[sku].k[0]);
         //If item value is greater than 0, set checkmark to visible
         var a;
         qty > 0 ? a = "visible" : a = "hidden";
-        if(qty > 0){
-            changeBGcolor("k1-qty",true);
-            changeBGcolor("k2-qty",true);
-            changeBGcolor("k3-qty",true);
-            changeBGcolor("k4-qty",true);
-        }
 
-        $("#checkmark-" + sku).css('visibility',a);
         calculateTotal();
 
-        var totalItemsInCart = parseInt($("#k0-qty").val()) + 
-            parseInt($("#k1-qty").val()) +
-            parseInt($("#k2-qty").val()) +
-            parseInt($("#k3-qty").val()) +
-            parseInt($("#k4-qty").val()) +
-            parseInt($("#k5-qty").val());
+        var totalItemsInCart = 0;
+        for(w in cartItem){
+            totalItemsInCart += parseInt($("#k" + w + "-qty").val());
+            changeBGcolor("k" + w + "-qty",true);
+        }
+        $("#checkmark-" + sku).css('visibility',a);
         
         $("#number-of-items-in-cart").html("(" + totalItemsInCart + ")");
         $("#you-have-number-of-items-in-cart").html("(" + totalItemsInCart + ")");
@@ -406,10 +398,9 @@
 	}
 
     function setOrderDetailInputs(valid){
-            changeBGcolor("k1-qty",valid);
-            changeBGcolor("k2-qty",valid);
-            changeBGcolor("k3-qty",valid);
-            changeBGcolor("k4-qty",valid);
+            for(r in cartItem){
+                changeBGcolor("k" + r + "-qty",valid);
+            }
     }
 
 
