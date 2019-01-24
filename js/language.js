@@ -106,6 +106,7 @@
 			console.log("LANGUAGE CODE = " + response);
 			//if(isDesbug().length > 0){response = isDesbug()};
 			languageCode = response; 
+            buildShoppingCart();
 			getLanguage(languageCode);
 
 		});	

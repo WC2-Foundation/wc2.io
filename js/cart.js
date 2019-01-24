@@ -87,6 +87,55 @@
         ]
      }
     
+        function buildShoppingCart(){
+
+                m = cartObj.cartTabs;
+                for(n in m){
+                    tabName = m[n].tabName;
+                    $("#cart-outter-container").append('<div class = "cart-tabs" id = "cart-container-' + n + '"></div>');
+                    w = m[n].cartItems;
+                        for(j in w){
+                            y = w[j].items;
+                            for(p in y){
+                                a = y[p].columns;
+                                cartItem[mg] = a[3].price;
+                                formattedCurrency = formatCurrency("EUR",languageCode + "-" + countryCode,cartItem[mg]);
+                                newItem = createCartRow(a[0].title,a[1].title,a[2].size,formattedCurrency);
+                                $("#cart-container-" + n).append(newItem);
+                            }
+                        }
+                    $("#cart-container-" + n).addClass("cart-tabs");
+                }
+
+                $("cart-container-0").addClass("cart-tabs");  
+                $("#cart-container-0").show();
+        }
+
+        function createCartRow(productName,productModel,productSize,productPrice){
+            
+            var returnCart = '<div id = "k' + mg + '" class="grid-container">' +
+            '    <div class="grid-item">' +
+            '        <i class="fas fa-check checkmarks" id = "checkmark-' + mg + '"></i>' +
+            '        <i class="fas fa-shopping-cart" style = "padding-left:5px;"></i>' +
+            '    </div>' +
+            '    <div class="grid-item-center">' +
+            '        ' + productName + '  <a href = "#ibycus" class = "thumbnail-links" id = "krane-model-' + productModel.toLowerCase() + '" >' + productModel + '</a>'+
+            '        <div id = "ibycus" class = "thumbnails" ></div>' +
+            '    </div>'+
+            '    <div class="grid-item-right">' +
+            '        ' + productSize +
+            '    </div>'+
+            '    <div class="grid-item-right">' +
+            '        <div id = "cartItem-' + mg + '" >' + productPrice + '</div>' +
+            '    </div>'+
+            '    <div class="grid-item">'+
+            '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "0" min="0" max="10000" >'+
+            '    </div>'+
+            '</div>';
+            mg++;
+            return returnCart;
+        }
+    
     
     function calculateShipping(location){
         if(location == "US"){
