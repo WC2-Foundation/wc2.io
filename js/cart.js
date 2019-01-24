@@ -143,7 +143,66 @@
             return returnCart;
         }
     
+
+        function buildShoppingCart2(){
+
+                m = cartObj.cartTabs;
+                //for(n in m){
+                    tabName = m[0].tabName;
+                    //$("#review-outter-container").append('<div class = "cart-tabs" id = "cart-container-' + n + '"></div>');
+                    w = m[0].cartItems;
+                        for(j in w){
+                            y = w[j].items;
+                            for(p in y){
+                                a = y[p].columns;
+                                cartItem[mg] = a[3].price;
+                                k = (cartItem[mg] * exchangeRate);
+                                adjustedTotal = Math.round(k.toFixed(2) * 1000) / 10;
+                                shippingInterArr[mg] = a[4].shippingInt[0];
+                                shippingUSArr[mg] = a[5].shippingUS[0];
+                                console.log("--->>>>>>" + shippingInterArr[mg]);
+                                console.log("--->>>>>>" + shippingUSArr[mg]);
+                                
+                                formattedCurrency = formatCurrency(currencyCode,languageCode + "-" + countryCode,k);
+                                newItem = createCartRow(a[0].title,a[1].title,a[2].size,formattedCurrency);
+                                $("#review-order-container").append(newItem);
+                            }
+                        }
+                    
+                //}
+                $("#review-order-container").addClass("review-cart-tab");
+                //$("cart-container-0").addClass("cart-tabs");  
+                $("#review-order-container").show();
+        }
+
+        function createCartRow2(productName,productModel,productSize,productPrice){
+            
+            var returnCart = '<div id = "k' + mg + '" class="grid-container">' +
+            '    <div class="grid-item">' +
+            '        <i class="fas fa-check checkmarks" id = "checkmark-' + mg + '"></i>' +
+            '        <i class="fas fa-shopping-cart" style = "padding-left:5px;"></i>' +
+            '    </div>' +
+            '    <div class="grid-item-center">' +
+            '        ' + productName + '  <a href = "#ibycus" class = "thumbnail-links" id = "krane-model-' + productModel.toLowerCase() + '" >' + productModel + '</a>'+
+            '        <div id = "ibycus" class = "thumbnails" ></div>' +
+            '    </div>'+
+            '    <div class="grid-item-right">' +
+            '        ' + productSize +
+            '    </div>'+
+            '    <div class="grid-item-right">' +
+            '        <div id = "cartItem-' + mg + '" >' + productPrice + '</div>' +
+            '    </div>'+
+            '    <div class="grid-item">'+
+            '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "0" min="0" max="10000" >'+
+            '    </div>'+
+            '</div>';
+            mg++;
+            return returnCart;
+        }
     
+
+
+
     function calculateShipping(location){
         if(location == "US"){
                 //exchangeRate
@@ -219,6 +278,10 @@
 		var extenqty = $('#extensions').html();
         //cartitems = prices
         var p = 0;
+        
+        
+//shippingInterArr[mg];
+//shippingUSArr[mg];
         
         for(E in cart){
             if(cartItem[E] !== undefined && cart[E].k[0] > 0){
@@ -486,6 +549,7 @@
                 
             }
             buildShoppingCart();
+            buildShoppingCart2();
             calculateTotal();
         });	
     }
