@@ -168,7 +168,7 @@
                                  
                                 if(cart[io].k[0] > 0){
                                     formattedCurrency = formatCurrency(currencyCode,languageCode + "-" + countryCode,g);
-                                    newItem = createCartRow(a[0].title,a[1].title,a[2].size,formattedCurrency);
+                                    newItem = createCartRow2(a[0].title,a[1].title,a[2].size,formattedCurrency,cart[io].k[0]);
                                     $("#review-order-container").append(newItem);
                                 }
                                 io++;
@@ -186,7 +186,7 @@
  
         }
 
-        function createCartRow2(productName,productModel,productSize,productPrice){
+        function createCartRow2(productName,productModel,productSize,productPrice,qty){
             
             var returnCart = '<div id = "k' + mg + '" class="grid-container">' +
             '    <div class="grid-item">' +
@@ -204,7 +204,7 @@
             '        <div id = "cartItem-' + mg + '" >' + productPrice + '</div>' +
             '    </div>'+
             '    <div class="grid-item">'+
-            '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "0" min="0" max="10000" >'+
+            '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "' + qty + '" min="0" max="10000" >'+
             '    </div>'+
             '</div>';
            

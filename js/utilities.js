@@ -86,7 +86,7 @@ randomStrLen[10] = "BUY NOW";
             if(onOrOff && intervalID2 == 0){
             intervalID2 = window.setInterval(function(){
                                    randomColors(onOrOff);
-                                }, 200);
+                                }, 600);
 
             }
             
