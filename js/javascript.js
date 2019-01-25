@@ -21,6 +21,8 @@
 	var lengthSymbol = " cm";
     var checkoutComplete = false;
     var slideContainer = 600;
+    var shippingInterArr = [];
+    var shippingUSArr = [];
     var contactInformation = {firstName: "", lastName: "", emailAddress: ""};
 
     var cart = [
@@ -41,18 +43,18 @@
             {
                 tabName: "Standard - 28&ldquo;", cartItems: [
                     {items: [
-                            {columns: [{title: "Krane - "},{title:"Ibycus"},{size:"Standard"},{price: "24.95"}]},
-                            {columns: [{title: "Krane - "},{title:"Pyramís"},{size:"Standard"},{price: "28.95"}]},
-                            {columns: [{title: "Krane - "},{title:"Electrum"},{size:"Standard"},{price: "32.95"}]}
+                            {columns: [{title: "Krane - "},{title:"Ibycus"},{size:"Standard"},{price: "24.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Krane - "},{title:"Pyramís"},{size:"Standard"},{price: "28.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Krane - "},{title:"Electrum"},{size:"Standard"},{price: "32.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]}
                         ]}
                     ]
             },
             {  
                 tabName: "Large - 34&ldquo;", cartItems: [
                     {items: [
-                            {columns: [{title: "Krane - "},{title:"Ibycus"},{size:"Large"},{price: "28.95"}]},
-                            {columns: [{title: "Krane - "},{title:"Pyramís"},{size:"Large"},{price: "32.95"}]},
-                            {columns: [{title: "Krane - "},{title:"Electrum"},{size:"Large"},{price: "36.95"}]} 
+                            {columns: [{title: "Krane - "},{title:"Ibycus"},{size:"Large"},{price: "28.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Krane - "},{title:"Pyramís"},{size:"Large"},{price: "32.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Krane - "},{title:"Electrum"},{size:"Large"},{price: "36.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]} 
                         ]}
                     ]  
             },
@@ -60,8 +62,8 @@
                 tabName: "Accessories", cartItems: [
                     {
                         items: [
-                            {columns: [{title: "Tablet Extension"},{title:""},{size: ""},{price: "9.95"}]},
-                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"}]}  
+                            {columns: [{title: "Tablet Extension"},{title:""},{size: ""},{price: "9.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]}  
                         ],
                     }
                 ]  
@@ -78,8 +80,8 @@
     var stopSmoking = false;
     var thumbnailHover;
     var calculatedTotal;
-    var shippingUS = "5.00";
-    var shippingInternational = "20.00";
+    var shippingUS = "4.00";
+    var shippingInternational = "9.00";
     var cartItem = [];
 	var arrayOfImages = [];
 	arrayOfImages[0] = "images/main_image_lights_off.png";
@@ -117,16 +119,11 @@
 	$(document).ready(function () {
 
         //languageSearch(true);
-
-        
-
-        
-
-       
-        
         setOrderDetailInputs(true);
-        $("#k1-qty").val(0);
-        $("#k2-qty").val(0);
+        
+        
+        //$("#k1-qty").val(0);
+
  
         var tags2 = document.querySelectorAll('div,input,option,textarea,select,button');
 

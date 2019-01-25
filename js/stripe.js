@@ -34,7 +34,6 @@ var stripe = Stripe('pk_test_fgP1IfitRDyrHERTzo9BABmR');
 		
 		successElement.classList.remove('visible');
 		errorElement.classList.remove('visible');
-		
 		if(result.token){
 				//A token was generated successfully
 				console.log("Token generated successfully::: " + result.token.id);
@@ -43,6 +42,10 @@ var stripe = Stripe('pk_test_fgP1IfitRDyrHERTzo9BABmR');
                 $("#CC-review-order").animate({left: '0px'});
                 $("#CC-review-order").css('display', 'block');
                 $("#main").css('visibility', 'hidden');
+                
+            
+
+            
                 return true;			
 			}else if (result.error) {
 				counter2 = 5;
@@ -234,11 +237,12 @@ function cartDisplayItems(){
                             //generate error
                     }
 		});
+        
 	}
 
 	function digitalWalletCheckout(ev){
 		//ev is passed from payments API
-		//calculatedAmount = ttl * multiplier;
+		calculatedAmount = ttl * multiplier;
 		$.post("./php/checkout_WPA.php", {"checkout": "true", 
                                       "amount": calculatedAmount, 
                                       "currency": currencyCode, 

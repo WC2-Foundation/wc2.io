@@ -70,6 +70,7 @@
                         $('#total').html(labelTotal + ": " + formattedCurrency); 			
                         //$('#review-order-price').html(labelTotal + ": " + formattedCurrency); 
                         convert(currencyCode,"stripe");
+                        
    
 				}
 			);
@@ -106,7 +107,7 @@
 			console.log("LANGUAGE CODE = " + response);
 			//if(isDesbug().length > 0){response = isDesbug()};
 			languageCode = response; 
-            buildShoppingCart();
+            
 			getLanguage(languageCode);
 
 		});	
