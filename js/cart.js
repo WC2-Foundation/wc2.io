@@ -84,8 +84,90 @@
             {"name":"paypal", "functions":[
                 {"functionName" : "fillHoles",  "reverse" : false, "parameters":[1]}
             ]}
+        ],
+      "CCerror":[
+            {"name" : "cc-inputs", "functions" : [
+                {"functionName" : "createStripeToken", "reverse" : false, "parameters":[]}
+            ]}
         ]
      }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+       var containers = [containersObj.containers, containersObj.paypal, containersObj.CCerror];
+    for(i in containers){
+        nextDiv[i] = 0;
+    }
+
+    function navigate(forward){
+        
+        if(!forward && nextDiv[containerID] == 0){return};
+        var j, functions = forward ? containers[containerID][nextDiv[containerID]].functions : containers[containerID][nextDiv[containerID]-1].functions;
+        for(j in functions){
+            var callFunc = functions[j].functionName;
+            var params = functions[j].parameters;
+            var reverse = functions[j].reverse;
+            if((forward && !reverse) || (!forward && reverse)){
+                var func = window[callFunc];
+                var returnedValue = func(params);
+                if(typeof returnedValue === "boolean"){
+                    if(returnedValue == false){
+                        return false;
+                    }
+                }
+            }
+        }
+        
+        if(containers[containerID][nextDiv[containerID]].skipContainerAnimation == true && forward){return};
+        if(nextDiv[containerID] >= containersObj.containers.length - 1 && forward){return};
+        forward ? nextDiv[containerID]++ : nextDiv[containerID]--;
+        animateContainers(forward,containerID);
+        if(navPositionObj.positions[containerID].functions[nextDiv[containerID]].name == "start"){containerID = 0;}
+
+    }
+
+    function animateContainers(forward, containerID){
+        var incDec = forward ? nextDiv[containerID]-1:nextDiv[containerID] + 1;
+        var leftFR = forward ? "-" + containersObj.width + "px" :  containersObj.width + "px";
+        var x = navPositionObj.positions[containerID].functions[nextDiv[containerID]].x;
+        var y = navPositionObj.positions[containerID].functions[nextDiv[containerID]].y;
+        if(x.length > 0){$("#main").animate({left: x,top: y})};
+        $("#" + containers[containerID][incDec].name).animate({left: leftFR});
+        $("#" + containers[containerID][nextDiv[containerID]].name).animate({left: "0px"},{complete:function(){displayNone(containerID,nextDiv[containerID])}});
+        $("#" + containers[containerID][nextDiv[containerID]].name).css("display","block");
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
         function buildShoppingCart(){
 
@@ -328,63 +410,6 @@
 	}
 
 
-    function enableCartItems(enable){
-        if(enable){
-                $("#k1").addClass("enableCartItems");
-                $("#k2").addClass("enableCartItems");
-                $("#k3").addClass("enableCartItems");
-                $("#k4").addClass("enableCartItems"); 
-                
-            }else{  
-                $("#k1").addClass("disableCartItems");
-                $("#k2").addClass("disableCartItems");
-                $("#k3").addClass("disableCartItems");
-                $("#k4").addClass("disableCartItems");
-        }
-    }
-
-   var containers = [containersObj.containers, containersObj.paypal];
-    for(i in containers){
-        nextDiv[i] = 0;
-    }
-
-    function navigate(forward){
-        
-        if(!forward && nextDiv[containerID] == 0){return};
-        var j, functions = forward ? containers[containerID][nextDiv[containerID]].functions : containers[containerID][nextDiv[containerID]-1].functions;
-        for(j in functions){
-            var callFunc = functions[j].functionName;
-            var params = functions[j].parameters;
-            var reverse = functions[j].reverse;
-            if((forward && !reverse) || (!forward && reverse)){
-                var func = window[callFunc];
-                var returnedValue = func(params);
-                if(typeof returnedValue === "boolean"){
-                    if(returnedValue == false){
-                        return false;
-                    }
-                }
-            }
-        }
-        
-        if(containers[containerID][nextDiv[containerID]].skipContainerAnimation == true && forward){return};
-        if(nextDiv[containerID] >= containersObj.containers.length - 1 && forward){return};
-        forward ? nextDiv[containerID]++ : nextDiv[containerID]--;
-        animateContainers(forward,containerID);
-        if(navPositionObj.positions[containerID].functions[nextDiv[containerID]].name == "start"){containerID = 0;}
-
-    }
-
-    function animateContainers(forward, containerID){
-        var incDec = forward ? nextDiv[containerID]-1:nextDiv[containerID] + 1;
-        var leftFR = forward ? "-" + containersObj.width + "px" :  containersObj.width + "px";
-        var x = navPositionObj.positions[containerID].functions[nextDiv[containerID]].x;
-        var y = navPositionObj.positions[containerID].functions[nextDiv[containerID]].y;
-        if(x.length > 0){$("#main").animate({left: x,top: y})};
-        $("#" + containers[containerID][incDec].name).animate({left: leftFR});
-        $("#" + containers[containerID][nextDiv[containerID]].name).animate({left: "0px"},{complete:function(){displayNone(containerID,nextDiv[containerID])}});
-        $("#" + containers[containerID][nextDiv[containerID]].name).css("display","block");
-    }
 
     function displayNone(containerID,nextDiv){
         $(".order-containers").each(function(i, obj){
