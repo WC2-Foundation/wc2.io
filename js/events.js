@@ -297,16 +297,16 @@ $(document).ready(function () {
             if(result){
                     
                     if(result == "false"){
-                            enableCartItems(true);
+                            $("#available-discounts").fadeOut();
                             $("#discount-code").css("background-color","white");
                         }else{
                             $("#discount-code").css("background-color","forestgreen");
-                            enableCartItems(false);
+                           $("#available-discounts").fadeIn();
                             $("#" + result).addClass("enableCartItems");
                     }
 				}else{
-                    //enableCartItems(true);
-                    $("#discount-code").css("background-color","white");
+                    $("#available-discounts").fadeOut();
+                    
 			}
 		})
 	});

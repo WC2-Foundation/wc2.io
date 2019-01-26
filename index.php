@@ -249,7 +249,23 @@
                         </div> 
                         
                         <div id="orderForm1">
+                            <div id = "available-discounts" style = "position: absolute; 
+                                                  top:280px;
+                                                  background-color:#333333;
+                                                  color: white;
+                                                  width: 325px;
+                                                  height: 100px;
+                                                  border-radius: 25px 25px 25px 25px;
+                                                  padding: 10px;
+                                                  font-size: 16px;
+		                                          font-family: 'Comfortaa', cursive;
+                                                  letter-spacing: 2px;
+                                                  display: none;
+                                                  ">
+                                <div style="text-align: center">Available Discounts</div>
+                                <div style="display: inline-grid;border: 2px;border-color: #FFFFFF; "></div>
                             
+                            </div>
                             <div style = "width:100%;text-align: center">
                                 <button id = "tab1" class = "cart-tab-buttons">Standard - 28"</button><button id = "tab2" class = "cart-tab-buttons">Large - 34"</button><button id = "tab3" class = "cart-tab-buttons">Accessories</button>
                             </div>
@@ -400,58 +416,19 @@
 					
 					<!-- Credit Card Review Order -->
                     <div id="CC-review-order" class="order-containers" >
-						<div id = "review-container" style ="height:550px;width:600px;margin-left:35px;">
-						<div id = "checkout-spinner" style = "float: left; position: absolute;top:100px;left: 280px;display: none;" >
+						<div id = "review-container" style ="height:550px;width:600px;margin-left:0px;">
+						<div id = "checkout-spinner" style = "z-index: 80000; float: left; position: absolute;top:100px;left: 280px;display: none;" >
 							<div class = "lds-dual-ring"></div>
 						</div>	
-						<div class="order-form-headings" data-languagekey="" style ="margin-left:-30px;text-align: center;margin-bottom: 10px;">Review Order</div>
-							
-							<div class="grid-container-review">
-									<div class="grid-item">
-										<i class="fas fa-shopping-cart" ></i>
-									</div>
+						<div class="order-form-headings" data-languagekey="" style =";text-align: center;margin-bottom: 10px;">Review Order</div>
+	
 
-									<div class="grid-item-center">
-										Standard Krane 
-									</div>
-
-									<div class="grid-item-right">
-										$35 x
-									</div>
-
-									<div class="grid-item">
-										<input type="number" id = "k2-qty-2" tabindex="-1" onClick="addItemToCart('k2');" onChange="addItemToCart('k2');" value = "0" min="0" max="10000" 
-											   style ="margin-right: 15px;width:45px; height: 34px; text-align:center; padding-left:10px; border-radius: 4px 4px 4px 4px;border: none;" >
-									</div>
-								</div>
-						
-						
-						
-								<div class="grid-container-review">
-									<div class="grid-item">
-										<i class="fas fa-shopping-cart" ></i>
-									</div>
-
-									<div class="grid-item-center">
-										Jumbo Krane 
-									</div>
-
-									<div class="grid-item-right">
-										$45 x
-									</div>
-
-									<div class="grid-item">
-										<input type="number" id = "k2-qty-2-2" tabindex="-1" onClick="addItemToCart('k2');" onChange="addItemToCart('k2');" value = "0" min="0" max="10000" 
-											   style ="margin-right: 15px;width:45px; height: 34px; text-align:center; padding-left:10px; border-radius: 4px 4px 4px 4px;border: none;" >
-									</div>
-								</div>
-						
-						
+                    <div id = "review-order-container"></div>			
 						        <div style="margin-left: 190px;position: relative;margin-top:20px;">
                                     <div class="order-form-labels" id="review-order-price" data-languagekey="total" ></div>
                                 </div>
 						
-							<div style="display: inline-block;width: 100%; text-align: center; margin-left: -20px;">
+							<div style="display: inline-block;width: 100%; text-align: center; margin-left: 0px;">
 								<button id = "buy-now" tabindex="-1" >
 									&nbsp;<i class="fas fa-shopping-cart" style = ""></i> BUY NOW &nbsp;&nbsp;
 								</button>

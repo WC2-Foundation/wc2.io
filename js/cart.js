@@ -8,7 +8,6 @@
     //########################################################################
     //########################################################################
 	
-    //var stripe = Stripe('pk_live_oRL9EVHl8I93CAciYj5xi2OA');
     var paypalSandboxKey = 'AXNBHeDq2JrjOTfP8sNlOuZorGOBNG5_9QuWelMSgznz6PBvFmJhT7e01jqfmw1a_NAT8cWnOmGA3tVn';
     //var paypalProductionKey = 'AZQS_HL1WChQTKMDP1vUJXUvVxl9ggnqdV7-RdqQjqj2wcUrbMg-0BPeth5My3N7gNTuw4NipsI9VAp9';
 
@@ -32,15 +31,15 @@
             {"name" : "pay-with", "x": "", "y": "",  "skipContainerAnimation" : false},
             {"name" : "contact-information", "x": "50px", "y": "-490px",  "skipContainerAnimation" : false},
             {"name" : "shipping", "x" : "40px", "y": "-375px", "skipContainerAnimation" : false},
-            {"name" : "cc-inputs", "x" : "50px", "y": "-485px", "skipContainerAnimation" : false}
+            {"name" : "cc-inputs", "x" : "50px", "y": "-485px", "skipContainerAnimation" : true},
+            {"name" : "order-review", "x" : "50px", "y": "-485px", "skipContainerAnimation" : true}
           ]},
           {"name":"paypal", "functions":[
             {"name" : "start", "x": "", "y": "", "skipContainerAnimation" : false},
             {"name" : "paypal", "x": "-20px", "y": "-200px",  "skipContainerAnimation" : false}
           ]},
-          {"name":"paypal2...", "functions":[ 
-            {"name" : "start", "x": "", "y": "", "skipContainerAnimation" : false},
-            {"name" : "paypal", "x": "-20px", "y": "-200px",  "skipContainerAnimation" : false}
+          {"name":"CCerror", "functions":[ 
+            {"name" : "start", "x": "", "y": "", "skipContainerAnimation" : true}
           ]}
         ]    
     }
@@ -73,7 +72,12 @@
                 {"functionName" : "fillHoles",  "reverse" : false, "parameters":[8]}
             ]},
             {"name" : "cc-inputs", "functions" : [
-                {"functionName" : "createStripeToken", "reverse" : false, "parameters":[]}
+                {"functionName" : "createStripeToken", "reverse" : false, "parameters":[]},
+                {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true,true]}
+            ]},
+            {"name" : "order-review", "functions" : [
+                 {"functionName" : "createStripeToken", "reverse" : false, "parameters":[]},
+                {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true,true]}
             ]}      
         ],
       "paypal":[
@@ -84,26 +88,12 @@
             {"name":"paypal", "functions":[
                 {"functionName" : "fillHoles",  "reverse" : false, "parameters":[1]}
             ]}
-        ],
-      "CCerror":[
-            {"name" : "cc-inputs", "functions" : [
-                {"functionName" : "createStripeToken", "reverse" : false, "parameters":[]}
-            ]}
         ]
      }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-       var containers = [containersObj.containers, containersObj.paypal, containersObj.CCerror];
+
+    var containers = [containersObj.containers, containersObj.paypal];
+    //reset array of counters
     for(i in containers){
         nextDiv[i] = 0;
     }
@@ -127,9 +117,10 @@
             }
         }
         
-        if(containers[containerID][nextDiv[containerID]].skipContainerAnimation == true && forward){return};
+        if(navPositionObj.positions[containerID].functions[nextDiv[containerID]].skipContainerAnimation == true && forward){return};
         if(nextDiv[containerID] >= containersObj.containers.length - 1 && forward){return};
         forward ? nextDiv[containerID]++ : nextDiv[containerID]--;
+        //console.log("containerID: " + containerID);
         animateContainers(forward,containerID);
         if(navPositionObj.positions[containerID].functions[nextDiv[containerID]].name == "start"){containerID = 0;}
 
@@ -141,7 +132,10 @@
         var x = navPositionObj.positions[containerID].functions[nextDiv[containerID]].x;
         var y = navPositionObj.positions[containerID].functions[nextDiv[containerID]].y;
         if(x.length > 0){$("#main").animate({left: x,top: y})};
+        console.log("////> " + nextDiv[0]);
         $("#" + containers[containerID][incDec].name).animate({left: leftFR});
+        //console.log("containerID: " + containerID);
+        //console.log("containers[2][1].. ???: " + containers[containerID][nextDiv[containerID]].name);
         $("#" + containers[containerID][nextDiv[containerID]].name).animate({left: "0px"},{complete:function(){displayNone(containerID,nextDiv[containerID])}});
         $("#" + containers[containerID][nextDiv[containerID]].name).css("display","block");
     }

@@ -34,6 +34,8 @@ var stripe = Stripe('pk_test_fgP1IfitRDyrHERTzo9BABmR');
 		
 		successElement.classList.remove('visible');
 		errorElement.classList.remove('visible');
+        
+        console.log("result.token: " + result.token);
 		if(result.token){
 				//A token was generated successfully
 				console.log("Token generated successfully::: " + result.token.id);
@@ -42,11 +44,8 @@ var stripe = Stripe('pk_test_fgP1IfitRDyrHERTzo9BABmR');
                 $("#CC-review-order").animate({left: '0px'});
                 $("#CC-review-order").css('display', 'block');
                 $("#main").css('visibility', 'hidden');
-                
+                return true;
             
-
-            
-                return true;			
 			}else if (result.error) {
 				counter2 = 5;
 				$('#next').show();
@@ -272,20 +271,32 @@ function cartDisplayItems(){
         $("#review-container").fadeTo(250,0.3);
 		$.post("./php/checkout.php", {"checkout": "true", "amount": calculatedTotal, "currency": currencyCode}, function(result){
 			console.log("amount: " + calculatedTotal + " currencyCode: " + currencyCode + " result: " + result + "<<<");
-            if(result){
+            if(result == "true"){
                     console.log("Manually entered CC info");
                     $("#review-container").animate({left: '-600px'});
                     $("#review-container").fadeTo(250,0.0);
                     $("#order-complete").fadeIn(250);
                     $("#order-complete").animate({left: '0px'});
                     console.log("res: " + result);
+                    
 				}else{
+                    nextDiv[0] = 5;
+                    containerID = 0;
+                    $("#main").css('visibility', 'visible');
+                    console.log("nextDiv[0]: " + nextDiv[0]);
+                    navigate(false);
                     console.log("checkout failed");
+                    var errorElement = document.querySelector('.error');
+                    errorElement.textContent = result;
+                    errorElement.classList.add('visible');
+                    $("#checkout-spinner").fadeOut(250);
+                    $("#review-container").fadeTo(250,1.0);
 			}
 		});
 	}
 
     function createStripeToken(){
+        console.log("createStripeToken() called...");
         stripe.createToken(cardNumberElement).then(manuallyEnteredCard);
     }
 
