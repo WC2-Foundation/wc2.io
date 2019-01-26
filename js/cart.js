@@ -199,7 +199,7 @@
             return returnCart;
         }
     
-
+        var mg2 = 0;
         function buildShoppingCart2(){
 
 
@@ -237,33 +237,30 @@
                                     listCounter++;
                                 }
                                 io++;
-                                
-                            }
-                            
+                            }  
                         }
-                    
                 }
             
-            if(listCounter <= 3){
+            if(listCounter < 3){
                 newItem = createCartRow2("","","","","",true);
                 $("#review-order-container").addClass("review-cart-tab");
-                $("#review-order-container").append(newItem); 
-                //.disableCartItems
+                $("#review-order-container").append(newItem);
+                
             }
-                
-                //$("cart-container-0").addClass("cart-tabs");  
+            
+
             $("#review-order-container").addClass("review-cart-tab");
-                $("#review-order-container").show();
-                
- 
+            $("#review-order-container").show();
+            //$("#m0").addClass("disableCartItems");
         }
 
         function createCartRow2(productName,productModel,productSize,productPrice,qty,blankRow = false){
             
-            var returnCart = '<div id = "k' + mg + '" class="grid-container">' +
+            blankRow ? rowClass = "grid-container": "disableCartItems";
+            var returnCart = '<div id = "m' + mg2 + '" class="' + rowClass + '">' +
             '<div class="grid-item">';
             if(!blankRow){
-                returnCart += '<i class="fas fa-check checkmarks" id = "checkmark-' + mg + '"></i>' +
+                returnCart += '<i class="fas fa-check checkmarks" id = "checkmark-' + mg2 + '"></i>' +
                               '<i class="fas fa-shopping-cart" style = "padding-left:5px;"></i>';
             }
             returnCart += '</div>' + 
@@ -275,14 +272,15 @@
             '        ' + productSize +
             '    </div>' +
             '    <div class="grid-item-right">' +
-            '        <div id = "cartItem-' + mg + '" >' + productPrice + '</div>' +
+            '        <div id = "cartItem-' + mg2 + '" >' + productPrice + '</div>' +
             '    </div>'+
             '    <div class="grid-item">';
             if(!blankRow){
-               returnCart += '<input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "' + qty + '" min="0" max="10000" >';
+               returnCart += '<input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg2 + '-qty" onChange="addItemToCart(\'' + mg2 + '\');" value = "' + qty + '" min="0" max="10000" >';
             }
-            returnCart +=  '</div>'+
+            returnCart +=  '</div>' +
             '</div>';
+            mg2++;
             return returnCart;
         }
     
