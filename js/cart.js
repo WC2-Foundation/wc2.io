@@ -141,27 +141,7 @@
     }
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
         function buildShoppingCart(){
 
@@ -225,14 +205,22 @@
 
                 io = 0;
                 m = cartObj.cartTabs;
+            
+                for(v in cart){
+                    console.log("--->" + cart[v].k[0]);
+                }
+                var listCounter = 0; 
+            
                 for(n in m){
                     tabName = m[n].tabName;
                     //$("#review-outter-container").append('<div class = "cart-tabs" id = "cart-container-' + n + '"></div>');
                     w = m[n].cartItems;
                         for(j in w){
                             y = w[j].items;
+                            
                             for(p in y){
                                 a = y[p].columns;
+                                
                                 //cartItem[mg] = a[3].price;
                                 g = (cartItem[io] * exchangeRate);
                                 adjustedTotal = Math.round(g.toFixed(2) * 1000) / 10;
@@ -241,11 +229,12 @@
                                 //shippingUSArr[mg] = a[5].shippingUS[0];
                                 //mm = cart[io].k[0];
                                 //console.log("***> " + mm);
-                                 
+                                
                                 if(cart[io].k[0] > 0){
                                     formattedCurrency = formatCurrency(currencyCode,languageCode + "-" + countryCode,g);
                                     newItem = createCartRow2(a[0].title,a[1].title,a[2].size,formattedCurrency,cart[io].k[0]);
                                     $("#review-order-container").append(newItem);
+                                    listCounter++;
                                 }
                                 io++;
                                 
@@ -254,6 +243,13 @@
                         }
                     
                 }
+            
+            if(listCounter <= 3){
+                newItem = createCartRow2("","","","","",true);
+                $("#review-order-container").addClass("review-cart-tab");
+                $("#review-order-container").append(newItem); 
+                //.disableCartItems
+            }
                 
                 //$("cart-container-0").addClass("cart-tabs");  
             $("#review-order-container").addClass("review-cart-tab");
@@ -262,28 +258,31 @@
  
         }
 
-        function createCartRow2(productName,productModel,productSize,productPrice,qty){
+        function createCartRow2(productName,productModel,productSize,productPrice,qty,blankRow = false){
             
             var returnCart = '<div id = "k' + mg + '" class="grid-container">' +
-            '    <div class="grid-item">' +
-            '        <i class="fas fa-check checkmarks" id = "checkmark-' + mg + '"></i>' +
-            '        <i class="fas fa-shopping-cart" style = "padding-left:5px;"></i>' +
-            '    </div>' +
+            '<div class="grid-item">';
+            if(!blankRow){
+                returnCart += '<i class="fas fa-check checkmarks" id = "checkmark-' + mg + '"></i>' +
+                              '<i class="fas fa-shopping-cart" style = "padding-left:5px;"></i>';
+            }
+            returnCart += '</div>' + 
             '    <div class="grid-item-center">' +
             '        ' + productName + '  <a href = "#ibycus" class = "thumbnail-links" id = "krane-model-' + productModel.toLowerCase() + '" >' + productModel + '</a>'+
             '        <div id = "ibycus" class = "thumbnails" ></div>' +
-            '    </div>'+
+            '    </div>' +
             '    <div class="grid-item-right">' +
             '        ' + productSize +
-            '    </div>'+
+            '    </div>' +
             '    <div class="grid-item-right">' +
             '        <div id = "cartItem-' + mg + '" >' + productPrice + '</div>' +
             '    </div>'+
-            '    <div class="grid-item">'+
-            '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "' + qty + '" min="0" max="10000" >'+
-            '    </div>'+
+            '    <div class="grid-item">';
+            if(!blankRow){
+               returnCart += '<input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "' + qty + '" min="0" max="10000" >';
+            }
+            returnCart +=  '</div>'+
             '</div>';
-           
             return returnCart;
         }
     
@@ -334,12 +333,10 @@
         //$("#a").addClass("disableCartItems");
         ttl = ttl.toFixed(2);
         calculatedTotal = Math.round(ttl * 1000) / 10;
-        
         if(setInputs){setOrderDetailInputs(true)};
 		var locale = languageCode + "-" + countryCode;
 		var formattedCurrency = formatCurrency(currencyCode,locale,ttl);		
 		$('#total').html(labelTotal + ": " + formattedCurrency);
-        
 		$('#review-order-price').html(labelTotal + ": " + formattedCurrency); 
 		var calcTotal = true;
 		if(ttl == 0 | isNaN(ttl)){
