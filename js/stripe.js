@@ -256,6 +256,7 @@ function cartDisplayItems(){
                     $("#pay-with").hide();
                     $("#order-complete").show();
                     $("#order-complete").animate({left: '0px'});
+                setInterval(function(){fillHoles(11,true)},400);
                     ev.complete('success');	         
 				}else{
                     console.log("checkout failed");
@@ -277,6 +278,7 @@ function cartDisplayItems(){
                     $("#review-container").fadeTo(250,0.0);
                     $("#order-complete").fadeIn(250);
                     $("#order-complete").animate({left: '0px'});
+                    setInterval(function(){fillHoles(11,true)},400);
                     console.log("res: " + result);
                     
 				}else{
@@ -317,9 +319,9 @@ function cartDisplayItems(){
 
     function moveNavPayAPI(){
         if(paymentAPIavailable){
-                $("#main").animate({top: '-240px',left: '-20px'});
+                $("#main").animate({top: '-260px',left: '-20px'});
             }else{
-                $("#main").animate({top: '-300px',left: '-20px'}); 
+                $("#main").animate({top: '-320px',left: '-20px'}); 
         }
     }
 

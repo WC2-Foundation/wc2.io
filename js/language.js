@@ -1,5 +1,5 @@
 	function getLanguage(lc){
-
+        
 				$.post("./php/get_native_language.php", {language_code: lc,}, 
 				   function(result){
                     
@@ -8,6 +8,7 @@
 					
 					//var obj = JSON.parse(result);
                             var j = 0;
+                            
                             var langDocument = JSON.parse(result);
                             var tags = document.querySelectorAll('div,input,span,a,label,option,textarea,select,button');
 					
@@ -18,8 +19,9 @@
                                      //console.log(value.tagName);
                                      //console.log(value.clientWidth);
                                 //}
-                                
-                            //console.log("--->" + langDocument[key]);
+                                if(key !== undefined){
+                                    console.log("--->" + key);
+                                }
                             j++;
                             //langDocument['is-left-to-right']
                                 //console.log("*******************" + value.style.display);
@@ -50,6 +52,7 @@
                                     }
                                         
                                         value.placeholder = langDocument[key];
+                                        //console.log("decodeEntities(langDocument[key]): " + decodeEntities(langDocument[key]));
                                         value.innerText =  decodeEntities(langDocument[key]);
                                 }
                             }
@@ -69,7 +72,7 @@
                         var formattedCurrency = formatCurrency(currencyCode,locale,0);		
                         $('#total').html(labelTotal + ": " + formattedCurrency); 			
                         //$('#review-order-price').html(labelTotal + ": " + formattedCurrency); 
-                        convert(currencyCode,"stripe");
+                        
                         
    
 				}
@@ -82,13 +85,20 @@
 	function detectLanguage(override = false){
   
 			var getlcParam = getLCfromQS();
-
+            
 			if(getlcParam.length > 0){
 				languageCode = getlcParam;
                 getLanguage(languageCode);
                 return;
 			}
         
+        if(typeof override == "string"){
+			languageCode = override; 
+			getLanguage(languageCode);
+            return;
+            
+        }
+            
 		$.get("https://krane.tv/php/language.php", function (response) {
 
 			//#############################################

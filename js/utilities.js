@@ -80,6 +80,31 @@ randomStrLen[10] = "BUY NOW";
                     });
         }
 
+
+	function fillHoles(holeCount,random = false){
+		
+		document.getElementById("svg-js").innerHTML = "";
+		var yCoo = 45, fillColor, circArr = [];
+		var draw = SVG('svg-js').size(70, 650);
+		draw.rect(70, 600).fill('#FFF').move(0,35);
+		draw.circle(70).fill('#FFF').move(0, 0);
+		draw.circle(70).fill('#FFF').move(0, 0);	
+		var i;
+        for(i = 0; i < 11; i++){
+            random ? randomOrNot = getRandomColor() : randomOrNot = "#5ba116";
+			(i<holeCount) ? fillColor = randomOrNot : fillColor = "#000000";
+			draw.circle(30).fill('' + fillColor + '').move(20, yCoo);
+			yCoo += 50;
+		}		
+	}
+
+
+    function strutAnimation(){
+    
+    
+    }
+
+
 		function divDebugMode(onOrOff = true){
             
             

@@ -120,11 +120,7 @@
 
         //languageSearch(true);
         setOrderDetailInputs(true);
-        
-        
         //$("#k1-qty").val(0);
-
- 
         var tags2 = document.querySelectorAll('div,input,option,textarea,select,button');
 
         Array.from(tags2).forEach(function(value, index){
@@ -147,7 +143,6 @@
             minLength: 1,
         }); 		
 
-		
         fillHoles(0);
  
 	//uncomment to test ipstack data
@@ -169,6 +164,7 @@
 				//ajax call to mysql, make sure currency is supported; if not fallback 
 				//to US for now (TODO: country based fallback [euros etc])
 				currencyCode = response.currency.code.toLowerCase();
+                
                 paypalCurrencyCode =  "usd"; //convert(currencyCode,"paypal"); //response.currency.code.toLowerCase();
 				var countryCode = response.country_code;
 				
@@ -182,18 +178,16 @@
 				setMeasurementVariables();
 				//Override language for testing purposes
 				var lc = response.location.languages[0]["code"];
+                console.log(lc);
 				detectLanguage(lc);
 				var cc = response.country_name;
+                convert(currencyCode,"stripe");
 				createCookie("country_lookup",cc);
 				$("#country").val(cc);
 			}, "jsonp");
 
 	}
-        
-        
-
-        
-		
+        		
     var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     window.requestAnimationFrame = requestAnimationFrame;
 
@@ -296,21 +290,7 @@
 
 
 
-	function fillHoles(holeCount){
-		
-		document.getElementById("svg-js").innerHTML = "";
-		var yCoo = 45, fillColor, circArr = [];
-		var draw = SVG('svg-js').size(70, 650);
-		draw.rect(70, 600).fill('#FFF').move(0,35);
-		draw.circle(70).fill('#FFF').move(0, 0);
-		draw.circle(70).fill('#FFF').move(0, 0);	
-		var i;
-        for(i = 0; i < 11; i++){
-			(i<holeCount) ? fillColor = "#5ba116" : fillColor = "#000000";
-			draw.circle(30).fill('' + fillColor + '').move(20, yCoo);
-			yCoo += 50;
-		}		
-	}
+
 
 
 	function spawn() {
