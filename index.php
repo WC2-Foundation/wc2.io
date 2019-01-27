@@ -112,7 +112,7 @@
 
 	<div id = "krane-about">
 		
-		<span id = "above-laptop" style = "font-weight: bold;" >
+<!--		<span id = "above-laptop" style = "font-weight: bold;" >
 			A Sustainably Built Phone & Tablet Elevator</span>
 		<br><br>
 		The choice is yours my friend, either grow a third arm or get yourself a Krane!<br><br>
@@ -139,7 +139,7 @@
 
 
 
-	</div>			
+	</div>	-->		
 		
 		
 		<br><br>
@@ -150,7 +150,7 @@
 
 	
 	
-	<div id = "krane-environs" >	
+<!--	<div id = "krane-environs" >	
 		<div class = "rounded-header" >Krane - Material Usage and Sustainability</div>
 		<br><br>
 		<span id = "above-laptop-4" >Something to Feel Good About</span>
@@ -195,7 +195,7 @@
 		<br><br>
 		Our most popular model is the standard size Krane, which seems to suit most peoples' needs.
 		
-	</div>
+	</div>-->
 	
 	
 
@@ -205,11 +205,11 @@
         <div id="photo3" class="photos"></div>
     </div>
 
-	<button id = "standard-krane-add-to-cart" onClick="addItemToCart('k1',1)"  >
+	<button id = "standard-krane-add-to-cart" onClick="addItemToCart('0',1);"  >
 		<i class="fas fa-shopping-cart" style = "padding-left:30px;"></i> Standard Krane ( extends to <span class = "standard-krane-length"></span><span class = "length-symbol"></span> ) <i class="fas fa-check" style = "padding-left:5px;color: black"></i>
 	</button>
 	
-	<button id = "jumbo-krane-add-to-cart" onClick="addItemToCart('k2',1)"  >
+	<button id = "jumbo-krane-add-to-cart" onClick="addItemToCart('1',1);"  >
 		<i class="fas fa-shopping-cart" style = "padding-left:30px;"></i> Jumbo Krane ( extends to <span class = "jumbo-krane-length"></span><span class = "length-symbol"></span> ) <i class="fas fa-check" style = "padding-left:5px;color: black"></i>
 	</button>
 
@@ -275,11 +275,11 @@
                                 
                                 <div class="order-form-labels" id="quantity-label" data-languagekey="quantity-label" ></div>
 								
-                                
-                                    <div id = "cart-outter-container"> 
-                                        <div id = "electrum" class = "thumbnails" ></div>
+                                          <div id = "electrum" class = "thumbnails" ></div>
                                         <div id = "pyramís" class = "thumbnails" ></div>
-                                        <div id = "ibycus" class = "thumbnails" ></div> 
+                                        <div id = "ibycus" class = "thumbnails" ></div>                               
+                                    <div id = "cart-outter-container"> 
+
                                         <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
                                     </div>
                                 
@@ -423,7 +423,10 @@
 						<div class="order-form-headings" data-languagekey="" style =";text-align: center;margin-bottom: 10px;">Review Order</div>
 	
 
-                    <div id = "review-order-container"></div>			
+                    <div id = "review-order-container"></div>	
+                            
+                          <div id = "review-order-shipping"></div>
+                            
 						        <div style="margin-left: 190px;position: relative;margin-top:20px;">
                                     <div class="order-form-labels" id="review-order-price" data-languagekey="total" ></div>
                                 </div>
@@ -439,7 +442,8 @@
 					
 					<!-- CC# Order Complete -->
                     <div id="order-complete" class="order-containers" >
-						<div class="order-form-headings" data-languagekey="" style ="text-align: center;margin-bottom: 10px;margin-left: 20px;">Order Complete</div>
+						<div class="order-form-headings" data-languagekey="" style ="text-align: center;margin-bottom: 10px;margin-left: 20px;letter-spacing: 2px;">Order Complete!</div>
+                        <span class = "order-form-headings-small" style = "width:525px;padding:45px;margin-right: 25px; text-align: center;letter-spacing: 2px;">Thank you for your order.<br><br> A confirmation message was sent to the address provided.</span>
                     </div>
 					
 					<!-- Paypal review details -->
