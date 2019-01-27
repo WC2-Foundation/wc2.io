@@ -169,7 +169,7 @@
                         }
                     $("#cart-container-" + n).addClass("cart-tabs");
                 }
-
+                loadEvents();
                 $("cart-container-0").addClass("cart-tabs");  
                 $("#cart-container-0").show();
         }
@@ -256,7 +256,7 @@
             
             //qty > 0 ? a = "visible" : a = "hidden";
             var rowClass;
-            blankRow ? rowClass = "disableCartItems" : "";
+            blankRow ? rowClass = "" : "";
             var returnCart = '<div id = "m' + mg2 + '" class="grid-container">' +
             '<div class="grid-item">';
             if(!blankRow){
@@ -571,6 +571,7 @@
                 
             }
             buildShoppingCart();
+            
             mg = 0;
             
             calculateTotal();

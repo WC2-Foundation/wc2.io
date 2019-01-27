@@ -1,6 +1,6 @@
 
 
-$(document).ready(function () {
+function loadEvents() {
 
     
    
@@ -359,7 +359,7 @@ $("#extensions").keypress(function (e) {
     
     
     
-})
+}
 
 
 
