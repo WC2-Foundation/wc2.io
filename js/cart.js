@@ -29,10 +29,10 @@
           {"name":"manually-entered", "functions":[ 
             {"name" : "order-details", "x": "120px", "y": "-300px", "skipContainerAnimation" : false},
             {"name" : "pay-with", "x": "", "y": "",  "skipContainerAnimation" : false},
-            {"name" : "contact-information", "x": "50px", "y": "-490px",  "skipContainerAnimation" : false},
-            {"name" : "shipping", "x" : "40px", "y": "-375px", "skipContainerAnimation" : false},
-            {"name" : "cc-inputs", "x" : "50px", "y": "-485px", "skipContainerAnimation" : true},
-            {"name" : "order-review", "x" : "50px", "y": "-485px", "skipContainerAnimation" : true}
+            {"name" : "contact-information", "x": "50px", "y": "-520px",  "skipContainerAnimation" : false},
+            {"name" : "shipping", "x" : "35px", "y": "-400px", "skipContainerAnimation" : false},
+            {"name" : "cc-inputs", "x" : "50px", "y": "-505px", "skipContainerAnimation" : true},
+            {"name" : "order-review", "x" : "50px", "y": "-505px", "skipContainerAnimation" : true}
           ]},
           {"name":"paypal", "functions":[
             {"name" : "start", "x": "", "y": "", "skipContainerAnimation" : false},
@@ -217,10 +217,8 @@
                     w = m[n].cartItems;
                         for(j in w){
                             y = w[j].items;
-                            
                             for(p in y){
                                 a = y[p].columns;
-                                
                                 //cartItem[mg] = a[3].price;
                                 g = (cartItem[io] * exchangeRate);
                                 adjustedTotal = Math.round(g.toFixed(2) * 1000) / 10;
@@ -229,7 +227,7 @@
                                 //shippingUSArr[mg] = a[5].shippingUS[0];
                                 //mm = cart[io].k[0];
                                 //console.log("***> " + mm);
-                                
+ 
                                 if(cart[io].k[0] > 0){
                                     formattedCurrency = formatCurrency(currencyCode,languageCode + "-" + countryCode,g);
                                     newItem = createCartRow2(a[0].title,a[1].title,a[2].size,formattedCurrency,cart[io].k[0]);
@@ -241,13 +239,13 @@
                         }
                 }
             
-            if(listCounter < 3){
+           while(listCounter < 3){
                 newItem = createCartRow2("","","","","",true);
                 $("#review-order-container").addClass("review-cart-tab");
                 $("#review-order-container").append(newItem);
-                
+                $("#m" + listCounter).addClass("disableCartItems");
+               listCounter++;
             }
-            
 
             $("#review-order-container").addClass("review-cart-tab");
             $("#review-order-container").show();
@@ -256,11 +254,13 @@
 
         function createCartRow2(productName,productModel,productSize,productPrice,qty,blankRow = false){
             
-            blankRow ? rowClass = "grid-container": "disableCartItems";
-            var returnCart = '<div id = "m' + mg2 + '" class="' + rowClass + '">' +
+            //qty > 0 ? a = "visible" : a = "hidden";
+            var rowClass;
+            blankRow ? rowClass = "disableCartItems" : "";
+            var returnCart = '<div id = "m' + mg2 + '" class="grid-container">' +
             '<div class="grid-item">';
             if(!blankRow){
-                returnCart += '<i class="fas fa-check checkmarks" id = "checkmark-' + mg2 + '"></i>' +
+                returnCart += '<i class="fas fa-check checkmarks" style = "visibility:visible" id = "checkmark-' + mg2 + '"></i>' +
                               '<i class="fas fa-shopping-cart" style = "padding-left:5px;"></i>';
             }
             returnCart += '</div>' + 
@@ -276,7 +276,7 @@
             '    </div>'+
             '    <div class="grid-item">';
             if(!blankRow){
-               returnCart += '<input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg2 + '-qty" onChange="addItemToCart(\'' + mg2 + '\');" value = "' + qty + '" min="0" max="10000" >';
+               returnCart += '<input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg2 + '-qty" onChange="" value = "' + qty + '" min="0" max="10000" >';
             }
             returnCart +=  '</div>' +
             '</div>';
@@ -510,7 +510,7 @@
 
         if(incrementQty){
             var b = parseInt($("#k" + sku + "-qty").val());
-            $("#" + sku + "-qty").val(b + 1);
+            $("#k" + sku + "-qty").val(b + 1);
         }
         var qty = $("#k" + sku + "-qty").val();
         cart[sku].k[0] = qty;
