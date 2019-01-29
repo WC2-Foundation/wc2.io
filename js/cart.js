@@ -149,6 +149,11 @@
                 m = cartObj.cartTabs;
                 for(n in m){
                     tabName = m[n].tabName;
+                    tabNameSuffix = (parseFloat(n) + 1);
+                    if(n == 0){firstMiddleLast = "cart-tab-first"}
+                    if(n > 0 && n < m.length){firstMiddleLast = ""};
+                    if(n == m.length - 1){firstMiddleLast = "cart-tab-last"};
+                    $("#cart-tab-button-container").append('<button id = "tab' + tabNameSuffix + '" class = "cart-tab-buttons ' + firstMiddleLast + '">' + tabName + '</button>');
                     $("#cart-outter-container").append('<div class = "cart-tabs" id = "cart-container-' + n + '"></div>');
                     w = m[n].cartItems;
                         for(j in w){
@@ -169,8 +174,7 @@
                         }
                     $("#cart-container-" + n).addClass("cart-tabs");
                 }
-                loadEvents();
-                $("cart-container-0").addClass("cart-tabs");  
+                loadEvents(); 
                 $("#cart-container-0").show();
         }
 

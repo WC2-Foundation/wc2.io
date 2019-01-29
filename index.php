@@ -266,8 +266,8 @@
                                 <div style="display: inline-grid;border: 2px;border-color: #FFFFFF; "></div>
                             
                             </div>
-                            <div style = "width:100%;text-align: center">
-                                <button id = "tab1" class = "cart-tab-buttons">Standard - 28"</button><button id = "tab2" class = "cart-tab-buttons">Large - 34"</button><button id = "tab3" class = "cart-tab-buttons">Accessories</button>
+                            <div id = "cart-tab-button-container" style = "width:100%;text-align: center">
+                                <!-- buildShoppingCart()... -->
                             </div>
                             
                             <div id = "order-form-container">

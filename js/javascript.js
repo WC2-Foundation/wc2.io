@@ -49,7 +49,7 @@
                         ]}
                     ]
             },
-            {  
+            {
                 tabName: "Large - 34&ldquo;", cartItems: [
                     {items: [
                             {columns: [{title: "Krane - "},{title:"Ibycus"},{size:"Large"},{price: "28.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
