@@ -193,7 +193,7 @@ function loadEvents() {
     
     
        $("#countries2 li").on("click", function(){
-      alert($(this).text());
+      //alert($(this).text());
 
     });
 		

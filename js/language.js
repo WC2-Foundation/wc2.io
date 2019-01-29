@@ -37,9 +37,9 @@
                                          value.placeholder = langDocument[key];
                                     }else{
                                         
-                                    let e = measureString(langDocument[key]);
+                                    //e = measureString(langDocument[key]);
                                          //value.style.width = "300px";
-                                    if(e > value.clientWidth){
+                                    //if(e > value.clientWidth){
                                         
                                         //resizeText(langDocument[key],e,value.id);                                 
                                         //console.log(value.id + ": " + value.clientWidth);
@@ -49,14 +49,14 @@
                                         //value.style.width = "300px"; //value.clientWidth + 20 + "px";
                                         //value.style.fontSize = resizedFont;
                                         //console.log(resizedFont);
-                                    }
+                                    //}
                                         
                                         value.placeholder = langDocument[key];
                                         //console.log("decodeEntities(langDocument[key]): " + decodeEntities(langDocument[key]));
                                         value.innerText =  decodeEntities(langDocument[key]);
                                 }
                             }
-                                $('#language-picker').hide();
+                            $('#language-picker').hide();
 						});
                         //$(".nav-button").fitText(.1, { minFontSize: '8px', maxFontSize: '50px' });
                         //$().width(); 
@@ -70,7 +70,8 @@
                     
                         var locale = languageCode + "-" + countryCode;
                         var formattedCurrency = formatCurrency(currencyCode,locale,0);		
-                        $('#total').html(labelTotal + ": " + formattedCurrency); 			
+                        $('#total').html(labelTotal + ": " + formattedCurrency);
+                        
                         //$('#review-order-price').html(labelTotal + ": " + formattedCurrency); 
                         
                         

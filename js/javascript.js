@@ -243,18 +243,18 @@
         
 
     function measureString(str){
-        let canvas = document.createElement('canvas');
-        let ctx = canvas.getContext("2d");
-        let fontSize = 28;
+        canvas = document.createElement('canvas');
+        ctx = canvas.getContext("2d");
+        fontSize = 28;
         ctx.font = "normal normal " + fontSize + "px 'Comfortaa', cursive";       
         width = ctx.measureText(str).width; 
         return width;
     }
  
     function resizeDiv(str,width,ele){
-        let canvas = document.createElement('canvas');
-        let ctx = canvas.getContext("2d");
-        let fontSize = 28;
+        canvas = document.createElement('canvas');
+        ctx = canvas.getContext("2d");
+        fontSize = 28;
         while(width > ele){
             ctx.font = "normal normal " + fontSize + "px 'Comfortaa', cursive";       
             width = ctx.measureText(str).width; 

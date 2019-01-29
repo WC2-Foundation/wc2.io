@@ -89,7 +89,7 @@
             <div id="nav2" data-languagekey="nav2" class="nav-button"></div>
             <div id="nav3" data-languagekey="nav3" class="nav-button"></div>
 
-            <div style = "left:-15px;position: relative;top:-240px;" >
+            <div style = "left:-15px;position: relative;top:-250px;" >
                 <div id="no-smoking"></div>
                 <div id="turn-off-lights"></div>
             </div>
@@ -314,10 +314,10 @@
                             <div id="contact-information-heading" data-languagekey="contact-information-heading" class="order-form-headings-small" style ="margin-bottom: 15px;"></div>
                             <div style ="margin-left:95px;">
                                 <div id="m">
-                                    <input type="text" tabindex = "1" id="firstName" data-languagekey="firstName" name="first name" placeholder="" onKeyUp="fillHoles(3);" class="order-form-inputs" style ="color:grey;width:150px;">
-                                    <input type="text" tabindex = "2" id="lastName" data-languagekey="lastName" name="last name" placeholder="" class="order-form-inputs" style ="color:grey;width:200px;">
+                                    <input value = "Sam" type="text" tabindex = "1" id="firstName" data-languagekey="firstName" name="first name" placeholder="" onKeyUp="fillHoles(3);" class="order-form-inputs" style ="color:grey;width:150px;">
+                                    <input value = "Stauffacher" type="text" tabindex = "2" id="lastName" data-languagekey="lastName" name="last name" placeholder="" class="order-form-inputs" style ="color:grey;width:200px;">
                                 </div>
-                                <input id="emailAddress" tabindex = "3" style ="color:grey;width:400px;" data-languagekey="emailAddress" name="email address" placeholder="" type="email" onKeyUp="fillHoles(2);" value="" class="order-form-inputs">
+                                <input id="emailAddress" value = "sam@intrafuse.com" tabindex = "3" style ="color:grey;width:400px;" data-languagekey="emailAddress" name="email address" placeholder="" type="email" onKeyUp="fillHoles(2);" value="" class="order-form-inputs">
                             </div>
                         </form>
                     </div>
@@ -363,17 +363,17 @@
 
                                 <div style ="overflow-x: hidden;width: 100%; margin-left: 100px;">
 
-                                    <input tabindex="1" type="text" placeholder="Country" autocomplete="shipping country" data-languagekey="country" name="country" id="country" value="" class="country">
+                                    <input value = "Sam"  tabindex="1" type="text" placeholder="Country" autocomplete="shipping country" data-languagekey="country" name="country" id="country" value="" class="country">
 
-                                    <input tabindex="2" type="text" id="address1" name="address 1" placeholder="" data-languagekey="address1" class="order-form-inputs" style ="color:grey;width:400px;">
-                                    <input tabindex="3" type="text" id="address2" name="address 2" placeholder="" data-languagekey="address2" class="order-form-inputs" style ="color:grey;width:400px;">
+                                    <input value = "Sam"  tabindex="2" type="text" id="address1" name="address 1" placeholder="" data-languagekey="address1" class="order-form-inputs" style ="color:grey;width:400px;">
+                                    <input value = "Sam" tabindex="3" type="text" id="address2" name="address 2" placeholder="" data-languagekey="address2" class="order-form-inputs" style ="color:grey;width:400px;">
 
                                     <div style ="align-items:flex-start;justify-content:flex-start;display:flex;flex-direction:row;width: 100%;">
-                                        <input tabindex="4" type="text" name="city" id="city" placeholder="" data-languagekey="city" class="order-form-inputs" style ="color:grey;width:150px;">
-                                        <input tabindex="5" type="text" id="state" placeholder="" name="state" data-languagekey="state" class="order-form-inputs" style ="color:grey;width:200px;">
+                                        <input value = "Sam" tabindex="4" type="text" name="city" id="city" placeholder="" data-languagekey="city" class="order-form-inputs" style ="color:grey;width:150px;">
+                                        <input value = "Sam" tabindex="5" type="text" id="state" placeholder="" name="state" data-languagekey="state" class="order-form-inputs" style ="color:grey;width:200px;">
                                     </div>
 
-                                    <input type="text" tabindex="6" id="zip" name="zip code" placeholder="" data-languagekey="zip" class="order-form-inputs" style ="color:grey;width:150px;">
+                                    <input value = "Sam" type="text" tabindex="6" id="zip" name="zip code" placeholder="" data-languagekey="zip" class="order-form-inputs" style ="color:grey;width:150px;">
                                 </div>
                             </div>
                         </form>
@@ -420,20 +420,41 @@
 						<div id = "checkout-spinner" style = "z-index: 80000; float: left; position: absolute;top:100px;left: 280px;display: none;" >
 							<div class = "lds-dual-ring"></div>
 						</div>	
-						<div class="order-form-headings" data-languagekey="" style =";text-align: center;margin-bottom: 10px;">Review Order</div>
-	
+						<div class="order-form-headings" data-languagekey="" style =";text-align: center;margin: 0px;">Review Order</div>
+                            <span id = "shipping-offer" class="order-form-headings-extra-small">Free U.S. shipping on orders over $45.</span>
 
                     <div id = "review-order-container"></div>	
                             
-                          <div id = "review-order-shipping"></div>
+                          <div id = "review-order-shipping">
+  
+<div style="width: 100%; display: table;">
+    <div style="display: table-row">
+        <div style="width: 50%; display: table-cell;line-height: 1.5;"  id = "review-shipping-address"
+             class="order-form-headings-extra-small">
+    Sam Stauffacher<br>
+    830 Rebecca Drive<br>
+    Boulder Creek Ca, 95006    
+        
+        </div>
+        <div style="display: table-cell;width: 50%;text-align: right"> 
+            <div style="height: 50px;padding: 10px;">
+                <span class="order-form-labels-small">Shipping Total: $4.95</span><br>
+                <hr/>
+            </div>
+         <div id="review-order-price" data-languagekey="total" ></div>
+        </div>
+    </div>
+</div>
+                              
                             
-						        <div style="margin-left: 190px;position: relative;margin-top:20px;">
-                                    <div class="order-form-labels" id="review-order-price" data-languagekey="total" ></div>
-                                </div>
+                            
+                            </div>
+                            
+						        
 						
-							<div style="display: inline-block;width: 100%; text-align: center; margin-left: 0px;">
+							<div style=" text-align: right;padding: 20px;padding-right: 25px;">
 								<button id = "buy-now" tabindex="-1" >
-									&nbsp;<i class="fas fa-shopping-cart" style = ""></i> BUY NOW &nbsp;&nbsp;
+									&nbsp;<i class="fas fa-shopping-cart" ></i> BUY NOW &nbsp;
 								</button>
 							</div>
 						</div>	
@@ -442,8 +463,8 @@
 					
 					<!-- CC# Order Complete -->
                     <div id="order-complete" class="order-containers" >
-						<div class="order-form-headings" data-languagekey="" style ="text-align: center;margin-bottom: 10px;margin-left: 20px;letter-spacing: 2px;">Order Complete!</div>
-                        <span class = "order-form-headings-small" style = "width:525px;padding:45px;margin-right: 25px; text-align: center;letter-spacing: 2px;">Thank you for your order.<br><br> A confirmation message was sent to the address provided.</span>
+						<div class="order-form-headings" data-languagekey="" style ="text-align: center;margin-bottom: 10px;margin-left: 20px;letter-spacing: 2px;">Order Complete</div>
+                        <span class = "order-form-headings-small" style = "width:525px;padding:45px;margin-right: 25px; text-align: center;letter-spacing: 2px;">Thank you for your order!<br><br> A confirmation message was sent to your email address.</span>
                     </div>
 					
 					<!-- Paypal review details -->
@@ -552,7 +573,9 @@
             <span style ="cursor: pointer;" id = "chat-button-send" >send</span>
             <br>
             <br>
-            <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fkrane.tv%2F" target="_blank">W3C Validator</a> | <a href="https://ssllabs.com/ssltest/analyze.html?d=krane.tv&latest" target="_blank">SSL labs</a>
+            <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fkrane.tv%2F" target="_blank">W3C Validator</a> |
+            <a href="https://ssllabs.com/ssltest/analyze.html?d=krane.tv&latest" target="_blank">SSL labs</a> | 
+            <a href="https://github.com/truth-serum/krane.tv" target="_blank">Github</a>
         </div> 
     </div>
 </body>

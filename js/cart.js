@@ -27,11 +27,11 @@
     var navPositionObj = {
         "positions" : [
           {"name":"manually-entered", "functions":[ 
-            {"name" : "order-details", "x": "120px", "y": "-300px", "skipContainerAnimation" : false},
+            {"name" : "order-details", "x": "120px", "y": "-280px", "skipContainerAnimation" : false},
             {"name" : "pay-with", "x": "", "y": "",  "skipContainerAnimation" : false},
-            {"name" : "contact-information", "x": "50px", "y": "-520px",  "skipContainerAnimation" : false},
-            {"name" : "shipping", "x" : "35px", "y": "-400px", "skipContainerAnimation" : false},
-            {"name" : "cc-inputs", "x" : "50px", "y": "-505px", "skipContainerAnimation" : true},
+            {"name" : "contact-information", "x": "50px", "y": "-500px",  "skipContainerAnimation" : false},
+            {"name" : "shipping", "x" : "35px", "y": "-380px", "skipContainerAnimation" : false},
+            {"name" : "cc-inputs", "x" : "50px", "y": "-485px", "skipContainerAnimation" : true},
             {"name" : "order-review", "x" : "50px", "y": "-505px", "skipContainerAnimation" : true}
           ]},
           {"name":"paypal", "functions":[
@@ -207,7 +207,7 @@
                 m = cartObj.cartTabs;
             
                 for(v in cart){
-                    console.log("--->" + cart[v].k[0]);
+                    //console.log("--->" + cart[v].k[0]);
                 }
                 var listCounter = 0; 
             
@@ -239,14 +239,26 @@
                         }
                 }
             
-           while(listCounter < 3){
-                newItem = createCartRow2("","","","","",true);
-                $("#review-order-container").addClass("review-cart-tab");
-                $("#review-order-container").append(newItem);
-                $("#m" + listCounter).addClass("disableCartItems");
+/*           while(listCounter < 3){
+                //newItem = createCartRow2("","","","","",true);
+                //$("#review-order-container").addClass("review-cart-tab");
+                //$("#review-order-container").append(newItem);
+                //$("#m" + listCounter).addClass("disableCartItems");
                listCounter++;
+            }*/
+            
+            console.log("listCounter: " + listCounter);
+            if(listCounter == 2){
+                
+              
+                document.getElementsByClassName("review-cart-tab").style.overflowY = "hidden";
+                //$("#review-order-shipping").css({width: "575px"});
             }
-
+            if(listCounter == 1){
+                 document.getElementsByClassName("review-cart-tab").style.overflowY = "hidden";
+                //$("#review-order-shipping").css({top: "140px"});
+            //    $("#review-order-shipping").css({width: "575px"});
+            }
             $("#review-order-container").addClass("review-cart-tab");
             $("#review-order-container").show();
             //$("#m0").addClass("disableCartItems");
@@ -257,12 +269,11 @@
             //qty > 0 ? a = "visible" : a = "hidden";
             var rowClass;
             blankRow ? rowClass = "" : "";
-            var returnCart = '<div id = "m' + mg2 + '" class="grid-container">' +
+            var returnCart = '<div id = "m' + mg2 + '" class="grid-container" >' +
             '<div class="grid-item">';
-            if(!blankRow){
                 returnCart += '<i class="fas fa-check checkmarks" style = "visibility:visible" id = "checkmark-' + mg2 + '"></i>' +
                               '<i class="fas fa-shopping-cart" style = "padding-left:5px;"></i>';
-            }
+            
             returnCart += '</div>' + 
             '    <div class="grid-item-center">' +
             '        ' + productName + '  <a href = "#ibycus" class = "thumbnail-links" id = "krane-model-' + productModel.toLowerCase() + '" >' + productModel + '</a>'+
@@ -275,9 +286,9 @@
             '        <div id = "cartItem-' + mg2 + '" >' + productPrice + '</div>' +
             '    </div>'+
             '    <div class="grid-item">';
-            if(!blankRow){
+
                returnCart += '<input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg2 + '-qty" onChange="" value = "' + qty + '" min="0" max="10000" >';
-            }
+            
             returnCart +=  '</div>' +
             '</div>';
             mg2++;
