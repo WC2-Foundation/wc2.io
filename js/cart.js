@@ -153,7 +153,7 @@
                     if(n == 0){firstMiddleLast = "cart-tab-first"}
                     if(n > 0 && n < m.length){firstMiddleLast = ""};
                     if(n == m.length - 1){firstMiddleLast = "cart-tab-last"};
-                    $("#cart-tab-button-container").append('<button id = "tab' + tabNameSuffix + '" class = "cart-tab-buttons ' + firstMiddleLast + '">' + tabName + '</button>');
+                    $("#cart-tab-button-container").append('<button data-languagekey = "cart-tab-' + tabNameSuffix + '" id = "tab' + tabNameSuffix + '" class = "cart-tab-buttons ' + firstMiddleLast + '">' + tabName + '</button>');
                     $("#cart-outter-container").append('<div class = "cart-tabs" id = "cart-container-' + n + '"></div>');
                     w = m[n].cartItems;
                         for(j in w){
@@ -174,7 +174,8 @@
                         }
                     $("#cart-container-" + n).addClass("cart-tabs");
                 }
-                loadEvents(); 
+                loadEvents();
+                $("#tab1").click();
                 $("#cart-container-0").show();
         }
 
@@ -189,11 +190,11 @@
             '        ' + productName + '  <a href = "#ibycus" class = "thumbnail-links" id = "krane-model-' + productModel.toLowerCase() + '" >' + productModel + '</a>'+
             '        <div id = "ibycus" class = "thumbnails" ></div>' +
             '    </div>'+
-            '    <div class="grid-item-right" data-languagekey = "standard">' +
+            '    <div class="grid-item-right" data-languagekey = "' + productSize.toLowerCase() + '">' +
             '' + productSize +
             '</div>'+
             '    <div class="grid-item-right">' +
-            '        <div id = "cartItem-' + mg + '" >' + productPrice + '</div>' +
+            '        <div id = "cartItem-' + mg + '" >' + productPrice + ' x</div>' +
             '    </div>'+
             '    <div class="grid-item">'+
             '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "0" min="0" max="10000" >'+

@@ -82,6 +82,26 @@
 
 }
 
+#nav1{
+	position: absolute;
+    left:-310px;
+    top:-130px;
+}
+
+#nav2{
+	position: absolute;
+    left:-310px;    
+    top:-55px;
+}
+
+#nav3{
+	position: absolute;
+    left:-310px;
+    top:15px;
+}
+
+
+
 #nav1:hover{
 	border-color:black;
 	color:black;
@@ -99,24 +119,20 @@
 
 
 #nav1:active{
-	top: 183px;
-	left:3px;
+
 	border-color:black;
-	position: relative;
+	
 }
 
 #nav2:active{
-	position: relative;
-	left:3px;
-	top: 183px;
+
 	border-color:black;
 }
 
 #nav3:active{
-	top: 183px;
-	left:3px;
+
 	border-color:black;
-	position: relative;
+	
 }
 
 
@@ -133,14 +149,14 @@
 
 .nav-button{
 
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
+
+    
 	z-index: auto;
 	width: 340px;
 	height: 50px;
 	line-height: 50px;
-	position: relative;
+	position: absolute;
+    
 	cursor: pointer;
 	opacity: 1;
 	padding: 0 22px;
@@ -156,6 +172,7 @@
 	text-align: center;
 	top: 180px;
 	display: inline-block;
+    -webkit-display: inline-block;
 	-o-text-overflow: clip;
 	text-overflow: clip;
 	-webkit-transform-origin: 50% 50% 0;
@@ -190,7 +207,7 @@
 
 #login{
 	display: inline;
-	position:relative;
+	position:absolute;
     float:left; 
 	letter-spacing: .05em; 
 	font-size: 14px; 
@@ -200,8 +217,8 @@
     width: 140px;
 	height: 40px;
 	line-height: 40px;
-	left: 520px; 
-	top: -10px;
+	left: 400px; 
+	top: 0px;
 	border-radius: 0px 0px 15px 15px;
 	background-color: #eeeeee;
 	cursor: pointer;
@@ -233,8 +250,8 @@
 		position:relative;
 		display: flex;
 		flex-direction: row;
-		left: 310px;
-		top: 420px;
+		left: 220px;
+		top: 330px;
 		width: 300px;
 		z-index: 55;
 	}
@@ -255,8 +272,8 @@
 
 #turn-off-lights{
 	position:absolute;
-	left: 155px;
-	top: 422px;
+	left: 30px;
+	top: 350px;
 	width:120px;
 	height:65px;
 	background-image: url('../images/turn_off_lights2.png');
@@ -347,7 +364,7 @@
 	float: left;
 	z-index: 340;
     left: 120px;
-    top:-300px;
+    top:-280px;
 
 }
 
@@ -509,11 +526,12 @@ div[contenteditable=true]{ cursor:text }
 	position:relative;
 	width: 200px;
 	height: 200px;
-    left: -120px;
-    top:-200px;
-	align-items: right; 
+    left: 0px;
+    top:0px;
+	align-items: left; 
 	white-space: nowrap;
-	display: flex;
+	-webkit-display: flex;
+    display: flex;
 	flex: 1;
 	align-self: center;
     justify-content: center;
@@ -693,11 +711,11 @@ div[contenteditable=true]{ cursor:text }
 }
 
 #order-krane-dashed-border {
-	border-color: white;
+	border-color: #FFFFFF;
 	border-width: 6px;
 	border-style: dashed;
 	border-radius: 45px;
-	padding: 15px 50px 20px 0px;
+	padding: 15px 40px 15px 0px;
 	width:800px;
     height:850px;
 	margin-top: 70px;
@@ -748,7 +766,7 @@ margin: 0 auto;
 .flex-item {
 	width: 100%;
 	margin: 4px 0 10px 0;
-	color: white;
+	color: #FFFFFF;
 	font-weight: bold;
 	font-size: 2em;
 	text-align: center;
@@ -799,7 +817,7 @@ margin: 0 auto;
 
 #order-form-outer-container {
 	position: relative;
-    
+    margin-right: 40px;
 /*  display: flex;
   flex-wrap: nowrap;
  overflow:hidden;
@@ -883,7 +901,7 @@ margin: 0 auto;
 
 
 .group {
-  background: white;
+  background: #FFFFFF;
   border-radius: 14px;
   margin-bottom: 20px;
 }
@@ -1091,7 +1109,7 @@ label > span.brand {
 	font-family: 'Comfortaa', cursive;
 	border-radius: 25px;
 	background-color: black;
-	color:white;
+	color:#FFFFFF;
 	height: 120px;
 	width: 550px;
 }
@@ -1104,7 +1122,7 @@ label > span.brand {
 	border: none;
 	font-size: 24px;
 	font-family: 'Comfortaa', cursive;
-	color:white;
+	color:#FFFFFF;
 	width: 450px;
 	height: 35px;
 	margin: 15px;
@@ -1319,7 +1337,7 @@ to;
 	background-color: black;
 	padding: 25px;
 	margin-top: 45px;
-	color: white;
+	color: #FFFFFF;
 	font-family: 'Comfortaa', cursive;
 	font-size: 25px;
 }
@@ -1337,7 +1355,7 @@ to;
   height:551px;
   position: relative;
 	text-align: center;
-border-color: white;
+border-color: #FFFFFF;
   z-index: 10;
 	margin-top: 35px;
 		box-shadow: 0px 0px 0px 15px rgba(255,255,255,1);  
@@ -1362,7 +1380,7 @@ border-color: white;
 	padding: 14px;
 	padding-left: 50px;
 	padding-right: 50px;
-	background-color: white;
+	background-color: #FFFFFF;
 	font-size: 30px;
 	box-shadow: 3px 6px;
 	font-family: 'Comfortaa', cursive;
@@ -1381,7 +1399,7 @@ border-color: white;
 	padding: 14px;
 	margin-top: 15px;
 	width: 510px;
-	color: white;
+	color: #FFFFFF;
 	font-family: 'Comfortaa', cursive;
 	font-size: 20px;
 }
@@ -1394,10 +1412,10 @@ border-color: white;
 	background-color: #1B1B1B;
 	width:98%;
     border-radius: 15px;
-	border-color: white;
+	border-color: #FFFFFF;
 	border-style: solid;
 	border-width: 2px;
-	color:#FFFF;
+	color:#FFFFFF;
 	font-family: 'Comfortaa', cursive;
     
 }
@@ -1414,10 +1432,10 @@ border-color: white;
 	background-color: black;
 	width:520px;
 	border-bottom: solid;
-	border-color: white;
+	border-color: #FFFFFF;
 	
 	border-width: 2px;
-	color:#FFFF;
+	color:#FFFFFF;
 	font-family: 'Comfortaa', cursive;	
 }
 
@@ -1428,7 +1446,7 @@ border-color: white;
   font-size: 20px;
   text-align: center;
 	margin: 10px 0px 10px 0px;
-    
+    color:#FFFFFF;
   justify-content: center;
   align-items: center;
 	
@@ -1438,6 +1456,7 @@ border-color: white;
   /*background-color: rgba(255, 255, 255, 0.8);*/
 	display: flex;
   font-size: 18px;
+     color:#FFFFFF;
   text-align:left;
 	margin: 10px 0px 10px 0px;
   justify-content:flex-start;
@@ -1449,9 +1468,10 @@ border-color: white;
 	/*background-color: rgba(255, 255, 255, 0.8);*/
 	display: flex;
 	font-size: 18px;
+    color: #FFFFFF;
 	padding-right: 5px;
 	margin: 10px 0px 10px 10px;
-	justify-content:flex-end;
+	justify-content:center;
 	align-items: center;
 	letter-spacing: 2px;
 }
@@ -1533,7 +1553,7 @@ border-color: white;
 	top: -75px; 
 	z-index: 1000; 
 	left: -90px;
-	background-color: white; 
+	background-color: #FFFFFF; 
 	box-shadow: 3px 3px; 
 	border-radius: 15px;
 	padding: 6px;
@@ -1551,7 +1571,7 @@ border-color: white;
 	padding: 14px;
 	padding-left: 50px;
 	padding-right: 50px;
-	background-color: white;
+	background-color: #FFFFFF;
 	font-size: 30px;
 	box-shadow: 3px 6px;
 	font-family: 'Comfortaa', cursive;
@@ -1565,7 +1585,7 @@ border-color: white;
 	padding: 6px;
 	padding-left: 20px;
 	padding-right: 20px;
-	background-color: white;
+	background-color: #FFFFFF;
 	font-size: 20px;
 	box-shadow: 2px 3px;
 	font-family: 'Comfortaa', cursive;
@@ -1593,10 +1613,9 @@ border-color: white;
 #buy-now {
 	border-radius: 35px;
 	cursor: pointer;
-	background-color: white;
+    background-color: forestgreen;
 	padding: 15px;
-	margin-top: 35px;
-	color: black;
+    color: #FFFFFF;
 	font-family: 'Comfortaa', cursive;
 	font-size: 22px;
 	
@@ -1605,10 +1624,9 @@ border-color: white;
 #buy-now:hover {
 	border-radius: 35px;
 	cursor: pointer;
-	background-color: forestgreen;
+	background-color: #FFFFFF;
 	padding: 15px;
-	margin-top: 35px;
-	color: white;
+	color: black;
 	font-family: 'Comfortaa', cursive;
 	font-size: 22px;
 	
@@ -1652,7 +1670,7 @@ border-color: white;
 #confirmButton {
 	border-radius: 35px;
 	cursor: pointer;
-	background-color: white;
+	background-color: #FFFFFF;
 	padding: 15px;
 	margin-top: 35px;
 	color: black;
@@ -1678,7 +1696,7 @@ border-color: white;
 	background-color: black;
 	padding: 25px;
 	margin-top: 45px;
-	color: white;
+	color: #FFFFFF;
 	font-family: 'Comfortaa', cursive;
 	font-size: 25px;
 }
@@ -1690,8 +1708,8 @@ border-color: white;
 
 #no-smoking {
 	position:absolute;
-	left: 90px;
-	top: 425px;    
+	left: -40px;
+	top: 352px;    
 	width:59px;
 	height: 59px;
 	background-image: url('../images/no_smoking.png');
@@ -1798,13 +1816,13 @@ border-color: white;
 
 
 
-/*
+
 #cart-container {
     padding-left: 0px;
     width:100%;
     left: 0px;
     top: 0px;
-	color:#FFFF;
+	color:#FFFFFF;
     background-color:#060606;
     overflow-y: scroll;
     overflow-x: hidden; 
@@ -1900,6 +1918,75 @@ border-color: white;
 
 
 
+
+
+
+
+
+
+
+
+
+.cart-container {
+    padding-left: 0px;
+    display:none;
+    left: 0px;
+    top: 0px;
+	color:#FFFF;
+    background-color:#060606;
+    overflow-y: scroll;
+    overflow-x: hidden; 
+    height: 190px;
+    position: absolute;
+}
+
+.cart-container::-webkit-scrollbar {
+	width: 16px;
+	background-color: #000;
+}
+
+.cart-container::-webkit-scrollbar-thumb {
+	border-radius: 14px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #EEE;
+}
+
+.cart-container::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #cart-container3::-webkit-scrollbar {
 	width: 16px;
 	background-color: #000;
@@ -1915,7 +2002,7 @@ border-color: white;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
 	background-color: #000;
-}*/
+}
 
 
 
@@ -1965,6 +2052,7 @@ border-color: white;
 
 #order-form-subheading-1 {
    width:350px;
+    margin-top: 20px;
     margin-bottom: 20px;
     padding-right: 20px;
     height: 35px;
@@ -2050,7 +2138,7 @@ width:200px;padding-left:15px;height: 30px; background-color: #CCC; border-radiu
     border-width: 8px;
     border-radius: 8px;
     border-style:solid;
-    border-color: white;
+    border-color: #FFFFFF;
     width:150px;
     height: 121px;
     left: 265px;
@@ -2059,11 +2147,15 @@ width:200px;padding-left:15px;height: 30px; background-color: #CCC; border-radiu
     background-repeat: no-repeat;
 }
 
+
+a.thumbnail-links {
+    color: #FFFFFF;
+}
 .thumbnail-links:active {
-    color: white;
+    color: #FFFFFF;
 }
 .thumbnail-links:visited {
-    color: white;
+    color: #FFFFFF;
 }
 .thumbnail-links:hover {
     color: #336400;
@@ -2089,13 +2181,26 @@ width:200px;padding-left:15px;height: 30px; background-color: #CCC; border-radiu
     font-size: 32px;
 }
 
-#tab1 {
+/*#tab1 {
     margin-left:10px;
     background-color: darkgreen;
     border-radius: 20px  0 0 20px;
 }
 
 #tab3 {
+    border-radius:  0 20px 20px 0;
+}*/
+
+
+
+
+.cart-tab-first {
+    margin-left:10px;
+    background-color: darkgreen;
+    border-radius: 20px  0 0 20px;
+}
+
+.cart-tab-last {
     border-radius:  0 20px 20px 0;
 }
 
@@ -2122,7 +2227,7 @@ width:200px;padding-left:15px;height: 30px; background-color: #CCC; border-radiu
     border-style: solid;
     border-width: 2px;
     background-color: #1B1B1B;
-    color: white;
+    color: #FFFFFF;
     font-family: 'Comfortaa', cursive;
     cursor: pointer; 
 }
@@ -2175,10 +2280,10 @@ width:200px;padding-left:15px;height: 30px; background-color: #CCC; border-radiu
     left: 0px;
     top: 0px;
 	color:#FFFF;
+    max-height: 190px;
     background-color:#060606;
     overflow-y: scroll;
     overflow-x: hidden; 
-    height: 190px;
     position: relative;
     display: none;
 
@@ -2254,7 +2359,12 @@ width:200px;padding-left:15px;height: 30px; background-color: #CCC; border-radiu
 }
 
 #landing-container {
-    top:-20px;display: flex;flex-direction: column;position: relative
+display: block;
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+    height: 0px;
+
 }
 
 #tagalongBar-container {
@@ -2278,6 +2388,50 @@ width:200px;padding-left:15px;height: 30px; background-color: #CCC; border-radiu
     border-radius: 25px;
     border-width: 2px;
     border-color: #FFF;
-    width: 620px;
-    padding-right:20px;
+    width: 600px;
+}
+
+#review-order-shipping {
+    border-width: 2px;
+    border-radius: 15px;
+    border-style:solid;
+    position: relative;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #1B1B1B;
+    height: 100px;
+    border-color: #FFFFFF;
+}
+
+#shipping-offer {
+    margin-bottom: 12px;
+}
+
+#review-order-price {
+    font-size: 20px;
+    text-align: right;
+    padding-right: 20px;
+	
+		color: #FFFFFF; 
+		letter-spacing: .05em;
+
+		font-family: 'Comfortaa', cursive;    
+
+}
+
+#review-order-container {
+    width:100%;
+    margin:0px;
+}
+
+#review-shipping-address {
+    border-width: 2px;
+    border-radius: 15px;
+    border-style:solid;
+    position: relative;
+    margin: 20px;
+    padding: 10px; 
+    width:300px;
+    color: #FFFFFF;
+    background-color: #000000;
 }

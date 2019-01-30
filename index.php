@@ -244,15 +244,19 @@
                 <div id="order-container">
 					<!-- Order details -->
                     <div id = "order-details" class="order-containers">
-                        <div id = "items-in-cart" class="order-form-headings-small">You have <span id = "you-have-number-of-items-in-cart">(0)</span> <span id = "item-or-items">items</span> in your cart.
-                            <br><span class="order-form-headings-extra-small">Free U.S. shipping on orders over $45.</span>
+                        <div id = "items-in-cart" class="order-form-headings-small">
+                            <span data-languagekey = "items-in-cart-start" >You have</span> 
+                            <span id = "you-have-number-of-items-in-cart">(0)</span> 
+                            <span id = "item-or-items" data-languagekey = "item-or-items" >items</span> 
+                            <span data-languagekey = "items-in-cart-end" >in your cart.</span>
+                            <br><span class="order-form-headings-extra-small" data-languagekey = "shipping-offer" >Free U.S. shipping on orders over $45.</span>
                         </div> 
                         
                         <div id="orderForm1">
                             <div id = "available-discounts" style = "position: absolute; 
                                                   top:280px;
                                                   background-color:#333333;
-                                                  color: white;
+                                                  color: #FFFFFF;
                                                   width: 325px;
                                                   height: 100px;
                                                   border-radius: 25px 25px 25px 25px;
@@ -294,8 +298,8 @@
                         <div id = "total-container">
                         <div style="text-align: right" id="total" data-languagekey="total" ></div>
                             <div style="align-items: flex-start; flex-direction: row;margin-top: 2px; ">
-                                <label id = "discount-code-label" >Code: </label>
-                                <input id = "discount-code" placeholder = "(Optional)"/>
+                                <label id = "discount-code-label" data-languagekey = "discount-code-label" >Code: </label>
+                                <input id = "discount-code" data-languagekey = "discount-code"  placeholder = "(Optional)"/>
                             </div>
                         </div>                           
                             
@@ -420,8 +424,8 @@
 						<div id = "checkout-spinner" style = "z-index: 80000; float: left; position: absolute;top:100px;left: 280px;display: none;" >
 							<div class = "lds-dual-ring"></div>
 						</div>	
-						<div class="order-form-headings" data-languagekey="" style =";text-align: center;margin: 0px;">Review Order</div>
-                            <span id = "shipping-offer" class="order-form-headings-extra-small">Free U.S. shipping on orders over $45.</span>
+						<div class="order-form-headings" data-languagekey = "review-order-heading" style =";text-align: center;margin: 0px;">Review Order</div>
+                            <span id = "shipping-offer" data-languagekey = "shipping-offer" class="order-form-headings-extra-small">Free U.S. shipping on orders over $45.</span>
 
                     <div id = "review-order-container"></div>	
                             
@@ -438,7 +442,7 @@
         </div>
         <div style="display: table-cell;width: 50%;text-align: right"> 
             <div style="height: 50px;padding: 10px;">
-                <span class="order-form-labels-small">Shipping Total: $4.95</span><br>
+                <span class="order-form-labels-small" data-languagekey = "shipping-total" style="margin:0px;">Shipping Total</span><span  class="order-form-labels-small" style="margin:0px;">: $4.95</span><br>
                 <hr/>
             </div>
          <div id="review-order-price" data-languagekey="total" ></div>
@@ -454,7 +458,7 @@
 						
 							<div style=" text-align: right;padding: 20px;padding-right: 25px;">
 								<button id = "buy-now" tabindex="-1" >
-									&nbsp;<i class="fas fa-shopping-cart" ></i> BUY NOW &nbsp;
+                                    &nbsp;<i class="fas fa-shopping-cart" ></i> <span data-languagekey = "buy-now">BUY NOW</span> &nbsp;
 								</button>
 							</div>
 						</div>	
@@ -463,8 +467,9 @@
 					
 					<!-- CC# Order Complete -->
                     <div id="order-complete" class="order-containers" >
-						<div class="order-form-headings" data-languagekey="" style ="text-align: center;margin-bottom: 10px;margin-left: 20px;letter-spacing: 2px;">Order Complete</div>
-                        <span class = "order-form-headings-small" style = "width:525px;padding:45px;margin-right: 25px; text-align: center;letter-spacing: 2px;">Thank you for your order!<br><br> A confirmation message was sent to your email address.</span>
+						<div class="order-form-headings" data-languagekey="order-complete" style ="text-align: center;margin-bottom: 10px;margin-left: 20px;letter-spacing: 2px;">Order Complete</div>
+                        <span class = "order-form-headings-small" data-languagekey = "thank-you-for-order" style = "width:525px;padding:15px;margin-right: 25px; text-align: center;letter-spacing: 2px;">Thank you for your order!</span>
+                        <span class = "order-form-headings-small" data-languagekey = "confirmation-email">A confirmation message was sent to your email address.</span>
                     </div>
 					
 					<!-- Paypal review details -->
