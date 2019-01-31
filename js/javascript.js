@@ -164,7 +164,6 @@
 				//ajax call to mysql, make sure currency is supported; if not fallback 
 				//to US for now (TODO: country based fallback [euros etc])
 				currencyCode = response.currency.code.toLowerCase();
-                
                 paypalCurrencyCode =  "usd"; //convert(currencyCode,"paypal"); //response.currency.code.toLowerCase();
 				var countryCode = response.country_code;
 				
@@ -174,16 +173,18 @@
 					sizeJumboKrane = 34;
 					lengthSymbol = "&#34;";
 				}
-                
+                 
 				setMeasurementVariables();
-				//Override language for testing purposes
 				var lc = response.location.languages[0]["code"];
-                console.log(lc);
-				detectLanguage(lc);
-				var cc = response.country_name;
-                convert(currencyCode,"stripe");
+                var cc = response.country_name;
+                
+				
+                convert(currencyCode,"stripe"); 
 				createCookie("country_lookup",cc);
 				$("#country").val(cc);
+                
+                detectLanguage(lc);
+                
 			}, "jsonp");
 
 	}

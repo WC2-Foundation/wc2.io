@@ -150,10 +150,11 @@
                 for(n in m){
                     tabName = m[n].tabName;
                     tabNameSuffix = (parseFloat(n) + 1);
-                    if(n == 0){firstMiddleLast = "cart-tab-first"}
+                    if(n == 0){firstMiddleLast = "cart-tab-first"};
                     if(n > 0 && n < m.length){firstMiddleLast = ""};
                     if(n == m.length - 1){firstMiddleLast = "cart-tab-last"};
-                    $("#cart-tab-button-container").append('<button data-languagekey = "cart-tab-' + tabNameSuffix + '" id = "tab' + tabNameSuffix + '" class = "cart-tab-buttons ' + firstMiddleLast + '">' + tabName + '</button>');
+                    
+                    $("#cart-tab-button-container").append('<button data-languagekey = "cart-tab-' + tabNameSuffix + '" id = "tab' + tabNameSuffix + '" class = "cart-tab-buttons ' + firstMiddleLast + '"></button>');
                     $("#cart-outter-container").append('<div class = "cart-tabs" id = "cart-container-' + n + '"></div>');
                     w = m[n].cartItems;
                         for(j in w){
@@ -170,7 +171,7 @@
                                 formattedCurrency = formatCurrency(currencyCode,languageCode + "-" + countryCode,k);
                                 newItem = createCartRow(a[0].title,a[1].title,a[2].size,formattedCurrency);
                                 $("#cart-container-" + n).append(newItem);
-                                $("#cartItem-" + mg).boxfit({align_center:true,align_middle:true});
+                                //$("#cartItem-" + mg).boxfit({align_center:true,align_middle:true});
                                 $("#cart-container-" + n).addClass("cart-tabs");
                             }
                         }
@@ -178,9 +179,37 @@
                 loadEvents();
                 $("#tab1").click();
                 $("#cart-container-0").show();
-                $("#cartItem-0").boxfit();
-            $("#cartItem-1").boxfit();
-            $("#cartItem-2").boxfit();
+                translateCart();
+        }
+
+
+
+        function translateCart(){
+            
+            $.post("./php/get_native_language.php", {language_code: languageCode,}, 
+
+               function(result){
+                        var j = 0;
+                        var langDocument = JSON.parse(result);
+                        var tags = document.getElementById('orderForm1').querySelectorAll('div,input,span,a,label,option,textarea,select,button');
+                        Array.from(tags).forEach(function(value, index){
+                            var key = value.dataset.languagekey;
+                            j++;  
+                            c = value.id;
+                            //console.log("@@@@@@@@@@@@@@@@@@@" + c); 
+                            if(langDocument[key] && c !== "total" && c !== "you-have-number-of-items-in-cart"){
+                                value.placeholder = langDocument[key];
+                                value.innerText =  decodeEntities(langDocument[key]);
+                            }
+                            
+                            if(c.indexOf("cartItem-") == 0){
+                                //console.log("!!!!!!!!!!!!!!!!!!!!" + c);
+                                $("#" + value.id).boxfit({maximum_font_size: 18});
+                            }
+                        }
+                    );
+                }
+            );
         }
 
         function createCartRow(productName,productModel,productSize,productPrice){
@@ -194,11 +223,9 @@
             '        ' + productName + '  <a href = "#ibycus" class = "thumbnail-links" id = "krane-model-' + productModel.toLowerCase() + '" >' + productModel + '</a>'+
             '        <div id = "ibycus" class = "thumbnails" ></div>' +
             '    </div>'+
-            '    <div class="grid-item-right" data-languagekey = "' + productSize.toLowerCase() + '">' +
-            '' + productSize +
-            '</div>'+
+            '    <div class="grid-item-right" data-languagekey = "' + productSize.toLowerCase() + '"></div>' +
             '    <div class="grid-item-right">' +
-            '        <div id = "cartItem-' + mg + '" >' + productPrice + ' x</div>' +
+            '        <div id = "cartItem-' + mg + '" style = "width:120px;height:36px;" >' + productPrice + ' x</div>' +
             '    </div>'+
             '    <div class="grid-item">'+
             '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "0" min="0" max="10000" >'+
@@ -591,7 +618,7 @@
                 
             }
             buildShoppingCart();
-            
+            //detectLanguage(lc);
             mg = 0;
             
             calculateTotal();

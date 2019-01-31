@@ -246,8 +246,8 @@
                     <div id = "order-details" class="order-containers">
                         <div id = "items-in-cart" class="order-form-headings-small">
                             <span data-languagekey = "items-in-cart-start" ></span> 
-                            <span id = "you-have-number-of-items-in-cart"></span> 
-                            <span id = "item-or-items" data-languagekey = "item-or-items" ></span> 
+                            <span id = "you-have-number-of-items-in-cart">(0)</span> 
+                            <span id = "item-or-items" data-languagekey = "items-plural" ></span> 
                             <span data-languagekey = "items-in-cart-end" ></span>
                             <br><span class="order-form-headings-extra-small" data-languagekey = "shipping-offer" ></span>
                         </div> 
@@ -297,7 +297,7 @@
 
                         <div id = "total-container">
                         <div style="text-align: right" id="total" data-languagekey="total" ></div>
-                            <div style="align-items: flex-start; flex-direction: row;margin-top: 2px; ">
+                            <div style="display:inline-block;margin-top: 2px; width:400px;text-align: right;">
                                 <label id = "discount-code-label" data-languagekey = "discount-code-label" ></label>
                                 <input id = "discount-code" data-languagekey = "discount-code"  placeholder = "(Optional)"/>
                             </div>

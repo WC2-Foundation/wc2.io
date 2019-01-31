@@ -1788,30 +1788,29 @@ border-color: #FFFFFF;
 #discount-code {
 	display: inline-block;
 	height: 32px;
-	margin-left: 14px;
 	font-family: 'Comfortaa', cursive;
 	background-color: #FFFFFF;
 	vertical-align: middle;				
 	border-radius: 17px 17px 17px 17px;
 	border: 0px;
 	font-size: 16px;
+    padding-left: 10px;
     vertical-align: baseline;
     width:135px;
-    padding-left: 20px;
-    margin-left:25px;
     display: inline-block;
 }
 
 #discount-code-label {
-    width: 100%;
     color: #FFFFFF; 
     letter-spacing: .05em;
     font-size: 22px;
     font-family: 'Comfortaa', cursive;
     display: inline-block;
-    width: 40px;
+    width:165px;
     margin-right: 12px; 
     vertical-align: baseline;
+    text-align: right;
+    display: inline-block;
 }
 
 
@@ -2269,7 +2268,7 @@ a.thumbnail-links {
     overflow-x: hidden; 
     height: 190px;
     position: absolute;
-    display: none;
+    display: block;
 
 }
 

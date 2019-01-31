@@ -8,7 +8,6 @@
 					
 					//var obj = JSON.parse(result);
                             var j = 0;
-                            
                             var langDocument = JSON.parse(result);
                             var tags = document.querySelectorAll('div,input,span,a,label,option,textarea,select,button');
 					
@@ -20,11 +19,16 @@
                                      //console.log(value.clientWidth);
                                 //}
                                 if(key !== undefined){
-                                    console.log("--->" + key);
+                                    //console.log("--->" + key);
                                 }
                             j++;
                             //langDocument['is-left-to-right']
                                 //console.log("*******************" + value.style.display);
+                                
+                                if(value.id.length > 0){
+                                            console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$: " + value.id);
+                                        }
+                                
                             if(langDocument[key]){
                                 //console.log("---> (" + (lc) + ") " + langDocument['is-left-to-right']);
                                 if(key == 'captcha'){
@@ -51,12 +55,14 @@
                                         //console.log(resizedFont);
                                     //}
                                         
+                                        if(value.id !== "you-have-number-of-items-in-cart"){
                                         value.placeholder = langDocument[key];
                                         //console.log("decodeEntities(langDocument[key]): " + decodeEntities(langDocument[key]));
                                         value.innerText =  decodeEntities(langDocument[key]);
+                                        }
                                 }
                             }
-                            $('#language-picker').hide();
+                                $('#language-picker').hide();
 						});
                         //$(".nav-button").fitText(.1, { minFontSize: '8px', maxFontSize: '50px' });
                         //$().width(); 
