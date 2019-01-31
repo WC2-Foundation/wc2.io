@@ -59,8 +59,8 @@
 		<div id = "tagalongBar">
 				<div id = "tag-along-logo" ></div>
 				<button class = "tagalong-buttons" id = "tagalong-nav-1" data-languagekey="nav1" ></button>
-				<button class = "tagalong-buttons" id = "tagalong-nav-2" data-languagekey="nav2" >order a krane</button>
-				<button class = "tagalong-buttons" id = "tagalong-nav-3" data-languagekey="nav3" >contact krane</button>
+				<button class = "tagalong-buttons" id = "tagalong-nav-2" data-languagekey="nav2" ></button>
+				<button class = "tagalong-buttons" id = "tagalong-nav-3" data-languagekey="nav3" ></button>
 		</div>
 	</div>
     
@@ -245,11 +245,11 @@
 					<!-- Order details -->
                     <div id = "order-details" class="order-containers">
                         <div id = "items-in-cart" class="order-form-headings-small">
-                            <span data-languagekey = "items-in-cart-start" >You have</span> 
-                            <span id = "you-have-number-of-items-in-cart">(0)</span> 
-                            <span id = "item-or-items" data-languagekey = "item-or-items" >items</span> 
-                            <span data-languagekey = "items-in-cart-end" >in your cart.</span>
-                            <br><span class="order-form-headings-extra-small" data-languagekey = "shipping-offer" >Free U.S. shipping on orders over $45.</span>
+                            <span data-languagekey = "items-in-cart-start" ></span> 
+                            <span id = "you-have-number-of-items-in-cart"></span> 
+                            <span id = "item-or-items" data-languagekey = "item-or-items" ></span> 
+                            <span data-languagekey = "items-in-cart-end" ></span>
+                            <br><span class="order-form-headings-extra-small" data-languagekey = "shipping-offer" ></span>
                         </div> 
                         
                         <div id="orderForm1">
@@ -266,7 +266,7 @@
                                                   letter-spacing: 2px;
                                                   display: none;
                                                   ">
-                                <div style="text-align: center">Available Discounts</div>
+                                <div style="text-align: center" data-languagekey = "available-discounts"></div>
                                 <div style="display: inline-grid;border: 2px;border-color: #FFFFFF; "></div>
                             
                             </div>
@@ -298,7 +298,7 @@
                         <div id = "total-container">
                         <div style="text-align: right" id="total" data-languagekey="total" ></div>
                             <div style="align-items: flex-start; flex-direction: row;margin-top: 2px; ">
-                                <label id = "discount-code-label" data-languagekey = "discount-code-label" >Code: </label>
+                                <label id = "discount-code-label" data-languagekey = "discount-code-label" ></label>
                                 <input id = "discount-code" data-languagekey = "discount-code"  placeholder = "(Optional)"/>
                             </div>
                         </div>                           
@@ -424,8 +424,8 @@
 						<div id = "checkout-spinner" style = "z-index: 80000; float: left; position: absolute;top:100px;left: 280px;display: none;" >
 							<div class = "lds-dual-ring"></div>
 						</div>	
-						<div class="order-form-headings" data-languagekey = "review-order-heading" style =";text-align: center;margin: 0px;">Review Order</div>
-                            <span id = "shipping-offer" data-languagekey = "shipping-offer" class="order-form-headings-extra-small">Free U.S. shipping on orders over $45.</span>
+						<div class="order-form-headings" data-languagekey = "review-order-heading" style =";text-align: center;margin: 0px;"></div>
+                            <span id = "shipping-offer" data-languagekey = "shipping-offer" class="order-form-headings-extra-small"></span>
 
                     <div id = "review-order-container"></div>	
                             
@@ -442,7 +442,7 @@
         </div>
         <div style="display: table-cell;width: 50%;text-align: right"> 
             <div style="height: 50px;padding: 10px;">
-                <span class="order-form-labels-small" data-languagekey = "shipping-total" style="margin:0px;">Shipping Total</span><span  class="order-form-labels-small" style="margin:0px;">: $4.95</span><br>
+                <span class="order-form-labels-small" data-languagekey = "shipping-total" style="margin:0px;"></span><span  class="order-form-labels-small" style="margin:0px;">: $4.95</span><br>
                 <hr/>
             </div>
          <div id="review-order-price" data-languagekey="total" ></div>
@@ -458,7 +458,7 @@
 						
 							<div style=" text-align: right;padding: 20px;padding-right: 25px;">
 								<button id = "buy-now" tabindex="-1" >
-                                    &nbsp;<i class="fas fa-shopping-cart" ></i> <span data-languagekey = "buy-now">BUY NOW</span> &nbsp;
+                                    &nbsp;<i class="fas fa-shopping-cart" ></i> <span data-languagekey = "buy-now"></span> &nbsp;
 								</button>
 							</div>
 						</div>	
@@ -467,20 +467,20 @@
 					
 					<!-- CC# Order Complete -->
                     <div id="order-complete" class="order-containers" >
-						<div class="order-form-headings" data-languagekey="order-complete" style ="text-align: center;margin-bottom: 10px;margin-left: 20px;letter-spacing: 2px;">Order Complete</div>
-                        <span class = "order-form-headings-small" data-languagekey = "thank-you-for-order" style = "width:525px;padding:15px;margin-right: 25px; text-align: center;letter-spacing: 2px;">Thank you for your order!</span>
-                        <span class = "order-form-headings-small" data-languagekey = "confirmation-email">A confirmation message was sent to your email address.</span>
+						<div class="order-form-headings" data-languagekey="order-complete" style ="text-align: center;margin-bottom: 10px;margin-left: 20px;letter-spacing: 2px;"></div>
+                        <span class = "order-form-headings-small" data-languagekey = "thank-you-for-order" style = "width:525px;padding:15px;margin-right: 25px; text-align: center;letter-spacing: 2px;"></span>
+                        <span class = "order-form-headings-small" data-languagekey = "confirmation-email"></span>
                     </div>
 					
 					<!-- Paypal review details -->
                     <div id="paypal" class="order-containers">
-						<div class="order-form-headings" data-languagekey="" style ="margin-left:-20px;text-align: center;margin-bottom: 30px;">Pay with Paypal</div>						
+						<div class="order-form-headings" data-languagekey="pay-with-paypal-subheading" style ="margin-left:-20px;text-align: center;margin-bottom: 30px;"></div>						
 						<div style ="text-align: center;" tabindex="-1" id="paypal-button-container"></div>
 						<div id="confirm" class="hidden">
-							<span class="order-form-headings-small">Shipping Address</span>
+							<span class="order-form-headings-small" data-languagekey = "order-form-subheading-2" ></span>
 							<div><span class="order-form-headings-small" id="recipient"></span>, <span class="order-form-headings-small" id="line1"></span>, <span id="paypal-city"></span></div>
 							<div><span class="order-form-headings-small" id="paypal-state"></span>, <span class="order-form-headings-small" id="paypal-zip"></span>, <span class="order-form-headings-small" id="paypal-country"></span></div>
-							<button id="confirmButton" tabindex="-1">Complete Payment</button>
+							<button id="confirmButton" data-languagekey = "paypal-complete-payment" tabindex="-1"></button>
 						</div>
 						<div id="thanks" class="hidden">
 							Thanks, <span id="thanksname"></span>!
@@ -535,7 +535,7 @@
         <div class="subheading-black">info at krane dot tv</div>
         <br>
         <div id="message-sent">
-            <span id="message-sent-label" data-languagekey="message-sent">MESSAGE SENT!</span>
+            <span id="message-sent-label" data-languagekey="message-sent"></span>
         </div>
         <div id="contact-form-wrapper">
             <input id="emailOrPhoneNumber" data-languagekey="emailOrPhoneNumber" type="email" contenteditable="true" placeholder="">
