@@ -177,8 +177,6 @@
                         }
                 }
                 loadEvents();
-                $("#tab1").click();
-                $("#cart-container-0").show();
                 translateCart();
         }
 
@@ -203,11 +201,19 @@
                             }
                             
                             if(c.indexOf("cartItem-") == 0){
-                                //console.log("!!!!!!!!!!!!!!!!!!!!" + c);
-                                $("#" + value.id).boxfit({maximum_font_size: 18});
+                                console.log("!!!!!!!!!!!!!!!!!!!!" + c);
+                                $("#" + c).boxfit({maximum_font_size: 18});
                             }
                         }
+
                     );
+                //wait for boxfit to calculate font sizes
+                //langDocument[key] 
+                ship = freeUSShippingOver * exchangeRate;
+                ship = formatCurrency(currencyCode,languageCode + "-" + countryCode,ship);
+                 $('*[data-languagekey="shipping-offer"]').html(langDocument["shipping-offer"] + " " + ship);
+                $("#tab1").click();
+                $("#cart-container-0").show();
                 }
             );
         }
@@ -225,7 +231,7 @@
             '    </div>'+
             '    <div class="grid-item-right" data-languagekey = "' + productSize.toLowerCase() + '"></div>' +
             '    <div class="grid-item-right">' +
-            '        <div id = "cartItem-' + mg + '" style = "width:120px;height:36px;" >' + productPrice + ' x</div>' +
+            '        <div id = "cartItem-' + mg + '"  >' + productPrice + ' x</div>' +
             '    </div>'+
             '    <div class="grid-item">'+
             '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "0" min="0" max="10000" >'+

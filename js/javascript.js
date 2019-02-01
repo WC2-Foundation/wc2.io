@@ -21,6 +21,7 @@
 	var lengthSymbol = " cm";
     var checkoutComplete = false;
     var slideContainer = 600;
+    var freeUSShippingOver = 45;
     var shippingInterArr = [];
     var shippingUSArr = [];
     var contactInformation = {firstName: "", lastName: "", emailAddress: ""};
@@ -163,7 +164,7 @@
 				var currencySymbol = response.currency.symbol;
 				//ajax call to mysql, make sure currency is supported; if not fallback 
 				//to US for now (TODO: country based fallback [euros etc])
-				currencyCode = response.currency.code.toLowerCase();
+				currencyCode = response.currency.code.toLowerCase(); //nok
                 paypalCurrencyCode =  "usd"; //convert(currencyCode,"paypal"); //response.currency.code.toLowerCase();
 				var countryCode = response.country_code;
 				
@@ -175,7 +176,7 @@
 				}
                  
 				setMeasurementVariables();
-				var lc = response.location.languages[0]["code"];
+				var lc = response.location.languages[0]["code"]; //no
                 var cc = response.country_name;
                 
 				

@@ -97,6 +97,7 @@
             break;
           }
           next_font_size = parseInt(inner_span.css('font-size'), 10);
+          next_font_size = 2 * Math.round(next_font_size / 2);
           if (settings.maximum_font_size && next_font_size > settings.maximum_font_size) {
             break;
           }

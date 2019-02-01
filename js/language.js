@@ -10,7 +10,7 @@
                             var j = 0;
                             var langDocument = JSON.parse(result);
                             var tags = document.querySelectorAll('div,input,span,a,label,option,textarea,select,button');
-					
+					         var locale = languageCode + "-" + countryCode;
                             Array.from(tags).forEach(function(value, index){
                             var key = value.dataset.languagekey;
                                 
@@ -26,7 +26,7 @@
                                 //console.log("*******************" + value.style.display);
                                 
                                 if(value.id.length > 0){
-                                            console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$: " + value.id);
+                                            //console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$: " + value.id);
                                         }
                                 
                             if(langDocument[key]){
@@ -38,7 +38,10 @@
                                     }else if (key == "total"){
                                         labelTotal = langDocument[key];
                                     }else if (key == "state"){
-                                         value.placeholder = langDocument[key];
+                                        value.placeholder = langDocument[key];
+                                    }else if (key == "shipping-offer"){
+                                        
+
                                     }else{
                                         
                                     //e = measureString(langDocument[key]);
@@ -74,7 +77,7 @@
                     
                         
                     
-                        var locale = languageCode + "-" + countryCode;
+                       
                         var formattedCurrency = formatCurrency(currencyCode,locale,0);		
                         $('#total').html(labelTotal + ": " + formattedCurrency);
                         

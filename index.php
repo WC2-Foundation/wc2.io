@@ -434,11 +434,7 @@
 <div style="width: 100%; display: table;">
     <div style="display: table-row">
         <div style="width: 50%; display: table-cell;line-height: 1.5;"  id = "review-shipping-address"
-             class="order-form-headings-extra-small">
-    Sam Stauffacher<br>
-    830 Rebecca Drive<br>
-    Boulder Creek Ca, 95006    
-        
+             class="order-form-headings-extra-small">Sam Stauffacher<br>830 Rebecca Drive<br>Boulder Creek Ca, 95006
         </div>
         <div style="display: table-cell;width: 50%;text-align: right"> 
             <div style="height: 50px;padding: 10px;">
