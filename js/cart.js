@@ -132,10 +132,7 @@
         var x = navPositionObj.positions[containerID].functions[nextDiv[containerID]].x;
         var y = navPositionObj.positions[containerID].functions[nextDiv[containerID]].y;
         if(x.length > 0){$("#main").animate({left: x,top: y})};
-        console.log("////> " + nextDiv[0]);
         $("#" + containers[containerID][incDec].name).animate({left: leftFR});
-        //console.log("containerID: " + containerID);
-        //console.log("containers[2][1].. ???: " + containers[containerID][nextDiv[containerID]].name);
         $("#" + containers[containerID][nextDiv[containerID]].name).animate({left: "0px"},{complete:function(){displayNone(containerID,nextDiv[containerID])}});
         $("#" + containers[containerID][nextDiv[containerID]].name).css("display","block");
     }
@@ -166,12 +163,9 @@
                                 adjustedTotal = Math.round(k.toFixed(2) * 1000) / 10;
                                 shippingInterArr[mg] = a[4].shippingInt[0];
                                 shippingUSArr[mg] = a[5].shippingUS[0];
-                                //console.log("--->>>>>>" + shippingInterArr[mg]);
-                                //console.log("--->>>>>>" + shippingUSArr[mg]);
                                 formattedCurrency = formatCurrency(currencyCode,languageCode + "-" + countryCode,k);
                                 newItem = createCartRow(a[0].title,a[1].title,a[2].size,formattedCurrency);
                                 $("#cart-container-" + n).append(newItem);
-                                //$("#cartItem-" + mg).boxfit({align_center:true,align_middle:true});
                                 $("#cart-container-" + n).addClass("cart-tabs");
                             }
                         }
@@ -183,7 +177,7 @@
 
 
         function translateCart(){
-            
+            console.log("translateCart()");
             $.post("./php/get_native_language.php", {language_code: languageCode,}, 
 
                function(result){
@@ -194,23 +188,20 @@
                             var key = value.dataset.languagekey;
                             j++;  
                             c = value.id;
-                            //console.log("@@@@@@@@@@@@@@@@@@@" + c); 
                             if(langDocument[key] && c !== "total" && c !== "you-have-number-of-items-in-cart"){
                                 value.placeholder = langDocument[key];
                                 value.innerText =  decodeEntities(langDocument[key]);
                             }
                             
                             if(c.indexOf("cartItem-") == 0){
-                                console.log("!!!!!!!!!!!!!!!!!!!!" + c);
                                 $("#" + c).boxfit({maximum_font_size: 18});
                             }
                         }
 
                     );
                 //wait for boxfit to calculate font sizes
-                //langDocument[key] 
                 ship = freeUSShippingOver * exchangeRate;
-                ship = formatCurrency(currencyCode,languageCode + "-" + countryCode,ship);
+                ship = formatCurrency(currencyCode,languageCode + "-" + countryCode,ship.toFixed(0),0);
                  $('*[data-languagekey="shipping-offer"]').html(langDocument["shipping-offer"] + " " + ship);
                 $("#tab1").click();
                 $("#cart-container-0").show();
@@ -219,7 +210,7 @@
         }
 
         function createCartRow(productName,productModel,productSize,productPrice){
-            console.log("createCartRow(productName,productModel,productSize,productPrice)");
+            console.log("createCartRow(" + productName + "," + productModel + "," + productSize + "," + productPrice + ")");
             var returnCart = '<div id = "k' + mg + '" class="grid-container">' +
             '    <div class="grid-item">' +
             '        <i class="fas fa-check checkmarks" id = "checkmark-' + mg + '"></i>' +
@@ -247,15 +238,10 @@
 
                 io = 0;
                 m = cartObj.cartTabs;
-            
-                for(v in cart){
-                    //console.log("--->" + cart[v].k[0]);
-                }
                 var listCounter = 0; 
             
                 for(n in m){
                     tabName = m[n].tabName;
-                    //$("#review-outter-container").append('<div class = "cart-tabs" id = "cart-container-' + n + '"></div>');
                     w = m[n].cartItems;
                         for(j in w){
                             y = w[j].items;
@@ -341,6 +327,7 @@
 
 
     function calculateShipping(location){
+        console.log("calculateShipping(" + location + ")");
         if(location == "US"){
                 //exchangeRate
                 newTotal = (shippingUS * 100);
@@ -402,15 +389,11 @@
 
 
     function calculateTotal(setInputs = false){
-		
+		console.log("calculateTotal(" + setInputs + ")");
 		var kraneqty = $('#k1-qty').val();
 		var extenqty = $('#extensions').html();
         //cartitems = prices
         var p = 0;
-        
-        
-//shippingInterArr[mg];
-//shippingUSArr[mg];
         
         for(E in cart){
             if(cartItem[E] !== undefined && cart[E].k[0] > 0){
@@ -421,12 +404,6 @@
             } 
         }
         
-        //console.log("###" + p);
-		
-        //console.log("---" + ttl);
-		//ttl = Math.floor(ttl);
-        //$("#a").addClass("disableCartItems");
-         //console.log("total calc func: " + ttl + "q: " + q + " x exchangeRate: " + exchangeRate);
         ttl = (p * exchangeRate);
 		if(currencyCode == "jpy"){
 			 minFractional = 0;
@@ -454,6 +431,7 @@
 
 
     function displayNone(containerID,nextDiv){
+        console.log("displayNone(" + containerID + "," + nextDiv + ")");
         $(".order-containers").each(function(i, obj){
                 if(containers[containerID][nextDiv].name !== obj.id){
                     $(this).css({
@@ -466,7 +444,7 @@
 
 
     function showHideMainNav(arr){
-       
+       console.log("showHideMainNav(" + arr + ")");
         var showBack = arr[0];
         var showNext = arr[1];
         
@@ -487,7 +465,7 @@
     }
 
     function saveShippingInformation(){
-
+        console.log("saveShippingInformation()");
         var shippingAddress = {
             "country"  : $("#country").val(),
             "address1" : $("#address1").val(),
@@ -518,8 +496,8 @@
 
     }
 
-	function formatCurrency(currencyCode,locale,amount){
-
+	function formatCurrency(currencyCode,locale,amount,minFractional = 2){
+        console.log("formatCurrency(" + currencyCode + "," + locale + "," + amount + "," + minFractional + ")");
 		//currencyCode = 3 letter: USD
 		//locale = en-US
 		//amount = dollar amount
@@ -527,7 +505,7 @@
 		//locale = "es-MX";
 
 		//Set non-decimal currency variable
-		var minFractional = 2;
+		//var minFractional = 2;
 		if(currencyCode == "jpy"){
 			minFractional = 0;
 		}	
@@ -544,7 +522,7 @@
 	var cartItemArray = [];
 
 	function validateShipping(){
-
+        console.log("validateShipping()");
 		pass = true;
 		$("#address1").val().length===0?pass=changeBGcolor("address1",false):changeBGcolor("address1",true);
 		$("#country").val().length===0?pass=changeBGcolor("country",false):changeBGcolor("country",true);
@@ -560,7 +538,7 @@
 	}
 
     function addItemToCart(sku,incrementQty = 0){
-
+        console.log("addItemToCart(" + sku + "," + incrementQty + ")");
         if(incrementQty){
             var b = parseInt($("#k" + sku + "-qty").val());
             $("#k" + sku + "-qty").val(b + 1);
@@ -584,9 +562,9 @@
         $("#number-of-items-in-cart").html("(" + totalItemsInCart + ")");
         $("#you-have-number-of-items-in-cart").html("(" + totalItemsInCart + ")");
         if(totalItemsInCart == 1){
-                $("#item-or-items").html("item");
+                $("#item-or-items").html(langDocument["items-singular"]);
             }else{
-                $("#item-or-items").html("items");
+                $("#item-or-items").html(langDocument["items-plural"]);
         }
         
 
@@ -605,6 +583,7 @@
 
 
     function convert(CC,processor){
+        console.log("convert(" + CC + "," + processor + ")");
         //Uncomment to test
         //CC = "SEK";
         //currencyCode = CC.toLowerCase();

@@ -12,6 +12,7 @@
 	var currencySymbol = "$";
 	var countryCode = "US";
 	var languageCode;
+    var langDocument;
 	var labelTotal;
 	var multiplier;
 	var stripeCurrencyCode = "usd";
@@ -31,6 +32,16 @@
         {k: [0,28,0]}, 
         {k: [0,28,0]}, 
         {k: [0,0,0]}, 
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
         {k: [0,0,0]},
         {k: [0,0,0]},
         {k: [0,0,0]},
@@ -63,8 +74,23 @@
                 tabName: "Accessories", cartItems: [
                     {
                         items: [
-                            {columns: [{title: "Tablet Extension"},{title:""},{size: ""},{price: "9.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]}  
+                            {columns: [{title: "Tablet Extension"},{title:""},{size: ""},{price: "9.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]}  
+                        ],
+                    }
+                ]  
+            },
+            {  
+                tabName: "Parts", cartItems: [
+                    {
+                        items: [
+                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]}
                         ],
                     }
                 ]  
@@ -178,8 +204,6 @@
 				setMeasurementVariables();
 				var lc = response.location.languages[0]["code"]; //no
                 var cc = response.country_name;
-                
-				
                 convert(currencyCode,"stripe"); 
 				createCookie("country_lookup",cc);
 				$("#country").val(cc);

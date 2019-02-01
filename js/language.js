@@ -1,5 +1,8 @@
-	function getLanguage(lc){
-        
+	
+
+function getLanguage(lc){
+                console.log("getLanguage(" + lc + ")");
+                languageCode = lc;
 				$.post("./php/get_native_language.php", {language_code: lc,}, 
 				   function(result){
                     
@@ -8,7 +11,7 @@
 					
 					//var obj = JSON.parse(result);
                             var j = 0;
-                            var langDocument = JSON.parse(result);
+                            langDocument = JSON.parse(result);
                             var tags = document.querySelectorAll('div,input,span,a,label,option,textarea,select,button');
 					         var locale = languageCode + "-" + countryCode;
                             Array.from(tags).forEach(function(value, index){
@@ -80,7 +83,6 @@
                        
                         var formattedCurrency = formatCurrency(currencyCode,locale,0);		
                         $('#total').html(labelTotal + ": " + formattedCurrency);
-                        
                         //$('#review-order-price').html(labelTotal + ": " + formattedCurrency); 
                         
                         
@@ -93,7 +95,8 @@
 
         
 	function detectLanguage(override = false){
-  
+            console.log("detectLanguage(" + override + ")");
+            
 			var getlcParam = getLCfromQS();
             
 			if(getlcParam.length > 0){

@@ -22,6 +22,7 @@ function loadEvents() {
             $("#cart-container-0").hide();
             $("#cart-container-1").hide();
             $("#cart-container-2").hide();
+            $("#cart-container-3").hide();
             
             if(clickedTab == "tab1"){
                 console.log("tab1");
@@ -35,7 +36,10 @@ function loadEvents() {
                 console.log("tab3");
                 $("#cart-container-2").show();
             };
-            
+            if(clickedTab == "tab4"){
+                console.log("tab4");
+                $("#cart-container-3").show();
+            };
         });
     
          $(".cart-tab-buttons").hover(function(){
