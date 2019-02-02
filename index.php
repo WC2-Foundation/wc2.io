@@ -420,7 +420,7 @@
 					
 					<!-- Credit Card Review Order -->
                     <div id="CC-review-order" class="order-containers" >
-						<div id = "review-container" style ="height:550px;width:600px;margin-left:0px;">
+						<div id = "review-container" style ="height:620px;width:600px;margin-left:0px;">
 						<div id = "checkout-spinner" style = "z-index: 80000; float: left; position: absolute;top:100px;left: 280px;display: none;" >
 							<div class = "lds-dual-ring"></div>
 						</div>	
@@ -434,7 +434,7 @@
 <div style="width: 100%; display: table;">
     <div style="display: table-row">
         <div style="width: 50%; display: table-cell;line-height: 1.5;"  id = "review-shipping-address"
-             class="order-form-headings-extra-small">Sam Stauffacher<br>830 Rebecca Drive<br>Boulder Creek Ca, 95006
+             class="order-form-headings-extra-small">[<a onClick="navigate(false);">x</a>]<br>Sam Stauffacher<br>830 Rebecca Drive<br>Boulder Creek Ca, 95006
         </div>
         <div style="display: table-cell;width: 50%;text-align: right"> 
             <div style="height: 50px;padding: 10px;">
@@ -464,7 +464,7 @@
 					<!-- CC# Order Complete -->
                     <div id="order-complete" class="order-containers" >
 						<div class="order-form-headings" data-languagekey="order-complete" style ="text-align: center;margin-bottom: 10px;margin-left: 20px;letter-spacing: 2px;"></div>
-                        <span class = "order-form-headings-small" data-languagekey = "thank-you-for-order" style = "width:525px;padding:15px;margin-right: 25px; text-align: center;letter-spacing: 2px;"></span>
+                        <span class = "order-form-headings-small" data-languagekey = "thank-you-for-order" style = "padding:15px; text-align: center;letter-spacing: 2px;"></span>
                         <span class = "order-form-headings-small" data-languagekey = "confirmation-email"></span>
                     </div>
 					

@@ -187,7 +187,6 @@ function loadEvents() {
 		});		
 
 		$("#back").on('click', function(){
-            //console.log("___>");
             navigate(false);
 		});
 

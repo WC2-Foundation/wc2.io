@@ -76,7 +76,6 @@
                 {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true,true]}
             ]},
             {"name" : "order-review", "functions" : [
-                 {"functionName" : "createStripeToken", "reverse" : false, "parameters":[]},
                 {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true,true]}
             ]}      
         ],
@@ -117,6 +116,7 @@
             }
         }
         
+        console.log("Container Name: " + containers[containerID][nextDiv[containerID]].name);
         if(navPositionObj.positions[containerID].functions[nextDiv[containerID]].skipContainerAnimation == true && forward){return};
         if(nextDiv[containerID] >= containersObj.containers.length - 1 && forward){return};
         forward ? nextDiv[containerID]++ : nextDiv[containerID]--;
@@ -279,11 +279,11 @@
             if(listCounter == 2){
                 
               
-                document.getElementsByClassName("review-cart-tab").style.overflowY = "hidden";
+                //document.getElementsByClassName("review-cart-tab").style.overflowY = "hidden";
                 //$("#review-order-shipping").css({width: "575px"});
             }
             if(listCounter == 1){
-                 document.getElementsByClassName("review-cart-tab").style.overflowY = "hidden";
+                 //document.getElementsByClassName("review-cart-tab").style.overflowY = "hidden";
                 //$("#review-order-shipping").css({top: "140px"});
             //    $("#review-order-shipping").css({width: "575px"});
             }

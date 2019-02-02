@@ -83,14 +83,19 @@
                 tabName: "Parts", cartItems: [
                     {
                         items: [
-                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Replacement Part"},{title:""},{size: ""},{price: "2.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]}
+                            {columns: [{title: "Rubber tip"},{title:""},{size: ""},{price: "1.00"},{shippingInt: ["9.00"] },{shippingUS: ["1.00"] }]},
+                            {columns: [{title: "Rubber donut"},{title:""},{size: ""},{price: "1.00"},{shippingInt: ["9.00"] },{shippingUS: ["1.00"] }]},
+                            {columns: [{title: "Strut front"},{title:""},{size: ""},{price: "4.00"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Strut back"},{title:""},{size: ""},{price: "4.00"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Dowel"},{title:""},{size: ""},{price: "1.00"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Main support"},{title:""},{size: ""},{price: "3.00"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Mounting tape (main support)"},{title:""},{size: ""},{price: "1.00"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Wall anchor"},{title:""},{size: ""},{price: "3.00"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Wall anchor screw"},{title:""},{size: ""},{price: "1.00"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Phone strap"},{title:""},{size: ""},{price: "2.00"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Support cord"},{title:""},{size: ""},{price: "2.00"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Cord lock"},{title:""},{size: ""},{price: "1.00"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Cord buckle"},{title:""},{size: ""},{price: "1.00"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]}
                         ],
                     }
                 ]  
@@ -98,6 +103,7 @@
         ]
     }
 
+        
     var calcTotal; 
 	var containers;
     var containerID = 0;
