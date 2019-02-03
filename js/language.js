@@ -3,6 +3,7 @@
 function getLanguage(lc){
                 console.log("getLanguage(" + lc + ")");
                 languageCode = lc;
+                cartBuilt = false;
 				$.post("./php/get_native_language.php", {language_code: lc,}, 
 				   function(result){
                     

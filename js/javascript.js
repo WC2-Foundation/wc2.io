@@ -23,6 +23,8 @@
     var checkoutComplete = false;
     var slideContainer = 600;
     var freeUSShippingOver = 45;
+    var freeWorldShippingOver = 95;
+    var cartBuilt = false;
     var shippingInterArr = [];
     var shippingUSArr = [];
     var contactInformation = {firstName: "", lastName: "", emailAddress: ""};
@@ -166,7 +168,6 @@
 
         $("#language-search").autocomplete({
             source:  function(request, response) {
-                //console.log("--->" + languageCode);
             $.getJSON('./php/language_dropdown_list.php', {
                 term: $("#language-search").val(),
                 language_code: languageCode
@@ -194,11 +195,14 @@
 			//First visit, grab language and currency data
 			$.get("https://api.ipstack.com/check?access_key=" + ipStackKey, function (response) {
 				var currencySymbol = response.currency.symbol;
+                console.log("response.country_code: " + response.country_code);
 				//ajax call to mysql, make sure currency is supported; if not fallback 
 				//to US for now (TODO: country based fallback [euros etc])
-				currencyCode = response.currency.code.toLowerCase(); //nok
-                paypalCurrencyCode =  "usd"; //convert(currencyCode,"paypal"); //response.currency.code.toLowerCase();
-				var countryCode = response.country_code;
+                console.log(response.currency.code.toLowerCase());
+				currencyCode = response.currency.code.toLowerCase(); //response.currency.code.toLowerCase(); //nok
+                //TODO: fix paypal convert causes tabs to render twice etc 
+                //paypalCurrencyCode =  "usd"; //convert(currencyCode,"paypal"); //response.currency.code.toLowerCase();
+				countryCode = response.country_code;//response.country_code;
 				
 				if(countryCode == "US"){
 					unitOfMeasure = "inches";
@@ -206,9 +210,13 @@
 					sizeJumboKrane = 34;
 					lengthSymbol = "&#34;";
 				}
-                 
+                
+                paypalCurrencyCode = convert(currencyCode,"paypal");
+                console.log("convert(currencyCode,paypal)::: " + paypalCurrencyCode);
+                
 				setMeasurementVariables();
-				var lc = response.location.languages[0]["code"]; //no
+                console.log("0000000000000 " + response.location.languages[0]["code"]);
+				var lc = response.location.languages[0]["code"]; //"en";//response.location.languages[0]["code"]; //no
                 var cc = response.country_name;
                 convert(currencyCode,"stripe"); 
 				createCookie("country_lookup",cc);
