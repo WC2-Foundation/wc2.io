@@ -1,4 +1,5 @@
 # krane.tv
+~ WORK IN PROGRESS ~
 This project is divided into 3 main parts and is intended to offer a jumping-off point for the following technologies:
 
 1.) Stripe: Custom Cart Integration<br>
