@@ -3,8 +3,7 @@
 <!--
 	HTML/CSS/JS by Sam Stauffacher
 -->
-<html lang="en">
-	<head>
+<html lang="en"><head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=940, initial-scale=.4, maximum-scale=1" />
 		<meta name="description" content="Krane builds uniquely designed smartphone suspension devices made from renewable and responsibly sourced materials."/>
@@ -21,25 +20,26 @@
 				<link rel="stylesheet" href="./css/fontawesome-all.min.css">
 
 				<!-- JS -->
-                <script src="js/jquery.min.js" ></script>
-                <script src="js/jquery.UI.min.js" ></script>
-                <script src="js/jquery.validate.min.js" ></script>
-                <script src="js/jquery.boxfit.js"></script>
+                <script src="js/0/jquery.min.js" ></script>
+                <script src="js/0/jquery.UI.min.js" ></script>
+                <script src="js/0/jquery.validate.min.js" ></script>
+                <script src="js/0/jquery.boxfit.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
                 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-                <script src="js/scrollbars.js" ></script>
-                <script src="js/svg.js" ></script>
+                <script src="js/0/scrollbars.js" ></script>
+                <script src="js/0/svg.js" ></script>
                 <script src="https://js.stripe.com/v3/"></script>
                 
                 <!-- truthserum.io -->
-                    <script src="js/javascript.js"></script>
-                    <script src="js/utilities.js"></script>
-                    <script src="js/language.js"></script>
-                    <script src="js/paypal.js"></script>
-                    <script src="js/stripe.js"></script>
-                    <script src="js/cart.js"></script>
-                    <script src="js/events.js"></script>
-                    <script src="js/validate.js"></script>
+                    <script src="js/truthserum.io.js"></script>
+                    <script src="js/1/javascript.js"></script>
+                    <script src="js/1/utilities.js"></script>
+                    <script src="js/1/language.js"></script>
+                    <script src="js/1/paypal.js"></script>
+                    <script src="js/1/stripe.js"></script>
+                    <script src="js/1/cart.js"></script>
+                    <script src="js/1/events.js"></script>
+                    <script src="js/1/validate.js"></script>
                 <!-- truthserum.io -->
         
 				<!--
