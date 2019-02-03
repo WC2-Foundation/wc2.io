@@ -23,7 +23,7 @@
     var checkoutComplete = false;
     var slideContainer = 600;
     var freeUSShippingOver = 45;
-    var freeWorldShippingOver = 95;
+    var freeWorldShippingOver = 15;
     var cartBuilt = false;
     var shippingInterArr = [];
     var shippingUSArr = [];
@@ -211,6 +211,7 @@
 					lengthSymbol = "&#34;";
 				}
                 
+                
                 paypalCurrencyCode = convert(currencyCode,"paypal");
                 console.log("convert(currencyCode,paypal)::: " + paypalCurrencyCode);
                 
@@ -218,6 +219,7 @@
                 console.log("0000000000000 " + response.location.languages[0]["code"]);
 				var lc = response.location.languages[0]["code"]; //"en";//response.location.languages[0]["code"]; //no
                 var cc = response.country_name;
+                $("#language-label").html($("#" + lc).text());
                 convert(currencyCode,"stripe"); 
 				createCookie("country_lookup",cc);
 				$("#country").val(cc);

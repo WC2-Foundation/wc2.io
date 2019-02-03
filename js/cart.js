@@ -188,16 +188,33 @@
                             var key = value.dataset.languagekey;
                             j++;  
                             c = value.id;
+                            //sizeStandardKrane
                             if(langDocument[key] && c !== "total" && c !== "you-have-number-of-items-in-cart"){
                                 value.placeholder = langDocument[key];
-                                value.innerText =  decodeEntities(langDocument[key]);
+                                if(c.indexOf("cartColumn3-") == 0){
+                                        //sizeStandardKrane
+                                        console.log("-----------------------------> " + key);
+                                        kraneSize = "Standard";
+                                        if(key == "standard"){
+                                                kraneSize = sizeStandardKrane;
+                                            }else{
+                                                kraneSize = sizeJumboKrane;
+                                                
+                                        }
+                                        p = decodeEntities(langDocument[key] + " " + kraneSize + lengthSymbol);
+                                        value.innerText =  p;
+                                    }else{
+                                        value.innerText =  decodeEntities(langDocument[key]);
+                                }
+                                
                             }
                             
                             if(c.indexOf("cartItem-") == 0){
                                 $("#" + c).boxfit({maximum_font_size: 18});
                             }
                             if(c.indexOf("cartColumn3-") == 0){
-                                $("#" + c).boxfit({maximum_font_size: 18});
+                                console.log("---------------------========" + "#" + c);
+                                //$("#" + c).boxfit({maximum_font_size: 18});
                             }
                         }
 
@@ -232,7 +249,7 @@
             '        ' + productName + '  <a href = "#ibycus" class = "thumbnail-links" id = "krane-model-' + productModel.toLowerCase() + '" >' + productModel + '</a>'+
             '        <div id = "ibycus" class = "thumbnails" ></div>' +
             '    </div>'+
-            '    <div class="grid-item-3" id = "cartColumn3-' + mg + '" data-languagekey = "' + productSize.toLowerCase() + '"></div>' +
+            '    <div class="grid-item-3" id = "cartColumn3-' + mg + '" data-languagekey = "' + productSize.toLowerCase()  + '"></div>' +
             '    <div class="grid-item-4">' +
             '        <div id = "cartItem-' + mg + '"  >' + productPrice + ' x</div>' +
             '    </div>'+

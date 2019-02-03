@@ -60,6 +60,8 @@
       } else {
         original_height = $(this).height();
       }
+        
+        //console.log("%%%%%%%%%%%%%%% " + original_width);
 
       if (!original_width || !original_height) {
         if (window.console !== null) {
@@ -69,6 +71,9 @@
         if (!settings.multiline) {
           $(this).css('white-space', 'nowrap');
         }
+          
+        //console.log("OOOOOOOOOOOORANGOZZ: " + original_text);
+          
         original_text = $(this).html();
         if ($('<div>' + original_text + '</div>').find('span.boxfitted').length === 0) {
           span = $($('<span></span>').addClass('boxfitted').html(original_text));
@@ -92,16 +97,20 @@
 
         // keep growing the target so long as we haven't exceeded the width or height
         inner_span.css('font-size', settings.minimum_font_size);
+          //console.log("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGrowing...: " + $(this).width());
         while ($(this).width() <= original_width && $(this).height() <= original_height) {
           if (current_step++ > settings.step_limit) {
             break;
           }
           next_font_size = parseInt(inner_span.css('font-size'), 10);
           next_font_size = 2 * Math.round(next_font_size / 2);
+            //console.log("next_font_size::::::::::::::::::::::::: " + next_font_size);
           if (settings.maximum_font_size && next_font_size > settings.maximum_font_size) {
+             // console.log("next_font_size FOUND>>>>>>>> " + next_font_size);
             break;
           }
           inner_span.css('font-size', next_font_size + settings.step_size);
+         
         }
 
         // go back one step
