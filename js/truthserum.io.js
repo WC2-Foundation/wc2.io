@@ -10,7 +10,6 @@
 //########################################################################
 //########################################################################
 
-// File Structure
-// folder 0 = other
+// folder 0 = false!
 // folder 1 = truthserum.io
 //https://github.com/truth-serum/krane.tv
