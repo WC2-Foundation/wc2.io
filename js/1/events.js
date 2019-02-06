@@ -333,6 +333,13 @@ $(document).mouseup(function(e)
     if (!container.is(e.target) && container.has(e.target).length === 0) 
     {
         container.hide();
+        
+        if($("#language-search").val().length > 0){
+            languageSearch();
+        }
+        
+        $("#language-search").val("");
+        
     }
 });
 

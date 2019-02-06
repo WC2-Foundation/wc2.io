@@ -7,7 +7,8 @@
     //########################################################################
     //########################################################################
     //########################################################################
-	
+
+
     var paypalSandboxKey = 'AXNBHeDq2JrjOTfP8sNlOuZorGOBNG5_9QuWelMSgznz6PBvFmJhT7e01jqfmw1a_NAT8cWnOmGA3tVn';
     //var paypalProductionKey = 'AZQS_HL1WChQTKMDP1vUJXUvVxl9ggnqdV7-RdqQjqj2wcUrbMg-0BPeth5My3N7gNTuw4NipsI9VAp9';
 
@@ -178,8 +179,7 @@
 
         function translateCart(){
             console.log("translateCart()");
-            $.post("./php/get_native_language.php", {language_code: languageCode,}, 
-
+            $.post("./php/get_native_language.php", {language_code: languageCode}, 
                function(result){
                         var j = 0;
                         var langDocument = JSON.parse(result);
@@ -188,55 +188,40 @@
                             var key = value.dataset.languagekey;
                             j++;  
                             c = value.id;
-                            //sizeStandardKrane
-                            console.log("\\\\\\\\\\\\\\\\\\\\\\ " + key);
                             if(langDocument[key] && c !== "total" && c !== "you-have-number-of-items-in-cart"){
                                 value.placeholder = langDocument[key];
                                 if(c.indexOf("cartColumn3-") == 0){
-                                        //sizeStandardKrane
-                                    
-                                        console.log("-----------------------------> " + key);
                                         kraneSize = "Standard";
                                         if(key == "standard"){
                                                 kraneSize = sizeStandardKrane;
                                             }else{
                                                 kraneSize = sizeJumboKrane;
-                                                
                                         }
                                         p = decodeEntities(langDocument[key] + " " + kraneSize + lengthSymbol);
                                         value.innerText =  p;
                                     }else{
-                                        //console.log("{{{{{{{{{{{{{{{{{{{{{{{{{{{" + decodeEntities(langDocument[key]) );
                                         value.innerText =  decodeEntities(langDocument[key]);
-                                }
-                                
+                                } 
                             }
-                            
                             if(c.indexOf("cartItem-") == 0){
                                 $("#" + c).boxfit({maximum_font_size: 18});
                             }
-                            if(c.indexOf("cartColumn3-") == 0){
-                                //console.log("---------------------========" + "#" + c);
-                                //$("#" + c).boxfit({maximum_font_size: 18});
-                            }
                         }
-
                     );
-                //wait for boxfit to calculate font sizes
-                if(countryCode == "US"){
-                    ship = freeUSShippingOver * exchangeRate;
-                }else{
-                    ship = freeWorldShippingOver * exchangeRate;
-                }
-                console.log('langDocument["shipping-offer-not-US"]: ' + langDocument["shipping-offer-not-US"] + " === " + countryCode);
-                ship = formatCurrency(currencyCode,languageCode + "-" + countryCode,ship.toFixed(0),0);
-                if(countryCode == "US"){
-                        $('*[data-languagekey="shipping-offer"]').html(langDocument["shipping-offer"] + " " + ship);
-                    }else{
-                        $('*[data-languagekey="shipping-offer"]').html(langDocument["shipping-offer-not-US"] + " " + ship);
-                }
-                $("#tab1").click();
-                $("#cart-container-0").show();
+                    if(countryCode == "US"){
+                            ship = freeUSShippingOver * exchangeRate;
+                        }else{
+                            ship = freeWorldShippingOver * exchangeRate;
+                    }
+                    console.log('langDocument["shipping-offer-not-US"]: ' + langDocument["shipping-offer-not-US"] + " === " + countryCode);
+                    ship = formatCurrency(currencyCode,languageCode + "-" + countryCode,ship.toFixed(0),0);
+                    if(countryCode == "US"){
+                            $('*[data-languagekey="shipping-offer"]').html(langDocument["shipping-offer"] + " " + ship);
+                        }else{
+                            $('*[data-languagekey="shipping-offer"]').html(langDocument["shipping-offer-not-US"] + " " + ship);
+                    }
+                    $("#tab1").click();
+                    $("#cart-container-0").show();
                 }
             );
         }
@@ -307,6 +292,10 @@
                listCounter++;
             }*/
             
+            if(listCounter < 3){
+                $("#review-order-container").addClass("grid-container-review-overflow");
+            }
+            
             console.log("listCounter: " + listCounter);
             if(listCounter == 2){
                 
@@ -329,23 +318,23 @@
             //qty > 0 ? a = "visible" : a = "hidden";
             var rowClass;
             blankRow ? rowClass = "" : "";
-            var returnCart = '<div id = "m' + mg2 + '" class="grid-container" >' +
-            '<div class="grid-item">';
+            var returnCart = '<div id = "m' + mg2 + '" class="grid-container-review" >' +
+            '<div class="grid-item-1">';
                 returnCart += '<i class="fas fa-check checkmarks" style = "visibility:visible" id = "checkmark-' + mg2 + '"></i>' +
                               '<i class="fas fa-shopping-cart" style = "padding-left:5px;"></i>';
             
             returnCart += '</div>' + 
-            '    <div class="grid-item-center">' +
+            '    <div class="grid-item-2">' +
             '        ' + productName + '  <a href = "#ibycus" class = "thumbnail-links" id = "krane-model-' + productModel.toLowerCase() + '" >' + productModel + '</a>'+
             '        <div id = "ibycus" class = "thumbnails" ></div>' +
             '    </div>' +
-            '    <div class="grid-item-right" data-languagekey = "' + productSize.toLowerCase() + '" >' +
+            '    <div class="grid-item-3" data-languagekey = "' + productSize.toLowerCase() + '" >' +
             '' + productSize +
             '    </div>' +
-            '    <div class="grid-item-right">' +
+            '    <div class="grid-item-4">' +
             '        <div id = "cartItem-' + mg2 + '" >' + productPrice + ' x</div>' +
             '    </div>'+
-            '    <div class="grid-item">';
+            '    <div class="grid-item-5">';
 
                returnCart += '<input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg2 + '-qty" onChange="" value = "' + qty + '" min="0" max="10000" >';
             

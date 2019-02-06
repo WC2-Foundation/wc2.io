@@ -28,6 +28,7 @@
                 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
                 <script src="js/0/scrollbars.js" ></script>
                 <script src="js/0/svg.js" ></script>
+                <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/libphonenumber-js/1.7.8/libphonenumber-js.min.js"></script>-->
                 <script src="https://js.stripe.com/v3/"></script>
                 
                 <!-- truthserum.io -->
@@ -141,9 +142,10 @@
 
 	</div>	-->		
 		
-		
+<!--		
 		<br><br>
-		<div id = "carousel"></div><br><br>
+		<div id = "carousel"></div><br><br>-->
+        
 	</div>	
 
 
@@ -199,11 +201,11 @@
 	
 	
 
-    <div id="about-images-container-1">
+<!--    <div id="about-images-container-1">
         <div id="photo1" class="photos"></div>
         <div id="photo2" class="photos"></div>
         <div id="photo3" class="photos"></div>
-    </div>
+    </div>-->
 
 	<button id = "standard-krane-add-to-cart" onClick="addItemToCart('0',1);"  >
 		<i class="fas fa-shopping-cart" style = "padding-left:30px;"></i> Standard Krane ( extends to <span class = "standard-krane-length"></span><span class = "length-symbol"></span> ) <i class="fas fa-check" style = "padding-left:5px;color: black"></i>
@@ -276,23 +278,14 @@
                             
                             <div id = "order-form-container">
                                 
-                                
-                                <div class="order-form-labels" id="quantity-label" data-languagekey="quantity-label" ></div>
-								
-                                          <div id = "electrum" class = "thumbnails" ></div>
+                                        <div class="order-form-labels" id="quantity-label" data-languagekey="quantity-label" ></div>
+                                        <div id = "electrum" class = "thumbnails" ></div>
                                         <div id = "pyramís" class = "thumbnails" ></div>
                                         <div id = "ibycus" class = "thumbnails" ></div>                               
-                                    <div id = "cart-outter-container"> 
-
-                                        <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
-                                    </div>
-                                
+                                        <div id = "cart-outter-container">
+                                            <input id="quantity" class="order-form-inputs" value="0" onKeyUp="calculateTotal();">
+                                        </div>
                             </div>
-                            
-                            
-                            
-  
-                            
                             
 
                         <div id = "total-container">
@@ -301,14 +294,7 @@
                                 <label id = "discount-code-label" data-languagekey = "discount-code-label" ></label>
                                 <input id = "discount-code" data-languagekey = "discount-code"  placeholder = "(Optional)"/>
                             </div>
-                        </div>                           
-                            
-                            
-                            
-                            
-                            
-                            
-                            
+                        </div>     
                         </div>
                     </div>
 					
@@ -321,7 +307,7 @@
                                     <input value = "Sam" type="text" tabindex = "1" id="firstName" data-languagekey="firstName" name="first name" placeholder="" onKeyUp="fillHoles(3);" class="order-form-inputs" style ="color:grey;width:150px;">
                                     <input value = "Stauffacher" type="text" tabindex = "2" id="lastName" data-languagekey="lastName" name="last name" placeholder="" class="order-form-inputs" style ="color:grey;width:200px;">
                                 </div>
-                                <input id="emailAddress" value = "sam@intrafuse.com" tabindex = "3" style ="color:grey;width:400px;" data-languagekey="emailAddress" name="email address" placeholder="" type="email" onKeyUp="fillHoles(2);" value="" class="order-form-inputs">
+                                <input id="emailAddress" value = "sam@intrafuse.com" tabindex = "3" style ="color:grey;width:400px;" data-languagekey="emailAddress" name="email address" placeholder="" type="email" onKeyUp="fillHoles(2);" class="order-form-inputs">
                             </div>
                         </form>
                     </div>
@@ -367,7 +353,7 @@
 
                                 <div style ="overflow-x: hidden;width: 100%; margin-left: 100px;">
 
-                                    <input value = "Sam"  tabindex="1" type="text" placeholder="Country" autocomplete="shipping country" data-languagekey="country" name="country" id="country" value="" class="country">
+                                    <input value = "Sam"  tabindex="1" type="text" placeholder="Country" autocomplete="shipping country" data-languagekey="country" name="country" id="country" class="country">
 
                                     <input value = "Sam"  tabindex="2" type="text" id="address1" name="address 1" placeholder="" data-languagekey="address1" class="order-form-inputs" style ="color:grey;width:400px;">
                                     <input value = "Sam" tabindex="3" type="text" id="address2" name="address 2" placeholder="" data-languagekey="address2" class="order-form-inputs" style ="color:grey;width:400px;">
@@ -431,20 +417,20 @@
                             
                           <div id = "review-order-shipping">
   
-<div style="width: 100%; display: table;">
-    <div style="display: table-row">
-        <div style="width: 50%; display: table-cell;line-height: 1.5;"  id = "review-shipping-address"
-             class="order-form-headings-extra-small">[<a onClick="navigate(false);">x</a>]<br>Sam Stauffacher<br>830 Rebecca Drive<br>Boulder Creek Ca, 95006
-        </div>
-        <div style="display: table-cell;width: 50%;text-align: right"> 
-            <div style="height: 50px;padding: 10px;">
-                <span class="order-form-labels-small" data-languagekey = "shipping-total" style="margin:0px;"></span><span  class="order-form-labels-small" style="margin:0px;">: $4.95</span><br>
-                <hr/>
-            </div>
-         <div id="review-order-price" data-languagekey="total" ></div>
-        </div>
-    </div>
-</div>
+                                <div style="width: 100%; display: table;">
+                                    <div style="display: table-row">
+                                        <div style="width: 50%; display: table-cell;line-height: 1.5;"  id = "review-shipping-address"
+                                             class="order-form-headings-extra-small">[<a onClick="navigate(false);">x</a>]<br>Sam Stauffacher<br>830 Rebecca Drive<br>Boulder Creek Ca, 95006
+                                        </div>
+                                        <div style="display: table-cell;width: 50%;text-align: right">
+                                            <div style="height: 50px;padding: 10px;">
+                                                <span class="order-form-labels-small" data-languagekey = "shipping-total" style="margin:0px;"></span><span  class="order-form-labels-small" style="margin:0px;">: $4.95</span><br>
+                                                <hr/>
+                                            </div>
+                                         <div id="review-order-price" data-languagekey="total" ></div>
+                                        </div>
+                                    </div>
+                                </div>
                               
                             
                             
@@ -527,7 +513,7 @@
 	
     <div id="contact-krane">
         <div class="section-heading-black" id="contact-krane-heading" data-languagekey="contact-krane-heading"></div>
-        <div class="subheading-black"><span id="send-text-message" data-languagekey="send-text-message"></span>: (800) 626-8160</div>
+        <div class="subheading-black"><span id="send-text-message" data-languagekey="send-text-message"></span>: <span class="subheading-black" id = "formattedPhoneNumber"></span></div>
         <div class="subheading-black">info at krane dot tv</div>
         <br>
         <div id="message-sent">

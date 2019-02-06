@@ -205,12 +205,16 @@
 				countryCode = response.country_code;//response.country_code;
 				
 				if(countryCode == "US"){
-					unitOfMeasure = "inches";
-					sizeStandardKrane = 28;
-					sizeJumboKrane = 34;
-					lengthSymbol = "&#34;";
-				}
+                        unitOfMeasure = "inches";
+                        sizeStandardKrane = 28;
+                        sizeJumboKrane = 34;
+                        lengthSymbol = "&#34;";
+                        formattedPhoneNumber = "1(800)626-8160"; //libphonenumber.parsePhoneNumberFromString('1(800)626-8160').nationalNumber;
+				    }else{
+                        formattedPhoneNumber = "+1 800 626 8160"; //libphonenumber.parsePhoneNumberFromString('+18006268160').formatInternational();
+                }
                 
+                $("#formattedPhoneNumber").html(formattedPhoneNumber);
                 
                 paypalCurrencyCode = convert(currencyCode,"paypal");
                 console.log("convert(currencyCode,paypal)::: " + paypalCurrencyCode);
