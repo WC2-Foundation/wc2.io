@@ -501,6 +501,7 @@
                     <div style="z-index: 0; margin-top:10px;position: absolute; left:70px;">
                         <!-- FA Forward arrow only works occasionally... use back arrow and reverse to fix-->
                         <div id="next" tabindex="4">
+                            
                             <div class="front"><span class="fa fa-arrow-circle-left"></span></div>
                             <div class="back"><span class="fa fa-arrow-circle-left"></span></div>
                         </div>

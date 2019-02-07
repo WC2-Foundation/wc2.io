@@ -14,6 +14,7 @@
 	var languageCode;
     var langDocument;
 	var labelTotal;
+    var paymentRequest;
 	var multiplier;
 	var stripeCurrencyCode = "usd";
 	var unitOfMeasure = "centimeters";
@@ -27,8 +28,24 @@
     var cartBuilt = false;
     var shippingInterArr = [];
     var shippingUSArr = [];
+    var stripe = Stripe('pk_test_fgP1IfitRDyrHERTzo9BABmR');
+    var elements = stripe.elements();
     var contactInformation = {firstName: "", lastName: "", emailAddress: ""};
-
+    var style = {
+      base: {
+        iconColor: '#666EE8',
+        color: '#31325F',
+        lineHeight: '40px',
+        fontWeight: 300,
+        letterSpacing: '.05em',
+        fontFamily: 'Arial',
+        fontSize: '15px',
+        '::placeholder': {
+          color: '#000000',
+        }
+      }
+    }
+    
     var cart = [
         {k: [0,28,0]}, 
         {k: [0,28,0]}, 

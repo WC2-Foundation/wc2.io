@@ -3,32 +3,9 @@
 
 
 
-		var style = {
-		  base: {
-			iconColor: '#666EE8',
-			color: '#31325F',
-			lineHeight: '40px',
-			fontWeight: 300,
-			letterSpacing: '.05em',
-			fontFamily: 'Arial',
-			fontSize: '15px',
-
-			'::placeholder': {
-			  color: '#000000',
-			},
-		  },
-		};
-
-
-
-
-var stripe = Stripe('pk_test_fgP1IfitRDyrHERTzo9BABmR');
-        var elements = stripe.elements();
-        var z = 1;
-
 
     function manuallyEnteredCard(result){
-		
+		console.log("manuallyEnteredCard(result)");
 		var successElement = document.querySelector('.success');
 		var errorElement = document.querySelector('.error');
 		
@@ -56,20 +33,9 @@ var stripe = Stripe('pk_test_fgP1IfitRDyrHERTzo9BABmR');
 		}
 	}
 
-	var paymentRequest;
-	function generatePaymentRequest(){
-        
-		if(prButton){
-			prButton.destroy();
-		};
-	
-		//If currency is non-decimal, change multiplier to 1
-		if(currencyCode == "jpy"){
-				multiplier = 1;
-			}else{
-				multiplier = 100;
-		}
-        
+
+
+    function saveCustomerInformation(){
         $.post("./php/save_customer_information.php", {
             "updateType": "cart",
             "cart": JSON.stringify(cart)
@@ -79,9 +45,27 @@ var stripe = Stripe('pk_test_fgP1IfitRDyrHERTzo9BABmR');
                 }else{
                     return false;     
             }
-        });
-        
-        console.log("payment request: " + calculatedTotal);
+        });    
+    
+    }
+
+
+    function paymentRequestButton(){
+ 		//re-create stripe payment request button with new values 
+		prButton = elements.create('paymentRequestButton', {
+		  paymentRequest: paymentRequest,
+		 style: {
+			paymentRequestButton: {
+			  type: 'default',
+			  theme: 'light-outline',
+			  height: '40px',
+			}
+		  }
+		})
+    }
+
+function createPaymentRequestObj(){
+
 		paymentRequest = stripe.paymentRequest({
 			country: 'US',
 			currency: currencyCode,
@@ -110,18 +94,25 @@ var stripe = Stripe('pk_test_fgP1IfitRDyrHERTzo9BABmR');
             },
             ],*/
 		});
+}
+	
+	function generatePaymentRequest(){
+        console.log("generatePaymentRequest()");
+		if(prButton){
+			prButton.destroy();
+            console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+		};
+	
+		//If currency is non-decimal, change multiplier to 1
+		if(currencyCode == "jpy"){
+				multiplier = 1;
+			}else{
+				multiplier = 100;
+		}
 
-		//re-create stripe payment request button with new values 
-		prButton = elements.create('paymentRequestButton', {
-		  paymentRequest: paymentRequest,
-		 style: {
-			paymentRequestButton: {
-			  type: 'default',
-			  theme: 'light-outline',
-			  height: '40px',
-			},
-		  },
-		})	
+        console.log("payment request: " + calculatedTotal);
+        createPaymentRequestObj();
+        paymentRequestButton();
 
 		paymentRequest.on('token', function(ev) {
             console.log("paymentRequest.on('token')");
@@ -169,10 +160,11 @@ var stripe = Stripe('pk_test_fgP1IfitRDyrHERTzo9BABmR');
                     status: 'success',
                     total: {
                         amount : 100,
-                        label: "heloz"
+                        label: "helo"
                            }
                 }
                 );*/
+              var z = 1;
               console.log("))) " + cartItem[0]);
               
                 ev.updateWith({
@@ -241,6 +233,7 @@ function cartDisplayItems(){
 
 	function digitalWalletCheckout(ev){
 		//ev is passed from payments API
+        console.log("digitalWalletCheckout(ev)");
 		calculatedAmount = ttl * multiplier;
 		$.post("./php/checkout_WPA.php", {"checkout": "true", 
                                       "amount": calculatedAmount, 
@@ -268,6 +261,7 @@ function cartDisplayItems(){
 	function checkout(){
 		//ev is passed from payments API
 		//calculatedAmount = ttl * multiplier;
+        console.log("checkout();");
         $("#checkout-spinner").fadeIn(250);
         $("#review-container").fadeTo(250,0.3);
 		$.post("./php/checkout.php", {"checkout": "true", "amount": calculatedTotal, "currency": currencyCode}, function(result){
@@ -304,6 +298,7 @@ function cartDisplayItems(){
 
     function isWebAPIavaiable(){
             // Check the availability of the Payment Request API first.
+        console.log("isWebAPIavaiable();");
             paymentRequest.canMakePayment().then(function(result) {
                 if(result){
                     prButton.mount('#payment-request-button');
@@ -318,6 +313,7 @@ function cartDisplayItems(){
     }
 
     function moveNavPayAPI(){
+        console.log("moveNavPayAPI()");
         if(paymentAPIavailable){
                 $("#main").animate({top: '-260px',left: '-20px'});
             }else{
@@ -327,7 +323,7 @@ function cartDisplayItems(){
 
 
 $(document).ready(function () {
-
+        
 		cardNumberElement = elements.create('cardNumber', {
 		  style: style
 		});

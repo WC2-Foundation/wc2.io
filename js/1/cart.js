@@ -55,6 +55,7 @@
                 {"functionName" : "updatePaypal",  "reverse" : false, "parameters":[]},
                 {"functionName" : "showHideMainNav",  "reverse" : false, "parameters":[true,false]},
                 {"functionName" : "showHideMainNav",  "reverse" : true, "parameters":[true,true]},
+                {"functionName" : "saveCustomerInformation",  "reverse" : false, "parameters":[]},
                 {"functionName" : "fillHoles",  "reverse" : false, "parameters":[1]}
             ]},
             {"name" : "pay-with", "functions" : [
@@ -78,7 +79,7 @@
             ]},
             {"name" : "order-review", "functions" : [
                 {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true,true]}
-            ]}      
+            ]}    
         ],
       "paypal":[
             {"name" : "pay-with", "functions" : [
@@ -116,6 +117,8 @@
                 }
             }
         }
+        
+        
         
         console.log("Container Name: " + containers[containerID][nextDiv[containerID]].name);
         if(navPositionObj.positions[containerID].functions[nextDiv[containerID]].skipContainerAnimation == true && forward){return};
@@ -179,6 +182,56 @@
 
         function translateCart(){
             console.log("translateCart()");
+            $.post("./php/get_native_language.php", {language_code: languageCode}, 
+               function(result){
+                        var j = 0;
+                        var langDocument = JSON.parse(result);
+                        var tags = document.getElementById('orderForm1').querySelectorAll('div,input,span,a,label,option,textarea,select,button');
+                        Array.from(tags).forEach(function(value, index){
+                            var key = value.dataset.languagekey;
+                            j++;  
+                            c = value.id;
+                            if(langDocument[key] && c !== "total" && c !== "you-have-number-of-items-in-cart"){
+                                value.placeholder = langDocument[key];
+                                if(c.indexOf("cartColumn3-") == 0){
+                                        kraneSize = "Standard";
+                                        if(key == "standard"){
+                                                kraneSize = sizeStandardKrane;
+                                            }else{
+                                                kraneSize = sizeJumboKrane;
+                                        }
+                                        p = decodeEntities(langDocument[key] + " " + kraneSize + lengthSymbol);
+                                        value.innerText =  p;
+                                    }else{
+                                        value.innerText =  decodeEntities(langDocument[key]);
+                                } 
+                            }
+                            if(c.indexOf("cartItem-") == 0){
+                                $("#" + c).boxfit({maximum_font_size: 18});
+                            }
+                        }
+                    );
+                    if(countryCode == "US"){
+                            ship = freeUSShippingOver * exchangeRate;
+                        }else{
+                            ship = freeWorldShippingOver * exchangeRate;
+                    }
+                    console.log('langDocument["shipping-offer-not-US"]: ' + langDocument["shipping-offer-not-US"] + " === " + countryCode);
+                    ship = formatCurrency(currencyCode,languageCode + "-" + countryCode,ship.toFixed(0),0);
+                    if(countryCode == "US"){
+                            $('*[data-languagekey="shipping-offer"]').html(langDocument["shipping-offer"] + " " + ship);
+                        }else{
+                            $('*[data-languagekey="shipping-offer"]').html(langDocument["shipping-offer-not-US"] + " " + ship);
+                    }
+                    $("#tab1").click();
+                    $("#cart-container-0").show();
+                }
+            );
+        }
+
+
+        function translateCart2(){
+            console.log("translateCart2()");
             $.post("./php/get_native_language.php", {language_code: languageCode}, 
                function(result){
                         var j = 0;
@@ -310,6 +363,7 @@
             }
             $("#review-order-container").addClass("review-cart-tab");
             $("#review-order-container").show();
+            translateCart2();
             //$("#m0").addClass("disableCartItems");
         }
 
