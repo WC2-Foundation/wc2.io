@@ -46,7 +46,7 @@
     }
     
     var containersObj = {
-      "width":"600",
+      "width":"700",
       "containers":[
             {"name":"order-details", "functions":[ 
                 {"functionName" : "calculateTotal", "reverse" : false, "parameters":[true]}, 
@@ -138,7 +138,7 @@
         if(x.length > 0){$("#main").animate({left: x,top: y})};
         $("#" + containers[containerID][incDec].name).animate({left: leftFR});
         $("#" + containers[containerID][nextDiv[containerID]].name).animate({left: "0px"},{complete:function(){displayNone(containerID,nextDiv[containerID])}});
-        $("#" + containers[containerID][nextDiv[containerID]].name).css("display","block");
+        $("#" + containers[containerID][nextDiv[containerID]].name).css("visibility","visible");
     }
 
     
@@ -163,6 +163,7 @@
                         for(p in y){
                             a = y[p].columns;
                             cartItem[mg] = a[3].price;
+                            console.log("exchangeRate::::::::::::::::::::: " + exchangeRate);
                             k = (cartItem[mg] * exchangeRate);
                             adjustedTotal = Math.round(k.toFixed(2) * 1000) / 10;
                             shippingInterArr[mg] = a[4].shippingInt[0];
@@ -231,16 +232,17 @@
 
 
         function translateCart2(){
-            console.log("translateCart2()");
+            console.log("translateCart2(): " + languageCode);
             $.post("./php/get_native_language.php", {language_code: languageCode}, 
                function(result){
                         var j = 0;
                         var langDocument = JSON.parse(result);
-                        var tags = document.getElementById('orderForm1').querySelectorAll('div,input,span,a,label,option,textarea,select,button');
+                        var tags = document.getElementById('review-order-container').querySelectorAll('div,input,span,a,label,option,textarea,select,button');
                         Array.from(tags).forEach(function(value, index){
                             var key = value.dataset.languagekey;
                             j++;  
                             c = value.id;
+                            console.log("langDocument[key]: " + langDocument[key]);
                             if(langDocument[key] && c !== "total" && c !== "you-have-number-of-items-in-cart"){
                                 value.placeholder = langDocument[key];
                                 if(c.indexOf("cartColumn3-") == 0){
@@ -256,16 +258,20 @@
                                         value.innerText =  decodeEntities(langDocument[key]);
                                 } 
                             }
-                            if(c.indexOf("cartItem-") == 0){
+                            if(c.indexOf("cartItem1-") == 0){
                                 $("#" + c).boxfit({maximum_font_size: 18});
                             }
                         }
                     );
+                
                     if(countryCode == "US"){
                             ship = freeUSShippingOver * exchangeRate;
                         }else{
                             ship = freeWorldShippingOver * exchangeRate;
                     }
+                
+                    
+                
                     console.log('langDocument["shipping-offer-not-US"]: ' + langDocument["shipping-offer-not-US"] + " === " + countryCode);
                     ship = formatCurrency(currencyCode,languageCode + "-" + countryCode,ship.toFixed(0),0);
                     if(countryCode == "US"){
@@ -273,6 +279,12 @@
                         }else{
                             $('*[data-languagekey="shipping-offer"]').html(langDocument["shipping-offer-not-US"] + " " + ship);
                     }
+                
+                    //order-review-shipping-label
+                //console.log("******************************************" + document.getElementById("order-review-shipping-label").innerHTML);
+                    $("#order-review-shipping-label").boxfit({maximum_font_size: 18, width:185, height: 20}); 
+                    
+                     $("#CC-review-order").css("visibility","visible");
                     $("#tab1").click();
                     $("#cart-container-0").show();
                 }
@@ -309,7 +321,7 @@
                 io = 0;
                 m = cartObj.cartTabs;
                 var listCounter = 0; 
-            
+                $("#review-order-container").empty();
                 for(n in m){
                     tabName = m[n].tabName;
                     w = m[n].cartItems;
@@ -324,7 +336,7 @@
                                 //shippingInterArr[mg] = a[4].shippingInt[0];
                                 //shippingUSArr[mg] = a[5].shippingUS[0];
                                 //mm = cart[io].k[0];
-                                //console.log("***> " + mm);
+                                //console.log("***> " + mm); 
  
                                 if(cart[io].k[0] > 0){
                                     formattedCurrency = formatCurrency(currencyCode,languageCode + "-" + countryCode,g);
@@ -382,11 +394,11 @@
             '        ' + productName + '  <a href = "#ibycus" class = "thumbnail-links" id = "krane-model-' + productModel.toLowerCase() + '" >' + productModel + '</a>'+
             '        <div id = "ibycus" class = "thumbnails" ></div>' +
             '    </div>' +
-            '    <div class="grid-item-3" data-languagekey = "' + productSize.toLowerCase() + '" >' +
+            '    <div class="grid-item-3" id = "cartColumn3-' + mg2 + '" data-languagekey = "' + productSize.toLowerCase() + '" >' +
             '' + productSize +
             '    </div>' +
-            '    <div class="grid-item-4">' +
-            '        <div id = "cartItem-' + mg2 + '" >' + productPrice + ' x</div>' +
+            '    <div class="grid-item-4"  >' +
+            '        <div style =  "width:75px;height:36px;" id = "cartItem1-' + mg2 + '" >' + productPrice + ' x</div>' +
             '    </div>'+
             '    <div class="grid-item-5">';
 
@@ -510,7 +522,7 @@
         $(".order-containers").each(function(i, obj){
                 if(containers[containerID][nextDiv].name !== obj.id){
                     $(this).css({
-                        "display": "none"
+                        "visibility": "hidden"
                     });
                 }
             });
@@ -560,6 +572,7 @@
         }, function(result){
             //console.log("--->" + result);
 
+            
             buildShoppingCart2();
             
             if(result > 0){
@@ -646,6 +659,7 @@
     }
 
 	function orderComplete(response){
+        
 		$("#order-container").animate({right: "" + (counter + 300) + 'px'});
 		document.write(JSON.stringify(response));
 	}
@@ -675,16 +689,22 @@
                 paypalCurrencyCode = "USD";
             }else{
                 exchangeRate = response;
-                
+                console.log("#####################################################");
+                console.log("#####################################################");
+                console.log("exchangeRate: " + exchangeRate);
+                console.log("#####################################################");
+                console.log("#####################################################");
+                if(!cartBuilt){
+                    buildShoppingCart();
+                    cartBuilt = true;
+                }
+                //detectLanguage(lc);
+                mg = 0;
+
+                calculateTotal();  
             }
-            if(!cartBuilt){
-                buildShoppingCart();
-                cartBuilt = true;
-            }
-            //detectLanguage(lc);
-            mg = 0;
             
-            calculateTotal();
+
         });	
     }
 

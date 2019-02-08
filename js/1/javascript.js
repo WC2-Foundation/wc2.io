@@ -210,17 +210,22 @@
 		//convert(currencyCode);
 	}else{
 			//First visit, grab language and currency data
-			$.get("https://api.ipstack.com/check?access_key=" + ipStackKey, function (response) {
+			$.get("https://api.ipstack.com/check?127.0.0.1&access_key=" + ipStackKey, function (response) {
 				var currencySymbol = response.currency.symbol;
+                
+                //103.106.250.36
                 console.log("response.country_code: " + response.country_code);
 				//ajax call to mysql, make sure currency is supported; if not fallback 
 				//to US for now (TODO: country based fallback [euros etc])
                 console.log(response.currency.code.toLowerCase());
 				currencyCode = response.currency.code.toLowerCase(); //response.currency.code.toLowerCase(); //nok
+                console.log("currencyCode: " + currencyCode);
                 //TODO: fix paypal convert causes tabs to render twice etc 
                 //paypalCurrencyCode =  "usd"; //convert(currencyCode,"paypal"); //response.currency.code.toLowerCase();
 				countryCode = response.country_code;//response.country_code;
 				
+                console.log("---> " + "https://api.ipstack.com/" + response.ip + "&access_key=" + ipStackKey);
+                
 				if(countryCode == "US"){
                         unitOfMeasure = "inches";
                         sizeStandardKrane = 28;
@@ -233,12 +238,17 @@
                 
                 $("#formattedPhoneNumber").html(formattedPhoneNumber);
                 
-                paypalCurrencyCode = convert(currencyCode,"paypal");
+                //paypalCurrencyCode = convert(currencyCode,"paypal");
                 console.log("convert(currencyCode,paypal)::: " + paypalCurrencyCode);
                 
 				setMeasurementVariables();
-                console.log("0000000000000 " + response.location.languages[0]["code"]);
-				var lc = response.location.languages[0]["code"]; //"en";//response.location.languages[0]["code"]; //no
+                //console.log("0000000000000 " + response.location.languages[0]["code"]);
+				 //"en";//response.location.languages[0]["code"]; //no
+                if(lc == null){
+                        var lc = "en";
+                    }else{
+                        var lc = response.location.languages[0]["code"];
+                }
                 var cc = response.country_name;
                 $("#language-label").html($("#" + lc).text());
                 convert(currencyCode,"stripe"); 
@@ -246,6 +256,7 @@
 				$("#country").val(cc);
                 
                 detectLanguage(lc);
+                console.log("IP Stack: " + response.ip );
                 
 			}, "jsonp");
 

@@ -370,7 +370,7 @@
                     </div>
 
 					<!-- Credit card info -->
-                    <div id="cc-inputs" class="order-containers" >
+                    <div id="cc-inputs" class="order-containers" style="z-index: 300" >
                         <div style ="height:300px;width:600px;"> 
                             <div style ="width:475px;padding-left: 30px;">                               
                                 <div id="credit-card-subheading" data-languagekey="credit-card-subheading" class="order-form-headings-small" style ="margin-left:4px;margin-top:0px;margin-bottom: 15px;"></div>                           
@@ -405,18 +405,16 @@
                     </div>
 					
 					<!-- Credit Card Review Order -->
-                    <div id="CC-review-order" class="order-containers" >
+                    <div id="CC-review-order" class="order-containers"  style = "display: block">
 						<div id = "review-container" style ="height:620px;width:600px;margin-left:0px;">
 						<div id = "checkout-spinner" style = "z-index: 80000; float: left; position: absolute;top:100px;left: 280px;display: none;" >
 							<div class = "lds-dual-ring"></div>
 						</div>	
 						<div class="order-form-headings" data-languagekey = "review-order-heading" style =";text-align: center;margin: 0px;"></div>
-                            <span id = "shipping-offer" data-languagekey = "shipping-offer" class="order-form-headings-extra-small"></span>
+                        <span id = "shipping-offer" data-languagekey = "shipping-offer" class="order-form-headings-extra-small"></span>
 
                     <div id = "review-order-container"></div>	
-                            
                           <div id = "review-order-shipping">
-  
                                 <div style="width: 100%; display: table;">
                                     <div style="display: table-row">
                                         <div style="width: 50%; display: table-cell;line-height: 1.5;"  id = "review-shipping-address"
@@ -424,7 +422,7 @@
                                         </div>
                                         <div style="display: table-cell;width: 50%;text-align: right">
                                             <div style="height: 50px;padding: 10px;">
-                                                <span class="order-form-labels-small" data-languagekey = "shipping-total" style="margin:0px;"></span><span  class="order-form-labels-small" style="margin:0px;">: $4.95</span><br>
+                                                <span class="order-form-labels-small" id = "order-review-shipping-label" data-languagekey = "shipping-total" style="margin:0px; width:175px; height:20px;"></span><span  class="order-form-labels-small" style="margin:0px;">: $4.95</span><br>
                                                 <hr/>
                                             </div>
                                          <div id="review-order-price" data-languagekey="total" ></div>

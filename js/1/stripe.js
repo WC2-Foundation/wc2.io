@@ -17,9 +17,11 @@
 				//A token was generated successfully
 				console.log("Token generated successfully::: " + result.token.id);
                 saveTokenToSession(result.token.id);
-                $("#cc-inputs").animate({left: '-600px'});
+                
+                $("#cc-inputs").animate({left: '-700px'});
+                $("#CC-review-order").css('visibility', 'visible');
+                $("#review-order-container").css('visibility', 'visible');
                 $("#CC-review-order").animate({left: '0px'});
-                $("#CC-review-order").css('display', 'block');
                 $("#main").css('visibility', 'hidden');
                 return true;
             
@@ -221,7 +223,7 @@ function cartDisplayItems(){
 		$.post("./php/checkout.php", {"saveToken": token}, function(result){
                     if(result){
                             fillHoles(11);
-                            $("#cc-inputs").animate({left: '-600px'});
+                            $("#cc-inputs").animate({left: '-700px'});
                             $("#CC-review-order").animate({left: '0px'});
                             $("#main").css('visibility', 'hidden');
                         }else{
@@ -268,8 +270,9 @@ function cartDisplayItems(){
 			console.log("amount: " + calculatedTotal + " currencyCode: " + currencyCode + " result: " + result + "<<<");
             if(result == "true"){
                     console.log("Manually entered CC info");
-                    $("#review-container").animate({left: '-600px'});
+                    $("#review-container").animate({left: '-700px'});
                     $("#review-container").fadeTo(250,0.0);
+                    $("#order-complete").css("visibility","visible");
                     $("#order-complete").fadeIn(250);
                     $("#order-complete").animate({left: '0px'});
                     setInterval(function(){fillHoles(11,true)},400);
