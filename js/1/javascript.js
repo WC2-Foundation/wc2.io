@@ -242,20 +242,22 @@
                 console.log("convert(currencyCode,paypal)::: " + paypalCurrencyCode);
                 
 				setMeasurementVariables();
-                //console.log("0000000000000 " + response.location.languages[0]["code"]);
-				 //"en";//response.location.languages[0]["code"]; //no
-                if(lc == null){
+                console.log("Language Code: " + response.location.languages[0]["code"]);
+                if(lc == response.location.languages[0]["code"]){
                         var lc = "en";
                     }else{
                         var lc = response.location.languages[0]["code"];
                 }
                 var cc = response.country_name;
-                $("#language-label").html($("#" + lc).text());
-                convert(currencyCode,"stripe"); 
+                
+                
 				createCookie("country_lookup",cc);
 				$("#country").val(cc);
                 
+                //Override language detection server-side in order to test language translation...
+                //remove "lc", ipstack generated language code to run in production
                 detectLanguage(lc);
+                
                 console.log("IP Stack: " + response.ip );
                 
 			}, "jsonp");

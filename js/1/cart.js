@@ -154,7 +154,7 @@
                 if(n == 0){firstMiddleLast = "cart-tab-first"};
                 if(n > 0 && n < m.length){firstMiddleLast = ""};
                 if(n == m.length - 1){firstMiddleLast = "cart-tab-last"};
-
+                //Number.isInteger
                 $("#cart-tab-button-container").append('<button data-languagekey = "cart-tab-' + tabNameSuffix + '" id = "tab' + tabNameSuffix + '" class = "cart-tab-buttons ' + firstMiddleLast + '"></button>');
                 $("#cart-outter-container").append('<div class = "cart-tabs" id = "cart-container-' + n + '"></div>');
                 w = m[n].cartItems;
@@ -162,10 +162,26 @@
                         y = w[j].items;
                         for(p in y){
                             a = y[p].columns;
-                            cartItem[mg] = a[3].price;
+                            //cartItem[mg] = a[3].price;
                             console.log("exchangeRate::::::::::::::::::::: " + exchangeRate);
-                            k = (cartItem[mg] * exchangeRate);
-                            adjustedTotal = Math.round(k.toFixed(2) * 1000) / 10;
+                            //If cart item price is a whole number skip math.floor/vanity number
+                            k = ( a[3].price * exchangeRate);
+                            X = parseFloat(a[3].price);
+                            L = Number.isInteger(X);
+                            console.log("|||||||||||||||||||||||||: " + L + " --->" + X);
+                            if(!L){
+                                k = Math.floor(k);
+                                //k = k.toFixed(0);
+                                k = k + ".95";
+                                k = parseFloat(k);
+                            }else{
+                                k = Math.round(k);
+                            }
+                            cartItem[mg] = k;
+                                
+                                //a[3].price;
+                            //adjustedTotal = Math.round(k.toFixed(2) * 1000) / 10;
+                            
                             shippingInterArr[mg] = a[4].shippingInt[0];
                             shippingUSArr[mg] = a[5].shippingUS[0];
                             formattedCurrency = formatCurrency(currencyCode,languageCode + "-" + countryCode,k);
@@ -307,7 +323,7 @@
             '        <div id = "cartItem-' + mg + '"  >' + productPrice + ' x</div>' +
             '    </div>'+
             '    <div class="grid-item-5">' +
-            '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onChange="addItemToCart(\'' + mg + '\');" value = "0" min="0" max="10000" >'+
+            '        <input type="number" tabindex = "1" class = "cart-qty" id = "k' + mg + '-qty" onInput="addItemToCart(\'' + mg + '\');" value = "0" min="0" max="10000" >'+
             '    </div>'+
             '</div>';
             mg++;
@@ -484,14 +500,15 @@
         
         for(E in cart){
             if(cartItem[E] !== undefined && cart[E].k[0] > 0){
-                //console.log("Cart Quantity: " + cart[E].k[0]);
-                //console.log("Item Price: " + cartItem[E]);
+                console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+                console.log("Cart Quantity: " + cart[E].k[0]);
+                console.log("Item Price: " + cartItem[E]);
                 c = (cart[E].k[0] * cartItem[E]);
                 p += c;
             } 
         }
         
-        ttl = (p * exchangeRate);
+        ttl = (p) ;// * exchangeRate);
 		if(currencyCode == "jpy"){
 			 minFractional = 0;
 		  }else{
@@ -605,6 +622,8 @@
 		})
 		return formatter.format(amount);
 	}
+
+
 
 	var cartItemCounter = 0;
 	var cartItemArray = [];

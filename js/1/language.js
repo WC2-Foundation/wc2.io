@@ -2,8 +2,11 @@
 
 function getLanguage(lc){
                 console.log("getLanguage(" + lc + ")");
+                $("#language-label").html($("#" + lc).text());
                 languageCode = lc;
                 cartBuilt = false;
+                console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                console.log(lc);
 				$.post("./php/get_native_language.php", {language_code: lc,}, 
 				   function(result){
                     
@@ -107,8 +110,10 @@ function getLanguage(lc){
 			}
         
         if(typeof override == "string"){
-			languageCode = override; 
+			languageCode = override;
+            convert(currencyCode,"stripe"); 
 			getLanguage(languageCode);
+            
             return;
             
         }
@@ -131,8 +136,9 @@ function getLanguage(lc){
 			console.log("LANGUAGE CODE = " + response);
 			//if(isDesbug().length > 0){response = isDesbug()};
 			languageCode = response; 
-            
+            convert(currencyCode,"stripe"); 
 			getLanguage(languageCode);
+            
 
 		});	
 
@@ -149,7 +155,7 @@ function languageSearch(all = false){
             z.innerHTML = "";
             X = $.parseJSON(result);
              $.each(X, function(i, obj) {
-                 $("#countries2").append("<li id = 'countryID'  onclick = \"getLanguage('" + obj.language_code + "');document.getElementById('language-label').innerHTML = '" + obj.language_name_translated + "';\">" + obj.language_name_translated + "</li>");
+                 $("#countries2").append("<li class = 'countryID' id = '" + obj.language_code + "'  onclick = \"getLanguage('" + obj.language_code + "');document.getElementById('language-label').innerHTML = '" + obj.language_name_translated + "';\">" + obj.language_name_translated + "</li>");
             })                 
         }
     })
