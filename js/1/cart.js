@@ -606,12 +606,12 @@
 		//currencyCode = 3 letter: USD
 		//locale = en-US
 		//amount = dollar amount
-		//currencyCode = "MXN";
+		//currencyCode = "MXN";  
 		//locale = "es-MX";
-
+        currencyCode = currencyCode.trim();
 		//Set non-decimal currency variable
-		//var minFractional = 2;
-		if(currencyCode == "jpy"){
+		var minFractional = 2;
+		if(currencyCode == "jpy"){ 
 			minFractional = 0;
 		}	
 		const formatter = new Intl.NumberFormat(locale, {
@@ -621,9 +621,9 @@
 		  minimumFractionDigits: minFractional
 		})
 		return formatter.format(amount);
-	}
-
-
+	} 
+ 
+  
 
 	var cartItemCounter = 0;
 	var cartItemArray = [];
@@ -707,7 +707,15 @@
                 currencyCode = "USD";
                 paypalCurrencyCode = "USD";
             }else{
-                exchangeRate = response;
+                if(response.indexOf(",") > -1){
+                    response = response.split(",");
+                    exchangeRate = response[0]; 
+                    currencyCode = response[1].trim();
+                    currencyCode = currencyCode.toLowerCase();
+                }else{ 
+                    exchangeRate = response; 
+                }
+                
                 console.log("#####################################################");
                 console.log("#####################################################");
                 console.log("exchangeRate: " + exchangeRate);

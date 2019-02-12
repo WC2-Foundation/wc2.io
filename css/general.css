@@ -1,12 +1,43 @@
+.ui-autocomplete{
+  border-radius: 15px;
+    border: none;
+   background-color: #FFF;
+}
+
+
 
 .ui-menu-item-wrapper{
-    color: #FFFFFF;
-	background-color: black;
+    color: #000;
 	font-family: 'Comfortaa', cursive;
-	height: 30px;
+    font-size: 15px;
+	height: 20px;
 	vertical-align: middle;
-	line-height: 30px;
+     padding: 5px;
+    margin: 0px;
+    border-bottom: 1px solid black;    
+
+}    
+
+
+
+
+.ui-menu-item .ui-menu-item-wrapper.ui-state-active {
+    background:#000 !important;
+    color: #ffffff !important;
+    padding-left: 5px;
+    padding-right: 5px;
+	font-family: 'Comfortaa', cursive;
+    font-size: 15px;
+	height: 20px;
+    margin: 0px;
+	vertical-align: middle;
+    border-bottom: 1px solid black; 
+    margin-top:-1px;
+    
 }
+
+
+
 
 #back{
 	cursor: pointer;
@@ -362,7 +393,7 @@
 	flex-direction:row;
 	position: relative;
 	float: left;
-	z-index: 340;
+	z-index: 30;
     left: 120px;
     top:-280px;
 
@@ -819,6 +850,7 @@ margin: 0 auto;
 	position: relative;
     margin-right: 40px;
     height:620px;
+    width: 670px;
 /*  display: flex;
   flex-wrap: nowrap;
  overflow:hidden;
@@ -1008,7 +1040,7 @@ label > span.brand {
 }
 
 .payment-methods-wrapper {
-	margin: 14px;
+margin:14px;
 }
 
 #instagram {
@@ -1206,7 +1238,8 @@ li.countryID:after {
 	position: absolute;
 	width: 600px;
     left:600px;
-    display: none;
+   visibility: hidden;
+
     
 	/*
     margin-left: 20px;	flex: 0 0 au
@@ -1412,18 +1445,21 @@ border-color: #FFFFFF;
 
 .grid-container-review {
 	display: inline-grid;
-	grid-template-columns:  100px auto auto 80px;
-	margin-right: 35px;
-	margin-top: 0px;
-	border-radius: 15px;
+	grid-template-columns: auto 175px 165px 80px auto;
+	margin-bottom: 15px;
 	cursor: pointer;
-	background-color: black;
-	width:575px;
-	border-bottom: solid;
+	background-color: #1B1B1B;
+	width:98%;
+    border-radius: 15px;
 	border-color: #FFFFFF;
+	border-style: solid;
 	border-width: 2px;
 	color:#FFFFFF;
-	font-family: 'Comfortaa', cursive;	
+	font-family: 'Comfortaa', cursive;
+}
+
+.grid-container-review-overflow {
+overflow-y: hidden!important;
 }
 
 .grid-container {
@@ -1581,6 +1617,7 @@ vertical-align: middle;
 
 #tag-along-logo:hover {
 	cursor: pointer;
+    background-image: url('../images/krane-logo-small-over.png');
 }
 
 #number-of-items-in-cart {
@@ -1672,6 +1709,9 @@ vertical-align: middle;
 
 
 
+
+
+
 .lds-dual-ring {
   display: inline-block;
   width: 64px;
@@ -1715,10 +1755,7 @@ vertical-align: middle;
 }
 
 #buy-on-amazon {
-    width: 280px;
-    height: 47px;
-     background:url("/images/Amazon.png") no-repeat;
-    border: 0px;
+
     cursor: pointer;
 }
 
@@ -2142,6 +2179,7 @@ width:200px;padding-left:15px;height: 30px; background-color: #CCC; border-radiu
 #order-details {
     display: block;
     left:0px;
+    visibility: visible;
 }
 
 #order-form-container {
@@ -2208,6 +2246,8 @@ a.thumbnail-links {
 #CC-review-order {
     padding-left: 0px;
     padding-top: 0px;
+    display: block;
+    visibility: hidden; 
 }
 
 #checkmark-k4 {
@@ -2457,6 +2497,7 @@ display: block;
 #review-order-container {
     width:100%;
     margin:0px;
+    visibility: visible;
 }
 
 #review-shipping-address {

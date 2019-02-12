@@ -321,11 +321,36 @@
                             </div>
                         </div>
                         
+                        
+                        
+                        
+                        
                         <div class="flex-item">
                             <div class="order-form-headings-small" id="buy-on-amazon-subheading" data-languagekey="buy-on-amazon-subheading"></div>
-                            <div class="payment-methods-wrapper">
-                                <button  id="buy-on-amazon" tabindex="2" ></button>
-                            </div>
+                            <div class="payment-methods-wrapper" >
+<!--                                buy-on-amazon-->
+                                <div style = "  display: table;
+  margin: 0 auto;"><div id = "buy-on-amazon" style=" white-space: nowrap; height: 47px;"><div style = "width: 47px;
+                                              line-height: 47px; 
+                                              display:inline-block;
+                                              height:47px;
+                                              background-image:url('images/buy_from_amazon_left.png');
+                                              margin: 0px;
+                                              background-repeat: no-repeat;z-index: 300"></div><div style="vertical-align: middle;
+                                                margin: 0px;
+                                                
+                                                margin-top: -30px;
+                                                display: inline-block;
+                                                 background-image:url('images/buy_amazon_bg.png');
+                                                 line-height: 47px;
+                                                 height: 47px;
+                                                padding: 0px 10px 0px 10px;
+                                                 font-size: 18px;
+                                                 font-family: Verdana, 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif';
+                                                 color: #000" data-languagekey = "buy-on"></div><div style = "width: 116px; display:inline-block;height:47px;background-image:url('images/buy_from_amazon_right.png');;margin: 0px;background-repeat: no-repeat;z-index: 300"></div>
+                                </div>
+                                
+                            </div></div>
                         </div>
                         <div id="payment-request-api-container" class="flex-item">
                             <div class="order-form-headings-small" id="pay-with-a-digital-wallet-subheading" data-languagekey="pay-with-a-digital-wallet-subheading"></div>
@@ -353,7 +378,7 @@
 
                                 <div style ="overflow-x: hidden;width: 100%; margin-left: 100px;">
 
-                                    <input value = "Sam"  tabindex="1" type="text" placeholder="Country" autocomplete="shipping country" data-languagekey="country" name="country" id="country" class="country">
+                                    <input  tabindex="1" type="text" placeholder="Country" autocomplete="shipping country" data-languagekey="country" name="country" id="country" class="country">
 
                                     <input value = "Sam"  tabindex="2" type="text" id="address1" name="address 1" placeholder="" data-languagekey="address1" class="order-form-inputs" style ="color:grey;width:400px;">
                                     <input value = "Sam" tabindex="3" type="text" id="address2" name="address 2" placeholder="" data-languagekey="address2" class="order-form-inputs" style ="color:grey;width:400px;">
@@ -370,8 +395,8 @@
                     </div>
 
 					<!-- Credit card info -->
-                    <div id="cc-inputs" class="order-containers" style="z-index: 300" >
-                        <div style ="height:300px;width:600px;"> 
+                    <div id="cc-inputs" class="order-containers" style="z-index: 10" >
+                        <div style ="height:300px;width:600px;z-index: 6;"> 
                             <div style ="width:475px;padding-left: 30px;">                               
                                 <div id="credit-card-subheading" data-languagekey="credit-card-subheading" class="order-form-headings-small" style ="margin-left:4px;margin-top:0px;margin-bottom: 15px;"></div>                           
                                 <div class="group">

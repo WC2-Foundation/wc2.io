@@ -210,7 +210,7 @@
 		//convert(currencyCode);
 	}else{
 			//First visit, grab language and currency data
-			$.get("https://api.ipstack.com/check?127.0.0.1&access_key=" + ipStackKey, function (response) {
+			$.get("https://api.ipstack.com/check?access_key=" + ipStackKey, function (response) {
 				var currencySymbol = response.currency.symbol;
                 
                 //103.106.250.36
@@ -220,7 +220,7 @@
                 console.log(response.currency.code.toLowerCase());
 				currencyCode = response.currency.code.toLowerCase(); //response.currency.code.toLowerCase(); //nok
                 console.log("currencyCode: " + currencyCode);
-                //TODO: fix paypal convert causes tabs to render twice etc 
+                //TODO: fix paypal convert causes tabs to render twice etc
                 //paypalCurrencyCode =  "usd"; //convert(currencyCode,"paypal"); //response.currency.code.toLowerCase();
 				countryCode = response.country_code;//response.country_code;
 				
@@ -252,7 +252,8 @@
                 
                 
 				createCookie("country_lookup",cc);
-				$("#country").val(cc);
+				//$("#country").val(cc);
+                shippingLocationGetLanguage(countryCode);
                 
                 //Override language detection server-side in order to test language translation...
                 //remove "lc", ipstack generated language code to run in production

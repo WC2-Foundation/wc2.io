@@ -164,3 +164,32 @@ function languageSearch(all = false){
 
 
 
+
+function shippingLocationGetLanguage(countryCode){
+    //get_shipping_country_in_native_language.php
+        $.get("./php/get_shipping_country_in_native_language.php", {country_code: countryCode}, function(result){ 
+            $("#country").val(result);
+                
+
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

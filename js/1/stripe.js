@@ -54,13 +54,14 @@
 
     function paymentRequestButton(){
  		//re-create stripe payment request button with new values 
+         //button.addEventListener('click', paymentRequest.show);
 		prButton = elements.create('paymentRequestButton', {
 		  paymentRequest: paymentRequest,
 		 style: {
 			paymentRequestButton: {
 			  type: 'default',
 			  theme: 'light-outline',
-			  height: '40px',
+			  height: '40px'
 			}
 		  }
 		})
@@ -70,9 +71,9 @@ function createPaymentRequestObj(){
 
 		paymentRequest = stripe.paymentRequest({
 			country: 'US',
-			currency: currencyCode,
+			currency: currencyCode.toLowerCase(),
 			total: {
-			label: 'Total: ',
+			label: 'Total: ', 
 			amount: calculatedTotal,
 			},
 			requestShipping: true,
@@ -276,18 +277,17 @@ function cartDisplayItems(){
                     $("#order-complete").fadeIn(250);
                     $("#order-complete").animate({left: '0px'});
                     setInterval(function(){fillHoles(11,true)},400);
-                    console.log("res: " + result);
-                    
+                    console.log("res: " + result); 
 				}else{
                     nextDiv[0] = 5;
                     containerID = 0;
                     $("#main").css('visibility', 'visible');
-                    console.log("nextDiv[0]: " + nextDiv[0]);
+                    console.log("checkout failed"); 
+                    console.log("Result: " + result);
                     navigate(false);
-                    console.log("checkout failed");
                     var errorElement = document.querySelector('.error');
                     errorElement.textContent = result;
-                    errorElement.classList.add('visible');
+                    errorElement.classList.add('visible');  
                     $("#checkout-spinner").fadeOut(250);
                     $("#review-container").fadeTo(250,1.0);
 			}
