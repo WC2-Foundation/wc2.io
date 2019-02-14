@@ -28,7 +28,9 @@
                 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
                 <script src="js/0/scrollbars.js" ></script>
                 <script src="js/0/svg.js" ></script>
-                <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/libphonenumber-js/1.7.8/libphonenumber-js.min.js"></script>-->
+                <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/libphonenumber-js/1.7.8/libphonenumber-js.min.js"></script>
+https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f248021e2be1a43fc422d9008d8d.css
+-->
                 <script src="https://js.stripe.com/v3/"></script>
                 
                 <!-- truthserum.io -->
@@ -338,7 +340,6 @@
                                               margin: 0px;
                                               background-repeat: no-repeat;z-index: 300"></div><div style="vertical-align: middle;
                                                 margin: 0px;
-                                                
                                                 margin-top: -30px;
                                                 display: inline-block;
                                                  background-image:url('images/buy_amazon_bg.png');
@@ -354,9 +355,12 @@
                         </div>
                         <div id="payment-request-api-container" class="flex-item">
                             <div class="order-form-headings-small" id="pay-with-a-digital-wallet-subheading" data-languagekey="pay-with-a-digital-wallet-subheading"></div>
-                            <div class="payment-methods-wrapper" tabindex="3" >
+                            <div class="payment-methods-wrapper" tabindex="3">
                                 <div id="payment-request-button-wrapper">
-                                    <div id="payment-request-button"   style ="width:200px;margin: 0 auto; text-align: center;"></div>
+                                    <div id="payment-request-button" data-languagekey = "pay-now"  style = "border:none;  
+                                                                                                               width:200px;
+                                                                                                               margin: 0 auto;
+                                                                                                               text-align: center;"></div>
                                 </div>
                             </div>
                         </div>
@@ -454,10 +458,7 @@
                                         </div>
                                     </div>
                                 </div>
-                              
-                            
-                            
-                            </div>
+                          </div>
                             
 						        
 						
@@ -479,17 +480,68 @@
 					
 					<!-- Paypal review details -->
                     <div id="paypal" class="order-containers">
-						<div class="order-form-headings" data-languagekey="pay-with-paypal-subheading" style ="margin-left:-20px;text-align: center;margin-bottom: 30px;"></div>						
-						<div style ="text-align: center;" tabindex="-1" id="paypal-button-container"></div>
-						<div id="confirm" class="hidden">
-							<span class="order-form-headings-small" data-languagekey = "order-form-subheading-2" ></span>
-							<div><span class="order-form-headings-small" id="recipient"></span>, <span class="order-form-headings-small" id="line1"></span>, <span id="paypal-city"></span></div>
-							<div><span class="order-form-headings-small" id="paypal-state"></span>, <span class="order-form-headings-small" id="paypal-zip"></span>, <span class="order-form-headings-small" id="paypal-country"></span></div>
-							<button id="confirmButton" data-languagekey = "paypal-complete-payment" tabindex="-1"></button>
-						</div>
-						<div id="thanks" class="hidden">
-							Thanks, <span id="thanksname"></span>!
-						</div>
+                        
+                     
+                        
+                       
+						<div id = "review-container" style ="height:620px;width:600px;margin-left:0px;">
+						<div id = "checkout-spinner" style = "z-index: 80000; float: left; position: absolute;top:100px;left: 280px;display: none;" >
+							<div class = "lds-dual-ring"></div>
+						</div>	
+						<div class="order-form-headings" data-languagekey = "review-order-heading" style =";text-align: center;margin: 0px;"></div>
+                        <span id = "shipping-offer" data-languagekey = "shipping-offer" class="order-form-headings-extra-small"></span>
+
+                    <div id = "paypal-review-order-container"></div>	
+                          <div id = "review-order-shipping">
+                                <div style="width: 100%; display: table;">
+                                    <div style="display: table-row">
+                                        <div style="width: 50%; display: table-cell;line-height: 1.5;"  id = "review-shipping-address"
+                                             class="order-form-headings-extra-small">[<a onClick="navigate(false);">x</a>]<br>Swam Slofoffer<br>830 Rebecca Drive<br>Boulder Creek Ca, 95006
+                                        </div>
+                                        <div style="display: table-cell;width: 50%;text-align: right">
+                                            <div style="height: 50px;padding: 10px;">
+                                                <span class="order-form-labels-small" id = "order-review-shipping-label" data-languagekey = "shipping-total" style="margin:0px; width:175px; height:20px;"></span><span  class="order-form-labels-small" style="margin:0px;">: $4.95</span><br>
+                                                <hr/>
+                                            </div>
+                                         <div id="review-order-price" data-languagekey="total" ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                            
+                            
+                            </div>
+                            
+						        
+						
+							<div style=" text-align: right;padding: 20px;padding-right: 25px;">
+								<button id = "buy-now" tabindex="-1" >
+                                    &nbsp;<i class="fas fa-shopping-cart" ></i> <span data-languagekey = "buy-now"></span> &nbsp;
+								</button>
+							</div>
+						</div>	
+                                
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div style = "display:none">
+                            <div class="order-form-headings" data-languagekey="pay-with-paypal-subheading" style ="margin-left:-20px;text-align: center;margin-bottom: 30px;"></div>						
+                            <div style ="text-align: center;" tabindex="-1" id="paypal-button-container"></div>
+                            <div id="confirm" class="hidden">
+                                <span class="order-form-headings-small" data-languagekey = "order-form-subheading-2" ></span>
+                                <div><span class="order-form-headings-small" id="recipient"></span>, <span class="order-form-headings-small" id="line1"></span>, <span id="paypal-city"></span></div>
+                                <div><span class="order-form-headings-small" id="paypal-state"></span>, <span class="order-form-headings-small" id="paypal-zip"></span>, <span class="order-form-headings-small" id="paypal-country"></span></div>
+                                <button id="confirmButton" data-languagekey = "paypal-complete-payment" tabindex="-1"></button>
+                            </div>
+                            <div id="thanks" class="hidden">
+                                Thanks, <span id="thanksname"></span>!
+                            </div>
+                        </div>
+                        
+                        
                     </div>  
                 </div>   
             </div>

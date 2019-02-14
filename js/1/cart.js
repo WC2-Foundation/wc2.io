@@ -56,6 +56,7 @@
                 {"functionName" : "showHideMainNav",  "reverse" : false, "parameters":[true,false]},
                 {"functionName" : "showHideMainNav",  "reverse" : true, "parameters":[true,true]},
                 {"functionName" : "saveCustomerInformation",  "reverse" : false, "parameters":[]},
+                {"functionName" : "buildShoppingCart2", "reverse" : false, "parameters":["paypal-review-order-container"]},
                 {"functionName" : "fillHoles",  "reverse" : false, "parameters":[1]}
             ]},
             {"name" : "pay-with", "functions" : [
@@ -247,13 +248,13 @@
         }
 
 
-        function translateCart2(){
+        function translateCart2(addToParentContainer){
             console.log("translateCart2(): " + languageCode);
             $.post("./php/get_native_language.php", {language_code: languageCode}, 
                function(result){
                         var j = 0;
                         var langDocument = JSON.parse(result);
-                        var tags = document.getElementById('review-order-container').querySelectorAll('div,input,span,a,label,option,textarea,select,button');
+                        var tags = document.getElementById(addToParentContainer).querySelectorAll('div,input,span,a,label,option,textarea,select,button');
                         Array.from(tags).forEach(function(value, index){
                             var key = value.dataset.languagekey;
                             j++;  
@@ -301,8 +302,9 @@
                     $("#order-review-shipping-label").boxfit({maximum_font_size: 18, width:185, height: 20}); 
                     
                      $("#CC-review-order").css("visibility","visible");
-                    $("#tab1").click();
-                    $("#cart-container-0").show();
+
+                    //$("#tab1").click();
+                    //$("#cart-container-0").show();
                 }
             );
         }
@@ -331,13 +333,12 @@
         }
     
         var mg2 = 0;
-        function buildShoppingCart2(){
-
-
+        function buildShoppingCart2(addToParentContainer){
+   
                 io = 0;
                 m = cartObj.cartTabs;
                 var listCounter = 0; 
-                $("#review-order-container").empty();
+                $("#" + addToParentContainer).empty();
                 for(n in m){
                     tabName = m[n].tabName;
                     w = m[n].cartItems;
@@ -357,7 +358,7 @@
                                 if(cart[io].k[0] > 0){
                                     formattedCurrency = formatCurrency(currencyCode,languageCode + "-" + countryCode,g);
                                     newItem = createCartRow2(a[0].title,a[1].title,a[2].size,formattedCurrency,cart[io].k[0]);
-                                    $("#review-order-container").append(newItem);
+                                    $("#" + addToParentContainer).append(newItem);
                                     listCounter++;
                                 }
                                 io++;
@@ -372,15 +373,14 @@
                 //$("#m" + listCounter).addClass("disableCartItems");
                listCounter++;
             }*/
+            //review-order-container
             
             if(listCounter < 3){
-                $("#review-order-container").addClass("grid-container-review-overflow");
+                $("#" + addToParentContainer).addClass("grid-container-review-overflow");
             }
             
             console.log("listCounter: " + listCounter);
             if(listCounter == 2){
-                
-              
                 //document.getElementsByClassName("review-cart-tab").style.overflowY = "hidden";
                 //$("#review-order-shipping").css({width: "575px"});
             }
@@ -389,9 +389,9 @@
                 //$("#review-order-shipping").css({top: "140px"});
             //    $("#review-order-shipping").css({width: "575px"});
             }
-            $("#review-order-container").addClass("review-cart-tab");
-            $("#review-order-container").show();
-            translateCart2();
+            $("#" + addToParentContainer).addClass("review-cart-tab");
+            $("#" + addToParentContainer).show();
+            translateCart2("review-order-container");
             //$("#m0").addClass("disableCartItems");
         }
 
@@ -562,9 +562,11 @@
         if(showNext){
                 $('#next').show(300);
                 $('#next-button-label').show(300);
+            $('#next-button-label').css({visibility: "visible"});
             }else{
                 $('#next').hide(300);
                 $('#next-button-label').hide(300);
+                 $('#next-button-label').css({visibility: "hidden"});
         }
     }
 
@@ -590,7 +592,8 @@
             //console.log("--->" + result);
 
             
-            buildShoppingCart2();
+            buildShoppingCart2("review-order-container");
+            
             
             if(result > 0){
                     return true;

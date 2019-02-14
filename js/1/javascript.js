@@ -136,12 +136,9 @@
     var shippingInternational = "9.00";
     var cartItem = [];
 	var arrayOfImages = [];
+
 	arrayOfImages[0] = "images/main_image_lights_off.png";
 	preload(arrayOfImages);
-
-
-
-
 
     function showTagalongOnScroll(){
         var scrollAmount = $(window).scrollTop();
@@ -151,7 +148,6 @@
             $("#tagalongBar-container").hide();
         }
     }
-
 
 
     //#############################################################	

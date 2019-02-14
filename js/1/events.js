@@ -159,6 +159,7 @@ function loadEvents() {
         
 		
 		$("#pay-with-paypal").on('click', function(e){
+            //containerID is containerobj array number
             containerID = 1;
             navigate(true);
 		});

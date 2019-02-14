@@ -13,6 +13,7 @@
 		errorElement.classList.remove('visible');
         
         console.log("result.token: " + result.token);
+        
 		if(result.token){
 				//A token was generated successfully
 				console.log("Token generated successfully::: " + result.token.id);
@@ -22,7 +23,9 @@
                 $("#CC-review-order").css('visibility', 'visible');
                 $("#review-order-container").css('visibility', 'visible');
                 $("#CC-review-order").animate({left: '0px'});
-                $("#main").css('visibility', 'hidden');
+                //$("#main").css('visibility', 'hidden');
+                //showHideMainNav([true,true]);
+             $('#next-button-label').css({visibility: "hidden"});
                 return true;
             
 			}else if (result.error) {
@@ -303,7 +306,14 @@ function cartDisplayItems(){
             // Check the availability of the Payment Request API first.
         console.log("isWebAPIavaiable();");
             paymentRequest.canMakePayment().then(function(result) {
+                
+                console.log("--->" + result.applePay);
+                console.log("--->" + result.applePay);
+                
+                
                 if(result){
+                    //let button = document.getElementById('payment-request-button');
+                    //button.addEventListener('click', paymentRequest.show);
                     prButton.mount('#payment-request-button');
                     paymentAPIavailable = true;
                     moveNavPayAPI();
