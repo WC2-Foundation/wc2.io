@@ -22,8 +22,6 @@
       'unknown': 'pf-credit-card',
     }
     
-    
-    
     var nextDiv = [];
     var navPositionObj = {
         "positions" : [
@@ -101,7 +99,7 @@
     }
 
     function navigate(forward){
-        
+        console.log("navigate(" + forward + ")");
         if(!forward && nextDiv[containerID] == 0){return};
         var j, functions = forward ? containers[containerID][nextDiv[containerID]].functions : containers[containerID][nextDiv[containerID]-1].functions;
         for(j in functions){
@@ -118,14 +116,10 @@
                 }
             }
         }
-        
-        
-        
-        console.log("Container Name: " + containers[containerID][nextDiv[containerID]].name);
+
         if(navPositionObj.positions[containerID].functions[nextDiv[containerID]].skipContainerAnimation == true && forward){return};
         if(nextDiv[containerID] >= containersObj.containers.length - 1 && forward){return};
         forward ? nextDiv[containerID]++ : nextDiv[containerID]--;
-        //console.log("containerID: " + containerID);
         animateContainers(forward,containerID);
         if(navPositionObj.positions[containerID].functions[nextDiv[containerID]].name == "start"){containerID = 0;}
 
@@ -155,7 +149,6 @@
                 if(n == 0){firstMiddleLast = "cart-tab-first"};
                 if(n > 0 && n < m.length){firstMiddleLast = ""};
                 if(n == m.length - 1){firstMiddleLast = "cart-tab-last"};
-                //Number.isInteger
                 $("#cart-tab-button-container").append('<button data-languagekey = "cart-tab-' + tabNameSuffix + '" id = "tab' + tabNameSuffix + '" class = "cart-tab-buttons ' + firstMiddleLast + '"></button>');
                 $("#cart-outter-container").append('<div class = "cart-tabs" id = "cart-container-' + n + '"></div>');
                 w = m[n].cartItems;
@@ -163,26 +156,18 @@
                         y = w[j].items;
                         for(p in y){
                             a = y[p].columns;
-                            //cartItem[mg] = a[3].price;
-                            console.log("exchangeRate::::::::::::::::::::: " + exchangeRate);
-                            //If cart item price is a whole number skip math.floor/vanity number
+                            //If cart item price is a whole number skip math.floor 9/5 marketing number
                             k = ( a[3].price * exchangeRate);
                             X = parseFloat(a[3].price);
                             L = Number.isInteger(X);
-                            console.log("|||||||||||||||||||||||||: " + L + " --->" + X);
                             if(!L){
                                 k = Math.floor(k);
-                                //k = k.toFixed(0);
                                 k = k + ".95";
                                 k = parseFloat(k);
-                            }else{
-                                k = Math.round(k);
+                                }else{
+                                    k = Math.round(k);
                             }
                             cartItem[mg] = k;
-                                
-                                //a[3].price;
-                            //adjustedTotal = Math.round(k.toFixed(2) * 1000) / 10;
-                            
                             shippingInterArr[mg] = a[4].shippingInt[0];
                             shippingUSArr[mg] = a[5].shippingUS[0];
                             formattedCurrency = formatCurrency(currencyCode,languageCode + "-" + countryCode,k);
@@ -259,7 +244,6 @@
                             var key = value.dataset.languagekey;
                             j++;  
                             c = value.id;
-                            console.log("langDocument[key]: " + langDocument[key]);
                             if(langDocument[key] && c !== "total" && c !== "you-have-number-of-items-in-cart"){
                                 value.placeholder = langDocument[key];
                                 if(c.indexOf("cartColumn3-") == 0){
@@ -287,9 +271,6 @@
                             ship = freeWorldShippingOver * exchangeRate;
                     }
                 
-                    
-                
-                    console.log('langDocument["shipping-offer-not-US"]: ' + langDocument["shipping-offer-not-US"] + " === " + countryCode);
                     ship = formatCurrency(currencyCode,languageCode + "-" + countryCode,ship.toFixed(0),0);
                     if(countryCode == "US"){
                             $('*[data-languagekey="shipping-offer"]').html(langDocument["shipping-offer"] + " " + ship);
@@ -297,16 +278,10 @@
                             $('*[data-languagekey="shipping-offer"]').html(langDocument["shipping-offer-not-US"] + " " + ship);
                     }
                 
-                    //order-review-shipping-label
-                //console.log("******************************************" + document.getElementById("order-review-shipping-label").innerHTML);
                     $("#order-review-shipping-label").boxfit({maximum_font_size: 18, width:185, height: 20}); 
-                    
-                     $("#CC-review-order").css("visibility","visible");
-
-                    //$("#tab1").click();
-                    //$("#cart-container-0").show();
+                    $("#CC-review-order").css("visibility","visible");
                 }
-            );
+            )
         }
 
         function createCartRow(productName,productModel,productSize,productPrice){
@@ -334,7 +309,6 @@
     
         var mg2 = 0;
         function buildShoppingCart2(addToParentContainer){
-   
                 io = 0;
                 m = cartObj.cartTabs;
                 var listCounter = 0; 
@@ -346,15 +320,12 @@
                             y = w[j].items;
                             for(p in y){
                                 a = y[p].columns;
-                                //cartItem[mg] = a[3].price;
                                 g = (cartItem[io] * exchangeRate);
                                 adjustedTotal = Math.round(g.toFixed(2) * 1000) / 10;
-                                //console.log("======> " + cart[mg].k[0]);
                                 //shippingInterArr[mg] = a[4].shippingInt[0];
                                 //shippingUSArr[mg] = a[5].shippingUS[0];
                                 //mm = cart[io].k[0];
                                 //console.log("***> " + mm); 
- 
                                 if(cart[io].k[0] > 0){
                                     formattedCurrency = formatCurrency(currencyCode,languageCode + "-" + countryCode,g);
                                     newItem = createCartRow2(a[0].title,a[1].title,a[2].size,formattedCurrency,cart[io].k[0]);
@@ -364,40 +335,18 @@
                                 io++;
                             }  
                         }
-                }
-            
-/*           while(listCounter < 3){
-                //newItem = createCartRow2("","","","","",true);
-                //$("#review-order-container").addClass("review-cart-tab");
-                //$("#review-order-container").append(newItem);
-                //$("#m" + listCounter).addClass("disableCartItems");
-               listCounter++;
-            }*/
-            //review-order-container
+                } 
             
             if(listCounter < 3){
                 $("#" + addToParentContainer).addClass("grid-container-review-overflow");
             }
-            
-            console.log("listCounter: " + listCounter);
-            if(listCounter == 2){
-                //document.getElementsByClassName("review-cart-tab").style.overflowY = "hidden";
-                //$("#review-order-shipping").css({width: "575px"});
-            }
-            if(listCounter == 1){
-                 //document.getElementsByClassName("review-cart-tab").style.overflowY = "hidden";
-                //$("#review-order-shipping").css({top: "140px"});
-            //    $("#review-order-shipping").css({width: "575px"});
-            }
             $("#" + addToParentContainer).addClass("review-cart-tab");
             $("#" + addToParentContainer).show();
             translateCart2("review-order-container");
-            //$("#m0").addClass("disableCartItems");
         }
 
         function createCartRow2(productName,productModel,productSize,productPrice,qty,blankRow = false){
             
-            //qty > 0 ? a = "visible" : a = "hidden";
             var rowClass;
             blankRow ? rowClass = "" : "";
             var returnCart = '<div id = "m' + mg2 + '" class="grid-container-review" >' +
@@ -426,23 +375,20 @@
             return returnCart;
         }
     
-
-
-
-    function calculateShipping(location){
-        console.log("calculateShipping(" + location + ")");
-        if(location == "US"){
-                //exchangeRate
-                newTotal = (shippingUS * 100);
-                calculatedAmount = (newTotal + calculatedTotal);
-                return newTotal;
+        function calculateShipping(location){
+            console.log("calculateShipping(" + location + ")");
+            if(location == "US"){
+                    //exchangeRate
+                    newTotal = (shippingUS * 100);
+                    calculatedAmount = (newTotal + calculatedTotal);
+                    return newTotal;
+            }
+            if(location == "international"){
+                    newTotal = (shippingInternational * 100);
+                    calculatedAmount = newTotal + calculatedTotal;
+                    return newTotal;
+            }
         }
-        if(location == "international"){
-                newTotal = (shippingInternational * 100);
-                calculatedAmount = newTotal + calculatedTotal;
-                return newTotal;
-        }
-    }
     
 		function setBrandIcon(brand) {
 			
@@ -460,9 +406,6 @@
 		}
 
 
-
-
-
     function calculateDiscountedTotal(setInputs = false){
 		
 		var kraneqty = $('#k1-qty').val();
@@ -470,8 +413,6 @@
         //cartitems = prices
 		var q = k1 + k2 + k3 + k4;
 		ttl = (q * exchangeRate);
-		//ttl = Math.floor(ttl);
-        //$("#a").addClass("disableCartItems");
         ttl = ttl.toFixed(2);
         calculatedTotal = Math.round(ttl * 1000) / 10;
         if(setInputs){setOrderDetailInputs(true)};
@@ -495,12 +436,10 @@
 		console.log("calculateTotal(" + setInputs + ")");
 		var kraneqty = $('#k1-qty').val();
 		var extenqty = $('#extensions').html();
-        //cartitems = prices
         var p = 0;
         
         for(E in cart){
             if(cartItem[E] !== undefined && cart[E].k[0] > 0){
-                console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
                 console.log("Cart Quantity: " + cart[E].k[0]);
                 console.log("Item Price: " + cartItem[E]);
                 c = (cart[E].k[0] * cartItem[E]);
@@ -508,7 +447,7 @@
             } 
         }
         
-        ttl = (p) ;// * exchangeRate);
+        ttl = (p);
 		if(currencyCode == "jpy"){
 			 minFractional = 0;
 		  }else{
@@ -529,7 +468,6 @@
 			return false;
 		}
 		return true;
-		 
 	}
 
 
@@ -589,12 +527,7 @@
             "cart": JSON.stringify(cart),
             "shippingAddress": JSON.stringify(shippingAddress)
         }, function(result){
-            //console.log("--->" + result);
-
-            
             buildShoppingCart2("review-order-container");
-            
-            
             if(result > 0){
                     return true;
                 }else{
@@ -606,27 +539,19 @@
 
 	function formatCurrency(currencyCode,locale,amount,minFractional = 2){
         console.log("formatCurrency(" + currencyCode + "," + locale + "," + amount + "," + minFractional + ")");
-		//currencyCode = 3 letter: USD
-		//locale = en-US
-		//amount = dollar amount
-		//currencyCode = "MXN";  
-		//locale = "es-MX";
         currencyCode = currencyCode.trim();
-		//Set non-decimal currency variable
-		var minFractional = 2;
-		if(currencyCode == "jpy"){ 
-			minFractional = 0;
-		}	
-		const formatter = new Intl.NumberFormat(locale, {
-		  style: 'currency',
-		  currency: currencyCode,
-		  currencyDisplay: 'symbol',
-		  minimumFractionDigits: minFractional
-		})
-		return formatter.format(amount);
-	} 
- 
-  
+        var minFractional = 2;
+        if(currencyCode == "jpy"){ 
+            minFractional = 0;
+        }	
+        const formatter = new Intl.NumberFormat(locale, {
+          style: 'currency',
+          currency: currencyCode,
+          currencyDisplay: 'symbol',
+          minimumFractionDigits: minFractional
+        })
+        return formatter.format(amount);
+	}
 
 	var cartItemCounter = 0;
 	var cartItemArray = [];
@@ -695,15 +620,9 @@
 
     function convert(CC,processor){
         console.log("convert(" + CC + "," + processor + ")");
-        //Uncomment to test
-        //CC = "SEK";
-        //currencyCode = CC.toLowerCase();
-        //languageCode = "sv";
-        
         $.get("./php/currency_lookup.php?currency_code=" + CC + "&CCprocessorName=" + processor, function (response) {
 
-            //If currency is not found in database, set 1 US Dollar and
-            //update currency code variable
+            //If currency is not found in database, set 1 US Dollar and update currency code variable
             paypalCurrencyCode = "USD";
             if(!response){
                 exchangeRate = 1;
@@ -728,13 +647,9 @@
                     buildShoppingCart();
                     cartBuilt = true;
                 }
-                //detectLanguage(lc);
                 mg = 0;
-
                 calculateTotal();  
             }
-            
-
         });	
     }
 
