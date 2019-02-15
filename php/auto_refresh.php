@@ -13,7 +13,8 @@
 
 Browser refresh script
 
-This script requires the following icrontab entry
+This script requires the following incrontab entry
+centos: yum install incron
 
 open icrontab:
 incrontab -e
