@@ -3,11 +3,12 @@
 <!--
 	HTML/CSS/JS by Sam Stauffacher
 -->
-<html lang="en"><head>
+<html lang="en">
+    <head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=940, initial-scale=.4, maximum-scale=1" />
 		<meta name="description" content="Krane builds uniquely designed smartphone suspension devices made from renewable and responsibly sourced materials."/>
-		<title>Krane - Smartphone Elevator</title>
+		<title>Krane - Smartphone Elevator</title> 
 		
 				<!-- CSS --> 
 				<link rel="stylesheet" href="css/general.css" >
@@ -16,11 +17,11 @@
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paymentfont/1.1.2/css/paymentfont.min.css">
 				<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
 		
-				<!-- FONT AWESOME -->
+				<!-- FONT AWESOME --> 
 				<link rel="stylesheet" href="./css/fontawesome-all.min.css">
 
 				<!-- JS -->
-                <script src="js/0/jquery.min.js" ></script>
+                <script src="js/0/jquery.min.js" ></script> 
                 <script src="js/0/jquery.UI.min.js" ></script>
                 <script src="js/0/jquery.validate.min.js" ></script>
                 <script src="js/0/jquery.boxfit.js"></script>
@@ -35,8 +36,8 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
                 
                 <!-- truthserum.io -->
                     <script src="js/truthserum.io.js"></script>
-                    <script src="js/1/javascript.js"></script>
                     <script src="js/1/utilities.js"></script>
+                    <script src="js/1/javascript.js"></script>
                     <script src="js/1/language.js"></script>
                     <script src="js/1/paypal.js"></script>
                     <script src="js/1/stripe.js"></script>
@@ -114,39 +115,6 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
 	<div class = "heading" data-languagekey = "welcome-to" ></div>
 
 	<div id = "krane-about">
-		
-<!--		<span id = "above-laptop" style = "font-weight: bold;" >
-			A Sustainably Built Phone & Tablet Elevator</span>
-		<br><br>
-		The choice is yours my friend, either grow a third arm or get yourself a Krane!<br><br>
-		
-		
-		Whether you're a serious student trying to increase screen real estate <span id = "above-laptop-22" style = "text-decoration: underline;font-weight: bold; cursor: pointer" >above your laptop,</span> or 
-		simply binge-watching your favorite Netflix show into the wee hours of the night, the Krane elevator is a great way 
-		to get the most out of your favorite smartphone device 
-		<span id = "above-laptop-2" style = "text-decoration: underline;font-weight: bold; cursor: pointer" >
-		around the house</span> or even in the <span id = "above-laptop-3" style = "text-decoration: underline;font-weight: bold; cursor: pointer" >kitchen</span>.
-		
-		
-        <div id = "hand-jive">
-
-        <i class="fa fa-hand-paper" style = "font-size:28px;"></i>
-        <i class="fa fa-hand-paper" style ="font-size:28px;"></i>
-        <i class="fa fa-hand-paper" style ="font-size:28px;"></i>
-				
-		<br><br>
-
-		Just imagine how much money you'll save long-term on third-hand gloves if you were to 
-				<span style = "text-decoration: underline;font-weight: bold; cursor: pointer" onClick="$('html, body').animate({scrollTop: $('#order-krane').offset().top}, 1000);">order a Krane</span> today.<br><br>
-
-
-
-
-	</div>	-->		
-		
-<!--		
-		<br><br>
-		<div id = "carousel"></div><br><br>-->
         
 	</div>	
 
@@ -154,60 +122,7 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
 
 	
 	
-<!--	<div id = "krane-environs" >	
-		<div class = "rounded-header" >Krane - Material Usage and Sustainability</div>
-		<br><br>
-		<span id = "above-laptop-4" >Something to Feel Good About</span>
-		<br><br>
-			Built with sustainability in mind, Krane places energy-efficiency as our highest priority when sourcing
-			materials as well as throughout the entire manufacturing process end-to-end; from responsibly sourced wood, to recycled materials, to long-term 
-			plans to run our equipment from solar, Krane strives to someday become a more responsible, carbon-neutral place of business.
-			<br><br>
-			something something about average lcd television vs phone, biodegradability etc
-			<br>
-			newer LCD/LED type average 91.5 watts<br>
-			<br>
-			Phones use approximately 2 to 6 watts while charging<br>
-	</div>
-	
-	
-	<div id = "which-krane">
-		Which size Krane is right for me?
-	</div>
-	
-	<img style = "margin-top:25px;" alt = "Measuring Tape" src = "images/metric_tape_measure.png">
 
-	<div id = "krane-size">
-		Our standard size Krane, which extends up to <span class = "standard-krane-length"></span> <span class = "measurement-string"></span>, is ideally suited for places where your back rests close to
-		where the Krane will be mounted. 
-		<br><br>
-		Our Jumbo Krane, with a total reach of <span class = "jumbo-krane-length"></span> <span class = "measurement-string"></span>, works well with reclining chairs, beds with extended headboards, large bean bags or any other
-		place that seats the viewer several <span class = "measurement-string"></span> away from where the Krane is to be mounted. 
-		<br><br>
-		<div class = "measurement-outter-container" >
-			Standard Krane: <span class = "measurement-container" ><b><span class = "standard-krane-length"></span> 
-			<span class = "measurement-string"></span> (maximum)</b></span> 
-		</div>
-		
-		<div class = "measurement-outter-container" >
-		<i class="fa fa-plane" style ="font-size:28px;"></i> Jumbo Krane: <span class = "measurement-container" ><b><span class = "jumbo-krane-length"></span>
-		<span class = "measurement-string"></span> (maximum)</b></span><br><br>
-		</div>
-		
-		The easiest way to decide is to grab a tape measure and determine the distance between the surface behind you (wall, headboard etc.) and where you'd like
-		your device to be positioned in front of you.
-		<br><br>
-		Our most popular model is the standard size Krane, which seems to suit most peoples' needs.
-		
-	</div>-->
-	
-	
-
-<!--    <div id="about-images-container-1">
-        <div id="photo1" class="photos"></div>
-        <div id="photo2" class="photos"></div>
-        <div id="photo3" class="photos"></div>
-    </div>-->
 
 	<button id = "standard-krane-add-to-cart" onClick="addItemToCart('0',1);"  >
 		<i class="fas fa-shopping-cart" style = "padding-left:30px;"></i> Standard Krane ( extends to <span class = "standard-krane-length"></span><span class = "length-symbol"></span> ) <i class="fas fa-check" style = "padding-left:5px;color: black"></i>
@@ -495,36 +410,48 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
                           <div id = "review-order-shipping">
                                 <div style="width: 100%; display: table;">
                                     <div style="display: table-row">
-                                        <div style="width: 50%; display: table-cell;line-height: 1.5;"  id = "review-shipping-address"
-                                             class="order-form-headings-extra-small">[<a onClick="navigate(false);">x</a>]<br>Swam Slofoffer<br>830 Rebecca Drive<br>Boulder Creek Ca, 95006
+                                        <div style="width: 50%; display: table-cell;line-height: 1.5;"  id = "review-shipping-address" class="order-form-headings-tiny-text">
+                                            [<a onClick="navigate(false);">x</a>]
+                                            <span class="order-form-headings-tiny-text" id="recipient"></span>
+                                            <span class="order-form-headings-tiny-text" id="line1"></span>
+                                            <div style = "display: inline-block;white-space: nowrap;">
+                                                <span id="paypal-city"  class="order-form-headings-tiny-text" style = "display:inline-block; white-space: normal;"></span>
+                                                <span class="order-form-headings-tiny-text" id="paypal-state" style = "display:inline-block; white-space: normal;" ></span>
+                                                <span class="order-form-headings-tiny-text" id="paypal-zip" style = "display:inline-block; white-space: normal;"></span>
+                                            </div>
+                                            <span  class="order-form-headings-tiny-text" id="paypal-country"></span>
                                         </div>
                                         <div style="display: table-cell;width: 50%;text-align: right">
                                             <div style="height: 50px;padding: 10px;">
                                                 <span class="order-form-labels-small" id = "order-review-shipping-label" data-languagekey = "shipping-total" style="margin:0px; width:175px; height:20px;"></span><span  class="order-form-labels-small" style="margin:0px;">: $4.95</span><br>
+                                                
                                                 <hr/>
                                             </div>
                                          <div id="review-order-price" data-languagekey="total" ></div>
                                         </div>
                                     </div>
                                 </div>
-                              
-                            
-                            
                             </div>
-                            
-						        
-						
 							<div style=" text-align: right;padding: 20px;padding-right: 25px;">
-								<button id = "buy-now" tabindex="-1" >
+                                <div style ="text-align: center;" tabindex="-1" id="paypal-button-container" style = "display:none"></div>
+								<!--<button id = "buy-now" tabindex="-1" >
                                     &nbsp;<i class="fas fa-shopping-cart" ></i> <span data-languagekey = "buy-now"></span> &nbsp;
-								</button>
+								</button>-->
+                                <button id="confirmButton" style="	border-radius: 35px;
+	cursor: pointer;
+    background-color: forestgreen;
+	padding: 15px;
+    color: #FFFFFF;
+	font-family: 'Comfortaa', cursive;
+	font-size: 22px;" tabindex="-1">&nbsp;<i class="fas fa-shopping-cart" ></i> <span data-languagekey = "paypal-complete-payment" ></span> &nbsp;
+                                </button>
 							</div>
 						</div>	
                                 
+                          
                         
                         
-                        
-                        
+                          
                         
                         
                         <div style = "display:none">
@@ -533,8 +460,8 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
                             <div id="confirm" class="hidden">
                                 <span class="order-form-headings-small" data-languagekey = "order-form-subheading-2" ></span>
                                 <div><span class="order-form-headings-small" id="recipient"></span>, <span class="order-form-headings-small" id="line1"></span>, <span id="paypal-city"></span></div>
-                                <div><span class="order-form-headings-small" id="paypal-state"></span>, <span class="order-form-headings-small" id="paypal-zip"></span>, <span class="order-form-headings-small" id="paypal-country"></span></div>
-                                <button id="confirmButton" data-languagekey = "paypal-complete-payment" tabindex="-1"></button>
+                                <div><span id="paypal-city"></span><span class="order-form-headings-small" id="paypal-state"></span>, <span class="order-form-headings-small" id="paypal-zip"></span>, <span class="order-form-headings-small" id="paypal-country"></span></div>
+                                 q<button id="confirmButton" data-languagekey = "paypal-complete-payment" tabindex="-1"></button>
                             </div>
                             <div id="thanks" class="hidden">
                                 Thanks, <span id="thanksname"></span>!
@@ -630,9 +557,9 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
             <a href="#">top</a> | <a href="#">about krane</a> | <a href="#">order</a> | <a href="#">contact</a> | <a href="dev">dev blog</a> | <a href="https://en.wikipedia.org/wiki/Copyright" target="_blank">©</a> <a href="https://en.wikipedia.org/wiki/Spacetime" target="_blank">2017</a> - <a href="https://en.wikipedia.org/wiki/Spacetime" target="_blank">2019</a>
             <br><br>
             <a onClick="divDebugMode();" id = "crazy-click" >cRaZy cLiCk</a>&nbsp;<span onClick="divDebugMode(false);" id = "stop-it">Make it stop please.</span>
-			<br><br> stackoverflow copy/paste by <a href = "https://truthserum.io" target="_blank">truth sereum</a> | CTRL+SHIFT+I, console:
-            <input id="name" placeholder="name">
-            <input id="chat" placeholder="message" >
+			<br><br> stackoverflow copy/pasta by <a href = "https://truthserum.io" target="_blank">truth sereum</a> | CTRL+SHIFT+I, console:
+            <input id="name" placeholder="name"> 
+            <input id="chat" placeholder="message" > 
             <span style ="cursor: pointer;" id = "chat-button-send" >send</span>
             <br>
             <br>

@@ -183,7 +183,6 @@ function loadEvents() {
 					}
 				}else{
 					console.log("email or message or both etc");
-					changeBGcolor("k1-qty",false);
 				};
 		});		
 

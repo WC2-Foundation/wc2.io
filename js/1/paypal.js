@@ -54,8 +54,8 @@ function updatePaypal(){
 
                 document.querySelector('#confirmButton').addEventListener('click', function() {
 
-                    // Disable the button and show a loading message
-
+                    // Disable the button and show a loading message 
+                    console.log("====================================================================================");
                     document.querySelector('#confirm').innerText = 'Loading...';
                     document.querySelector('#confirm').disabled = true;
 

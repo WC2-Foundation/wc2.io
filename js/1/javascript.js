@@ -121,6 +121,90 @@
             }
         ]
     }
+        
+        
+        
+    var paypalSandboxKey = 'AXNBHeDq2JrjOTfP8sNlOuZorGOBNG5_9QuWelMSgznz6PBvFmJhT7e01jqfmw1a_NAT8cWnOmGA3tVn';
+    //var paypalProductionKey = 'AZQS_HL1WChQTKMDP1vUJXUvVxl9ggnqdV7-RdqQjqj2wcUrbMg-0BPeth5My3N7gNTuw4NipsI9VAp9';
+
+    var cardBrandToPfClass = {
+        'visa': 'pf-visa',
+      'mastercard': 'pf-mastercard',
+      'amex': 'pf-american-express',
+      'discover': 'pf-discover',
+      'diners': 'pf-diners',
+      'jcb': 'pf-jcb',
+      'unknown': 'pf-credit-card',
+    }
+    
+    var nextDiv = [];
+    var navPositionObj = {
+        "positions" : [
+          {"name":"manually-entered", "functions":[ 
+            {"name" : "order-details", "x": "120px", "y": "-280px", "skipContainerAnimation" : false},
+            {"name" : "pay-with", "x": "", "y": "",  "skipContainerAnimation" : false},
+            {"name" : "contact-information", "x": "50px", "y": "-500px",  "skipContainerAnimation" : false},
+            {"name" : "shipping", "x" : "35px", "y": "-380px", "skipContainerAnimation" : false},
+            {"name" : "cc-inputs", "x" : "50px", "y": "-485px", "skipContainerAnimation" : true},
+            {"name" : "order-review", "x" : "50px", "y": "-505px", "skipContainerAnimation" : true}
+          ]},
+          {"name":"paypal", "functions":[
+            {"name" : "start", "x": "", "y": "", "skipContainerAnimation" : false},
+            {"name" : "paypal", "x": "-20px", "y": "-200px",  "skipContainerAnimation" : false}
+          ]},
+          {"name":"CCerror", "functions":[ 
+            {"name" : "start", "x": "", "y": "", "skipContainerAnimation" : true}
+          ]}
+        ]    
+    }
+    
+    var containersObj = {
+      "width":"700",
+      "containers":[
+            {"name":"order-details", "functions":[ 
+                {"functionName" : "calculateTotal", "reverse" : false, "parameters":[true]}, 
+                {"functionName" : "generatePaymentRequest",  "reverse" : false, "parameters":[]},
+                {"functionName" : "isWebAPIavaiable",  "reverse" : false, "parameters":[]},
+                {"functionName" : "updatePaypal",  "reverse" : false, "parameters":[]},
+                {"functionName" : "showHideMainNav",  "reverse" : false, "parameters":[true,false]},
+                {"functionName" : "showHideMainNav",  "reverse" : true, "parameters":[true,true]},
+                {"functionName" : "saveCustomerInformation",  "reverse" : false, "parameters":[]},
+                {"functionName" : "buildShoppingCart2", "reverse" : false, "parameters":["paypal-review-order-container"]},
+                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[1]}
+            ]},
+            {"name" : "pay-with", "functions" : [
+                {"functionName" : "moveNavPayAPI", "reverse" : true, "parameters":[]},
+                {"functionName" : "showHideMainNav", "reverse" : false, "parameters":[true,true]},
+                {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true,false]},
+                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[2]}
+            ]},
+            {"name" : "contact-information", "skipContainerAnimation" : false, "functions" : [
+                {"functionName" : "checkNameAndEmail", "reverse" : false, "parameters":[]},
+                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[5]}
+            ]},
+            {"name" : "shipping", "functions" : [
+                {"functionName" : "validateShipping", "reverse" : false, "parameters":[]},
+                {"functionName" : "saveShippingInformation", "reverse" : false, "parameters":[]},
+                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[8]}
+            ]},
+            {"name" : "cc-inputs", "functions" : [
+                {"functionName" : "createStripeToken", "reverse" : false, "parameters":[]},
+                {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true,true]}
+            ]},
+            {"name" : "order-review", "functions" : [
+                {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true,true]}
+            ]}    
+        ],
+      "paypal":[
+            {"name" : "pay-with", "functions" : [
+                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[2]},
+                {"functionName" : "moveNavPayAPI", "reverse" : true, "parameters":[]}
+            ]},
+            {"name":"paypal", "functions":[
+                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[1]}
+            ]}
+        ]
+     }
 
         
     var calcTotal; 
@@ -174,7 +258,7 @@
         Array.from(tags2).forEach(function(value, index){
             //value.tabIndex = "-1";
         });
-
+        pollServer();
         $.get("./php/language_dropdown_list.php", function (response) {
             $("#language-picker").html(response);
         });	
@@ -227,22 +311,22 @@
                         sizeStandardKrane = 28;
                         sizeJumboKrane = 34;
                         lengthSymbol = "&#34;";
-                        formattedPhoneNumber = "1(800)626-8160"; //libphonenumber.parsePhoneNumberFromString('1(800)626-8160').nationalNumber;
+                        formattedPhoneNumber = "1 (800) 626-8160"; //libphonenumber.parsePhoneNumberFromString('1(800)626-8160').nationalNumber;
 				    }else{
                         formattedPhoneNumber = "+1 800 626 8160"; //libphonenumber.parsePhoneNumberFromString('+18006268160').formatInternational();
-                }
+                } 
                 
                 $("#formattedPhoneNumber").html(formattedPhoneNumber);
                 
                 //paypalCurrencyCode = convert(currencyCode,"paypal");
-                console.log("convert(currencyCode,paypal)::: " + paypalCurrencyCode);
+                console.log("convert(currencyCode,paypal)::: " + paypalCurrencyCode); 
                 
 				setMeasurementVariables();
                 console.log("Language Code: " + response.location.languages[0]["code"]);
                 if(lc == response.location.languages[0]["code"]){
                         var lc = "en";
                     }else{
-                        var lc = response.location.languages[0]["code"];
+                        var lc = response.location.languages[0]["code"]; 
                 }
                 var cc = response.country_name;
                 
@@ -297,157 +381,14 @@
 
 
         
-		function sendContactFormMessage(){ 
-                
-                $.post("./php/contact_form.php", {emailOrPhoneNumber: $("#emailOrPhoneNumber").val(), message: $("#message").val()}, function(result){
-				
-				if(result){
-						$("#contact-form-wrapper").hide();
-						$("#message-sent").show();
-						console.log("sendContactFormMessage: " + result);
-					}else{
-						$("#contact-form-wrapper").hide();
-						$("#message-sent").show();
-						$("#message-sent").text("Send Failed. Please use email address.");
-						console.log("Failed");
-				}
-			});			
-		}
+
         
 
-    function measureString(str){
-        canvas = document.createElement('canvas');
-        ctx = canvas.getContext("2d");
-        fontSize = 28;
-        ctx.font = "normal normal " + fontSize + "px 'Comfortaa', cursive";       
-        width = ctx.measureText(str).width; 
-        return width;
-    }
- 
-    function resizeDiv(str,width,ele){
-        canvas = document.createElement('canvas');
-        ctx = canvas.getContext("2d");
-        fontSize = 28;
-        while(width > ele){
-            ctx.font = "normal normal " + fontSize + "px 'Comfortaa', cursive";       
-            width = ctx.measureText(str).width; 
-            fontSize-=4;
-        }
-        return fontSize + "px"; 
-    }
 
-
-
-
-    //The following is for Safari 8 and below
-    var ua = navigator.userAgent;
-    var verRe = /Version\/(\d+)/;
-    var version = ua.match(verRe);
-    var safari = ua.indexOf("Safari");
-
-    if (safari !== -1 && version !== null)  {
-        if (version[1] <= 8) {
-            addStyleTag("./css/safari8.css");
-        }
-    }
-
-    function addStyleTag(url) {
-        var link,head;
-        head = document.querySelector("head");
-        link = document.createElement("link");
-        link.setAttribute("href",url);
-        link.setAttribute("type","text/css");
-        link.setAttribute("rel","stylesheet");
-        head.appendChild(link);
-    }
-
-
-
-
-
-
-	function spawn() {
-        //var lastTime, minSpawnTime;
-        if(stopSmoking){return};
-		if (new Date().getTime() > lastTime + minSpawnTime) {
-			lastTime = new Date().getTime();
-			parts.push(new smoke(emitterX, emitterY));
-		}
-	}
-
-    
-    
-	function render() {
-		var len = parts.length;
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-		while (len--) {
-			if (parts[len].y < 0 || parts[len].lifeTime > maxLifeTime) {
-				parts.splice(len, 1);
-			} else {
-				parts[len].update();
-				ctx.save();
-				var offsetX = -parts[len].size/2,offsetY = -parts[len].size/2;
-				ctx.translate(parts[len].x-offsetX, parts[len].y-offsetY);
-				ctx.rotate(parts[len].angle / 180 * Math.PI);
-				ctx.globalAlpha  = parts[len].alpha;
-				ctx.drawImage(smokeImage, offsetX,offsetY, parts[len].size, parts[len].size);
-				ctx.restore();
-			}
-		}
-		spawn();
-		requestAnimationFrame(render);
-	}
-
-	function smoke(x, y, index) {
-		this.x = x;
-		this.y = y;
-
-		this.size = 1;
-		this.startSize = 10;
-		this.endSize = 22;
-
-		this.angle = Math.random() * 359;
-
-		this.startLife = new Date().getTime();
-		this.lifeTime = 0;
-
-		this.velY = -1 - (Math.random()*0.04);
-		this.velX = Math.floor(Math.random() * (-6) + 3) / 10;
-	}
-
-	smoke.prototype.update = function () {
-		this.lifeTime = new Date().getTime() - this.startLife;
-		this.angle += 0.2;
-		
-		var lifePerc = ((this.lifeTime / maxLifeTime) * 100);
-
-		this.size = this.startSize + ((this.endSize - this.startSize) * lifePerc * .1);
-
-		this.alpha = 1 - (lifePerc * .01);
-		this.alpha = Math.max(this.alpha,0);
-		
-		this.x += this.velX;
-		this.y += this.velY;
-	}
-
-	//window.onresize = resizeMe;
-	//window.onload = resizeMe,calculateTotal();
-	//function resizeMe() {
-	   //canvas.height = document.body.offsetHeight;
-	//}
-	
-	 function preload(arrayOfImages) {
-		$(arrayOfImages).each(function () {
-			$('<img />').attr('src',this).appendTo('body').css('display','none');
-		});
-	}
 
 
 			
-	function createCookie(cookieName,CC){
-	 	$.cookie(cookieName,CC,{ expires : 7, path: '/' } );	
-	}
+
 
 
 

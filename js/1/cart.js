@@ -9,87 +9,7 @@
     //########################################################################
 
 
-    var paypalSandboxKey = 'AXNBHeDq2JrjOTfP8sNlOuZorGOBNG5_9QuWelMSgznz6PBvFmJhT7e01jqfmw1a_NAT8cWnOmGA3tVn';
-    //var paypalProductionKey = 'AZQS_HL1WChQTKMDP1vUJXUvVxl9ggnqdV7-RdqQjqj2wcUrbMg-0BPeth5My3N7gNTuw4NipsI9VAp9';
 
-    var cardBrandToPfClass = {
-        'visa': 'pf-visa',
-      'mastercard': 'pf-mastercard',
-      'amex': 'pf-american-express',
-      'discover': 'pf-discover',
-      'diners': 'pf-diners',
-      'jcb': 'pf-jcb',
-      'unknown': 'pf-credit-card',
-    }
-    
-    var nextDiv = [];
-    var navPositionObj = {
-        "positions" : [
-          {"name":"manually-entered", "functions":[ 
-            {"name" : "order-details", "x": "120px", "y": "-280px", "skipContainerAnimation" : false},
-            {"name" : "pay-with", "x": "", "y": "",  "skipContainerAnimation" : false},
-            {"name" : "contact-information", "x": "50px", "y": "-500px",  "skipContainerAnimation" : false},
-            {"name" : "shipping", "x" : "35px", "y": "-380px", "skipContainerAnimation" : false},
-            {"name" : "cc-inputs", "x" : "50px", "y": "-485px", "skipContainerAnimation" : true},
-            {"name" : "order-review", "x" : "50px", "y": "-505px", "skipContainerAnimation" : true}
-          ]},
-          {"name":"paypal", "functions":[
-            {"name" : "start", "x": "", "y": "", "skipContainerAnimation" : false},
-            {"name" : "paypal", "x": "-20px", "y": "-200px",  "skipContainerAnimation" : false}
-          ]},
-          {"name":"CCerror", "functions":[ 
-            {"name" : "start", "x": "", "y": "", "skipContainerAnimation" : true}
-          ]}
-        ]    
-    }
-    
-    var containersObj = {
-      "width":"700",
-      "containers":[
-            {"name":"order-details", "functions":[ 
-                {"functionName" : "calculateTotal", "reverse" : false, "parameters":[true]}, 
-                {"functionName" : "generatePaymentRequest",  "reverse" : false, "parameters":[]},
-                {"functionName" : "isWebAPIavaiable",  "reverse" : false, "parameters":[]},
-                {"functionName" : "updatePaypal",  "reverse" : false, "parameters":[]},
-                {"functionName" : "showHideMainNav",  "reverse" : false, "parameters":[true,false]},
-                {"functionName" : "showHideMainNav",  "reverse" : true, "parameters":[true,true]},
-                {"functionName" : "saveCustomerInformation",  "reverse" : false, "parameters":[]},
-                {"functionName" : "buildShoppingCart2", "reverse" : false, "parameters":["paypal-review-order-container"]},
-                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[1]}
-            ]},
-            {"name" : "pay-with", "functions" : [
-                {"functionName" : "moveNavPayAPI", "reverse" : true, "parameters":[]},
-                {"functionName" : "showHideMainNav", "reverse" : false, "parameters":[true,true]},
-                {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true,false]},
-                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[2]}
-            ]},
-            {"name" : "contact-information", "skipContainerAnimation" : false, "functions" : [
-                {"functionName" : "checkNameAndEmail", "reverse" : false, "parameters":[]},
-                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[5]}
-            ]},
-            {"name" : "shipping", "functions" : [
-                {"functionName" : "validateShipping", "reverse" : false, "parameters":[]},
-                {"functionName" : "saveShippingInformation", "reverse" : false, "parameters":[]},
-                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[8]}
-            ]},
-            {"name" : "cc-inputs", "functions" : [
-                {"functionName" : "createStripeToken", "reverse" : false, "parameters":[]},
-                {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true,true]}
-            ]},
-            {"name" : "order-review", "functions" : [
-                {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true,true]}
-            ]}    
-        ],
-      "paypal":[
-            {"name" : "pay-with", "functions" : [
-                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[2]},
-                {"functionName" : "moveNavPayAPI", "reverse" : true, "parameters":[]}
-            ]},
-            {"name":"paypal", "functions":[
-                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[1]}
-            ]}
-        ]
-     }
     
 
     var containers = [containersObj.containers, containersObj.paypal];
@@ -337,7 +257,7 @@
                         }
                 } 
             
-            if(listCounter < 3){
+            if(listCounter > 2){
                 $("#" + addToParentContainer).addClass("grid-container-review-overflow");
             }
             $("#" + addToParentContainer).addClass("review-cart-tab");
@@ -631,7 +551,7 @@
             }else{
                 if(response.indexOf(",") > -1){
                     response = response.split(",");
-                    exchangeRate = response[0]; 
+                    exchangeRate = response[0];
                     currencyCode = response[1].trim();
                     currencyCode = currencyCode.toLowerCase();
                 }else{ 
