@@ -22,7 +22,7 @@ This script requires the following incrontab entry (make sure incron is installe
 
 open incron:
 incrontab -e
-
+ 
 paste in the following command:
 /var/www/krane.tv IN_MODIFY echo "1" > /var/www/krane_tv_directory_watcher.txt
 
