@@ -1,34 +1,41 @@
     //"use strict";		
     var ipStackKey = "9d13d36c2a7e9e7bc30a79a295118ee7";
     ////https://openexchangerates.org/api/latest.json?app_id=3e824a6d77374740bffd916fd232efd1
-	var paymentRequest, prButton;
-	var exchangeRate;
-	var ttl;
-	var pass;
-	var handled = false;
-	var handled2 = false;
-	var counter = 0;
-	var counter2 = 1;
-	var currencySymbol = "$";
-	var countryCode = "US";
-	var languageCode;
+    var paymentRequest, prButton;
+    var exchangeRate;
+    var ttl;
+    var ppttl;
+    var pass; 
+    var handled = false;
+    var handled2 = false;
+    var counter = 0;
+    var counter2 = 1;
+    var currencySymbol = "$";
+    var countryCode = "US";
+    var paypalExchangeRate;
+    var languageCode;
+    var chatID;
     var langDocument;
-	var labelTotal;
+    var labelTotal;
     var paymentRequest;
-	var multiplier;
-	var stripeCurrencyCode = "usd";
-	var unitOfMeasure = "centimeters";
-	var sizeStandardKrane = 72;
-	var sizeJumboKrane = 86;
-	var lengthSymbol = " cm";
+    var multiplier;
+    var stripeCurrencyCode = "usd";
+    var unitOfMeasure = "centimeters";
+    var sizeStandardKrane = 72;
+    var sizeJumboKrane = 86;
+    var lengthSymbol = " cm";
     var checkoutComplete = false;
     var slideContainer = 600;
-    var freeUSShippingOver = 45;
-    var freeWorldShippingOver = 15;
+    var freeUSShippingOver = 20;
+    var freeWorldShippingOver = 12;
     var cartBuilt = false;
     var shippingInterArr = [];
     var shippingUSArr = [];
+    //test key: pk_test_fgP1IfitRDyrHERTzo9BABmR
+    //pk_live_oRL9EVHl8I93CAciYj5xi2OA
     var stripe = Stripe('pk_test_fgP1IfitRDyrHERTzo9BABmR');
+
+
     var elements = stripe.elements();
     var contactInformation = {firstName: "", lastName: "", emailAddress: ""};
     var style = {
@@ -45,8 +52,34 @@
         }
       }
     }
-    
+   
+    //array item 0 = quantity
+    //1 = model/sku etc
+    //2 = price
     var cart = [
+        {k: [0,28,0]}, 
+        {k: [0,28,0]}, 
+        {k: [0,28,0]}, 
+        {k: [0,0,0]}, 
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]},
+        {k: [0,0,0]}
+    ]
+    
+    var cart2 = [
         {k: [0,28,0]}, 
         {k: [0,28,0]}, 
         {k: [0,28,0]}, 
@@ -74,18 +107,18 @@
             {
                 tabName: "Standard - 28&ldquo;", cartItems: [
                     {items: [
-                            {columns: [{title: "Krane - "},{title:"Ibycus"},{size:"Standard"},{price: "24.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Krane - "},{title:"Pyramís"},{size:"Standard"},{price: "28.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Krane - "},{title:"Electrum"},{size:"Standard"},{price: "32.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]}
+                            {columns: [{title: "Krane - "},{title:"Ibycus"},{size:"Standard"},{price: "24.95"},{shippingInt: ["16.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Krane - "},{title:"Pyramís"},{size:"Standard"},{price: "28.95"},{shippingInt: ["16.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Krane - "},{title:"Electrum"},{size:"Standard"},{price: "32.95"},{shippingInt: ["16.00"] },{shippingUS: ["4.00"] }]}
                         ]}
                     ]
             },
             {
                 tabName: "Large - 34&ldquo;", cartItems: [
                     {items: [
-                            {columns: [{title: "Krane - "},{title:"Ibycus"},{size:"Large"},{price: "28.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Krane - "},{title:"Pyramís"},{size:"Large"},{price: "32.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]},
-                            {columns: [{title: "Krane - "},{title:"Electrum"},{size:"Large"},{price: "36.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]} 
+                            {columns: [{title: "Krane - "},{title:"Ibycus"},{size:"Large"},{price: "28.95"},{shippingInt: ["16.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Krane - "},{title:"Pyramís"},{size:"Large"},{price: "32.95"},{shippingInt: ["16.00"] },{shippingUS: ["4.00"] }]},
+                            {columns: [{title: "Krane - "},{title:"Electrum"},{size:"Large"},{price: "36.95"},{shippingInt: ["16.00"] },{shippingUS: ["4.00"] }]} 
                         ]}
                     ]  
             },
@@ -93,12 +126,12 @@
                 tabName: "Accessories", cartItems: [
                     {
                         items: [
-                            {columns: [{title: "Tablet Extension"},{title:""},{size: ""},{price: "9.95"},{shippingInt: ["9.00"] },{shippingUS: ["4.00"] }]}  
+                            {columns: [{title: "Tablet Extension"},{title:""},{size: ""},{price: "9.95"},{shippingInt: ["12.00"] },{shippingUS: ["4.00"] }]}  
                         ],
                     }
-                ]  
+                ]
             },
-            {  
+            {
                 tabName: "Parts", cartItems: [
                     {
                         items: [
@@ -129,12 +162,12 @@
 
     var cardBrandToPfClass = {
         'visa': 'pf-visa',
-      'mastercard': 'pf-mastercard',
-      'amex': 'pf-american-express',
-      'discover': 'pf-discover',
-      'diners': 'pf-diners',
-      'jcb': 'pf-jcb',
-      'unknown': 'pf-credit-card',
+        'mastercard': 'pf-mastercard',
+        'amex': 'pf-american-express',
+        'discover': 'pf-discover',
+        'diners': 'pf-diners',
+        'jcb': 'pf-jcb',
+        'unknown': 'pf-credit-card',
     }
     
     var nextDiv = [];
@@ -169,7 +202,8 @@
                 {"functionName" : "showHideMainNav",  "reverse" : false, "parameters":[true,false]},
                 {"functionName" : "showHideMainNav",  "reverse" : true, "parameters":[true,true]},
                 {"functionName" : "saveCustomerInformation",  "reverse" : false, "parameters":[]},
-                {"functionName" : "buildShoppingCart2", "reverse" : false, "parameters":["paypal-review-order-container"]},
+                {"functionName" : "buildShoppingCart2", "reverse" : false, "parameters":["paypal-review-order-container","paypal"]},
+                {"functionName" : "resetPaypalButtons",  "reverse" : false, "parameters":[]},
                 {"functionName" : "fillHoles",  "reverse" : false, "parameters":[1]}
             ]},
             {"name" : "pay-with", "functions" : [
@@ -198,10 +232,13 @@
       "paypal":[
             {"name" : "pay-with", "functions" : [
                 {"functionName" : "fillHoles",  "reverse" : false, "parameters":[2]},
-                {"functionName" : "moveNavPayAPI", "reverse" : true, "parameters":[]}
+                {"functionName" : "moveNavPayAPI", "reverse" : true, "parameters":[]},
+                {"functionName" : "showHideMainNav", "reverse" : false, "parameters":[false, false]},
+                {"functionName" : "showHideMainNav", "reverse" : true, "parameters":[true, false]}
             ]},
             {"name":"paypal", "functions":[
-                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[1]}
+                {"functionName" : "fillHoles",  "reverse" : false, "parameters":[1]},
+                {"functionName" : "calculateTotal", "reverse" : false, "parameters":[true]}
             ]}
         ]
      }
@@ -210,7 +247,7 @@
     var calcTotal; 
 	var containers;
     var containerID = 0;
-    var currencyCode;
+    var currencyCode = "USD";
     var paypalCurrencyCode = "usd";
     var cardNumberElement;
     var stopSmoking = false;
@@ -219,6 +256,7 @@
     var shippingUS = "4.00";
     var shippingInternational = "9.00";
     var cartItem = [];
+    var cartItem2 = [];
 	var arrayOfImages = [];
 
 	arrayOfImages[0] = "images/main_image_lights_off.png";
@@ -233,7 +271,6 @@
         }
     }
 
-
     //#############################################################	
     //#############################################################	
     //#############################################################	
@@ -242,15 +279,62 @@
     //#############################################################	
     //#############################################################	
 
-
     var parts,canvas,ctx,paymentAPIavailable;
-
-
-    
     var mg = 0;
 	$(document).ready(function () {
 
+        console.log("???");  
+/*        
+ service worker stuff...       
+     function showFilesList() {
+        //document.querySelector('#files').style.display = 'block';
+         //alert("dsdsa");
+      }
+
+      // Helper function which returns a promise which resolves once the service worker registration
+      // is past the "installing" state.
+      function waitUntilInstalled(registration) {
+        return new Promise(function(resolve, reject) {
+          if (registration.installing) {
+            // If the current registration represents the "installing" service worker, then wait
+            // until the installation step (during which the resources are pre-fetched) completes
+            // to display the file list.
+            registration.installing.addEventListener('statechange', function(e) {
+              if (e.target.state == 'installed') {
+                resolve();
+              } else if(e.target.state == 'redundant') {
+                reject();
+              }
+            });
+          } else {
+            // Otherwise, if this isn't the "installing" service worker, then installation must have been
+            // completed during a previous visit to this page, and the resources are already pre-fetched.
+            // So we can show the list of files right away.
+            resolve();
+          }
+        });
+      }
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('https://krane.tv/service-worker.js', {scope: './'})
+          .then(waitUntilInstalled)
+          .then(showFilesList)
+          .catch(function(error) {
+            // Something went wrong during registration. The service-worker.js file
+            // might be unavailable or contain a syntax error.
+            //document.querySelector('#status').textContent = error;
+          });
+      } else {
+        // The current browser doesn't support service workers.
+        var aElement = document.createElement('a');
+        aElement.href = 'http://www.chromium.org/blink/serviceworker/service-worker-faq';
+        aElement.textContent = 'Service workers are not supported in the current browser.';
+        document.querySelector('#status').appendChild(aElement);
+      }          
+      */  
+
         //languageSearch(true);
+        setInterval(showTagalongOnScroll,100);
         setOrderDetailInputs(true);
         //$("#k1-qty").val(0);
         var tags2 = document.querySelectorAll('div,input,option,textarea,select,button');
@@ -270,7 +354,6 @@
                 language_code: languageCode
             }, response);
         },
-
             minLength: 1,
         }); 		
 
@@ -278,6 +361,10 @@
  
 	//uncomment to test ipstack data
 	$.removeCookie("country_lookup", { path: '/' });
+        
+        
+
+        
 	if ($.cookie("country_lookup")) {
 		console.log("cookie exists: " + $.cookie("country_lookup"));
 		countryCode = $.cookie("country_lookup");
@@ -294,17 +381,17 @@
 				var currencySymbol = response.currency.symbol;
                 
                 //103.106.250.36
-                console.log("response.country_code: " + response.country_code);
+                //console.log("response.country_code: " + response.country_code);
 				//ajax call to mysql, make sure currency is supported; if not fallback 
 				//to US for now (TODO: country based fallback [euros etc])
-                console.log(response.currency.code.toLowerCase());
+                //console.log(response.currency.code.toLowerCase());
 				currencyCode = response.currency.code.toLowerCase(); //response.currency.code.toLowerCase(); //nok
-                console.log("currencyCode: " + currencyCode);
+                //console.log("currencyCode: " + currencyCode);
                 //TODO: fix paypal convert causes tabs to render twice etc
                 //paypalCurrencyCode =  "usd"; //convert(currencyCode,"paypal"); //response.currency.code.toLowerCase();
 				countryCode = response.country_code;//response.country_code;
 				
-                console.log("---> " + "https://api.ipstack.com/" + response.ip + "&access_key=" + ipStackKey);
+                //console.log("---> " + "https://api.ipstack.com/" + response.ip + "&access_key=" + ipStackKey);
                 
 				if(countryCode == "US"){
                         unitOfMeasure = "inches";
@@ -319,10 +406,10 @@
                 $("#formattedPhoneNumber").html(formattedPhoneNumber);
                 
                 //paypalCurrencyCode = convert(currencyCode,"paypal");
-                console.log("convert(currencyCode,paypal)::: " + paypalCurrencyCode); 
+                //console.log("convert(currencyCode,paypal)::: " + paypalCurrencyCode); 
                 
 				setMeasurementVariables();
-                console.log("Language Code: " + response.location.languages[0]["code"]);
+                //console.log("Language Code: " + response.location.languages[0]["code"]);
                 if(lc == response.location.languages[0]["code"]){
                         var lc = "en";
                     }else{
@@ -339,7 +426,7 @@
                 //remove "lc", ipstack generated language code to run in production
                 detectLanguage(lc);
                 
-                console.log("IP Stack: " + response.ip );
+                //console.log("IP Stack: " + response.ip );
                 
 			}, "jsonp");
 
@@ -368,7 +455,7 @@
         
 });	
 
-    showTagalongOnScroll();
+
 
 
 //#############################################################	
