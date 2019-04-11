@@ -612,6 +612,7 @@ div[contenteditable=true]{ cursor:text }
 	align-items: center;
 	flex: 1;
 	height: 500px;
+    width:100%;
 }
 
 #contact-krane {
@@ -1739,6 +1740,7 @@ white-space: nowrap; height: 47px;
     font-size: 22px;
     margin:5px;
     font-family: 'Comfortaa', cursive;
+    text-align: right;
 }
 
 #discount-code {
@@ -2611,4 +2613,96 @@ a.thumbnail-links {
 #forward-button-inner-container {
     z-index: 0; 
     margin-top:0px;
+}
+
+#contact-information-heading {
+    margin-bottom: 15px;
+}
+
+#contact-information-wrapper {
+    margin-left:95px;
+}
+
+#review-order-shipping-outter-container {
+    width: 100%; 
+    display: table;
+}
+
+#review-order-shipping-container {
+    display: table-row;
+}
+
+#shipping-total-wrapper {
+    display: table-cell;
+    width: 50%;
+    text-align: right
+}
+
+#shipping-total-container {
+    height: 50px;
+    padding: 10px;
+}
+
+#shipping-outter-container {
+    display: table-row;
+}
+
+#firstName {
+    color:grey;
+    width:150px;
+}
+
+#lastName {
+    color:grey;
+    width:200px;
+}
+
+#emailAddress {
+    color:grey;
+    width:400px;
+}
+
+#shipping-address-wrapper {
+    overflow-x: hidden;
+    width: 100%; 
+    margin-left: 100px;
+}
+
+#standard-krane-cart {
+    padding-left:30px;
+}
+
+#jumbo-krane-cart {
+    padding-left:30px;
+}
+
+#address1 {
+    color:grey;
+    width:400px;
+}
+
+#address2 {
+    color:grey;
+    width:400px;
+}
+
+#city {
+    color:grey;
+    width:150px;
+}
+
+#state {
+    color:grey;
+    width:200px;
+}
+
+#zip {
+    color:grey;
+    width:150px;
+}
+
+#footer {
+    display: inline-block;
+    text-align: center;
+    margin:0 auto;
 }

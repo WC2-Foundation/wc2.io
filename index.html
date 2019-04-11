@@ -31,13 +31,9 @@
                 <script src="js/0/scrollbars.js" ></script>
                 <script src="js/0/svg.js" ></script>
                 <!-- on hold for now, causing problems for some reason
-                uncomment document.ready code to start implementing again (javascript.js)
+                uncomment document.ready code to start implement once again (javascript.js)
                 <script src="service-worker.js" ></script>
                 -->
-        
-                <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/libphonenumber-js/1.7.8/libphonenumber-js.min.js"></script>
-https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f248021e2be1a43fc422d9008d8d.css
--->
                 <script src="https://js.stripe.com/v3/"></script>
                 
                 <!-- truthserum.io -->
@@ -88,12 +84,8 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
 
 <div class="thetop"></div>
 <div id="einstein" class="einstein">
-    
      
     <div id="top-bar"></div> 
-    
-  
-    
     <div class="scrolltop"></div>
     
     <div id="shopping-cart">
@@ -138,25 +130,14 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
 
 <div id="about-krane">
     <div id="drop-shadow-1"></div>
-	
 	<div class = "heading" data-languagekey = "welcome-to" ></div>
-
-	<div id = "krane-about">
-        
-	</div>	
-
-
-
-	
-	
-
-
+	<div id = "krane-about"></div>	
 	<button id = "standard-krane-add-to-cart" onClick="addItemToCart('0',1);"  >
-		<i class="fas fa-shopping-cart" style = "padding-left:30px;"></i> Standard Krane ( extends to <span class = "standard-krane-length"></span><span class = "length-symbol"></span> ) <i class="fas fa-check" id = "add-to-cart-checkmark" ></i>
+		<i class="fas fa-shopping-cart" id = "standard-krane-cart" ></i> Standard Krane ( extends to <span class = "standard-krane-length"></span><span class = "length-symbol"></span> ) <i class="fas fa-check" id = "add-to-cart-checkmark" ></i>
 	</button>
 	
 	<button id = "jumbo-krane-add-to-cart" onClick="addItemToCart('1',1);"  >
-		<i class="fas fa-shopping-cart" style = "padding-left:30px;"></i> Jumbo Krane ( extends to <span class = "jumbo-krane-length"></span><span class = "length-symbol"></span> ) <i class="fas fa-check" id = "add-to-checkmark-jumbo" ></i>
+		<i class="fas fa-shopping-cart" id = "jumbo-krane-cart"></i> Jumbo Krane ( extends to <span class = "jumbo-krane-length"></span><span class = "length-symbol"></span> ) <i class="fas fa-check" id = "add-to-checkmark-jumbo" ></i>
 	</button>
 
 </div>
@@ -166,8 +147,6 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
     <a id="order"></a>
     <div id="order-krane">
         <div id="order-krane-dashed-border">
-            
- <!--<div id="order-form-heading" data-languagekey="order-form-heading-cx" class="section-heading" style ="margin-top:20px; "></div>-->
                             <div class="order-form-headings" id="order-form-subheading-1" data-languagekey="order-form-subheading-1" ></div>
 
          <div class="rounded-div">
@@ -221,7 +200,7 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
                             
 
                         <div id = "total-container">
-                        <div style="text-align: right" id="total" data-languagekey="total" ></div>
+                        <div id="total" data-languagekey="total" ></div>
                             <div id = "discount-code-container">
                                 <label id = "discount-code-label" data-languagekey = "discount-code-label" ></label>
                                 <input id = "discount-code" data-languagekey = "discount-code"  placeholder = "(Optional)"/>
@@ -233,13 +212,13 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
 					<!-- Contact information -->
                     <div id="contact-information" class="order-containers" >
                         <form action="#" autocomplete="on">
-                            <div id="contact-information-heading" data-languagekey="contact-information-heading" class="order-form-headings-small" style ="margin-bottom: 15px;"></div>
-                            <div style ="margin-left:95px;">
+                            <div id="contact-information-heading" data-languagekey="contact-information-heading" class="order-form-headings-small" ></div>
+                            <div id = "contact-information-wrapper">
                                 <div id="m">
-                                    <input value = "Sam" type="text" tabindex = "1" id="firstName" data-languagekey="firstName" name="first name" placeholder="" onKeyUp="fillHoles(3);" class="order-form-inputs" style ="color:grey;width:150px;">
-                                    <input value = "Stauffacher" type="text" tabindex = "2" id="lastName" data-languagekey="lastName" name="last name" placeholder="" class="order-form-inputs" style ="color:grey;width:200px;">
+                                    <input value = "Sam" type="text" tabindex = "1" id="firstName" data-languagekey="firstName" name="first name" placeholder="" onKeyUp="fillHoles(3);" class="order-form-inputs">
+                                    <input value = "Stauffacher" type="text" tabindex = "2" id="lastName" data-languagekey="lastName" name="last name" placeholder="" class="order-form-inputs" >
                                 </div>
-                                <input id="emailAddress" value = "sam@intrafuse.com" tabindex = "3" style ="color:grey;width:400px;" data-languagekey="emailAddress" name="email address" placeholder="" type="email" onKeyUp="fillHoles(2);" class="order-form-inputs">
+                                <input id="emailAddress" value = "sam@intrafuse.com" tabindex = "3" data-languagekey="emailAddress" name="email address" placeholder="" type="email" onKeyUp="fillHoles(2);" class="order-form-inputs">
                             </div>
                         </form>
                     </div>
@@ -252,40 +231,7 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
                                 <button tabindex = "1" id="CCbutton"  class="fa fa-credit-card"></button>
                             </div>
                         </div>
-                        
-                        
-                        
-                        
-                        
-<!--                        <div class="flex-item">
-                            <div class="order-form-headings-small" id="buy-on-amazon-subheading" data-languagekey="buy-on-amazon-subheading"></div>
-                            <div class="payment-methods-wrapper" >
-=
-                                <div style = "  display: table;
-  margin: 0 auto;"><div id = "buy-on-amazon" style=" white-space: nowrap; height: 47px;"><div style = "width: 47px;
-                                              line-height: 47px; 
-                                              display:inline-block;
-                                              height:47px;
-                                              background-image:url('images/buy_from_amazon_left.png');
-                                              margin: 0px;
-                                              background-repeat: no-repeat;z-index: 300"></div><div style="vertical-align: middle;
-                                                margin: 0px;
-                                                margin-top: -30px;
-                                                display: inline-block;
-                                                 background-image:url('images/buy_amazon_bg.png');
-                                                 line-height: 47px;
-                                                 height: 47px;
-                                                padding: 0px 10px 0px 10px;
-                                                 font-size: 18px;
-                                                 font-family: Verdana, 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif';
-                                                 color: #000" data-languagekey = "buy-on"></div><div style = "width: 116px; display:inline-block;height:47px;background-image:url('images/buy_from_amazon_right.png');;margin: 0px;background-repeat: no-repeat;z-index: 300"></div>
-                                </div>
-                                
-                            </div></div>
-                        </div>-->
-                        
-                        
-                        
+
                         <div id="payment-request-api-container" class="flex-item">
                             <div class="order-form-headings-small" id="pay-with-a-digital-wallet-subheading" data-languagekey="pay-with-a-digital-wallet-subheading"></div>
                             <div class="payment-methods-wrapper" tabindex="3">
@@ -310,19 +256,19 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
                             <div id="shipping-address" >
                                 <div class="order-form-headings-small" id="order-form-subheading-2" data-languagekey="order-form-subheading-2" ></div>
 
-                                <div style ="overflow-x: hidden;width: 100%; margin-left: 100px;">
+                                <div id = "shipping-address-wrapper">
 
                                     <input  tabindex="1" type="text" placeholder="Country" autocomplete="shipping country" data-languagekey="country" name="country" id="country" class="country">
 
-                                    <input value = "Sam"  tabindex="2" type="text" id="address1" name="address 1" placeholder="" data-languagekey="address1" class="order-form-inputs" style ="color:grey;width:400px;">
-                                    <input value = "Sam" tabindex="3" type="text" id="address2" name="address 2" placeholder="" data-languagekey="address2" class="order-form-inputs" style ="color:grey;width:400px;">
+                                    <input value = "Sam"  tabindex="2" type="text" id="address1" name="address 1" placeholder="" data-languagekey="address1" class="order-form-inputs">
+                                    <input value = "Sam" tabindex="3" type="text" id="address2" name="address 2" placeholder="" data-languagekey="address2" class="order-form-inputs">
 
                                     <div id = "city-state-container">
-                                        <input value = "Sam" tabindex="4" type="text" name="city" id="city" placeholder="" data-languagekey="city" class="order-form-inputs" style ="color:grey;width:150px;">
-                                        <input value = "Sam" tabindex="5" type="text" id="state" placeholder="" name="state" data-languagekey="state" class="order-form-inputs" style ="color:grey;width:200px;">
+                                        <input value = "Sam" tabindex="4" type="text" name="city" id="city" placeholder="" data-languagekey="city" class="order-form-inputs" >
+                                        <input value = "Sam" tabindex="5" type="text" id="state" placeholder="" name="state" data-languagekey="state" class="order-form-inputs" >
                                     </div>
 
-                                    <input value = "Sam" type="text" tabindex="6" id="zip" name="zip code" placeholder="" data-languagekey="zip" class="order-form-inputs" style ="color:grey;width:150px;">
+                                    <input value = "Sam" type="text" tabindex="6" id="zip" name="zip code" placeholder="" data-languagekey="zip" class="order-form-inputs">
                                 </div>
                             </div>
                         </form>
@@ -370,13 +316,13 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
 
                     <div id = "review-order-container"></div>	
                           <div id = "review-order-shipping">
-                                <div style="width: 100%; display: table;">
-                                    <div style="display: table-row">
+                                <div id = "review-order-shipping-outter-container" >
+                                    <div id = "review-order-shipping-container">
                                         <div id = "review-shipping-address"
                                              class="order-form-headings-extra-small">[<a onClick="navigate(false);">x</a>]<br>Sam Stauffacher<br>830 Rebecca Drive<br>Boulder Creek Ca, 95006
                                         </div>
-                                        <div style="display: table-cell;width: 50%;text-align: right">
-                                              <div style="height: 50px;padding: 10px;">
+                                        <div id = "shipping-total-wrapper">
+                                              <div id = "shipping-total-container">
                                                     <span class="order-form-labels-small" id = "order-review-shipping-label" data-languagekey = "shipping-total" ></span><span id = "cc-review-order-shipping" class="order-form-labels-small" ></span><br>                                              
                                                 <hr/>
                                             </div>
@@ -385,8 +331,6 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
                                     </div>
                                 </div>
                           </div>
-                            
-						        
 						
 							<div id = "buy-now-wrapper" >
 								<button id = "buy-now" tabindex="-1" >
@@ -420,7 +364,7 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
                     <div id = "paypal-review-order-container"></div>	
                           <div id = "paypal-review-order-shipping">
                                 <div id = "paypal-shipping-outter-wrapper">
-                                    <div id = "shipping-outter-container" style="display: table-row;">
+                                    <div id = "shipping-outter-container" >
                                         <div id = "review-shipping-address-2"  class="order-form-headings-tiny-text">
                                             [<a onClick="navigate(false);">x</a>]
                                             <span class="order-form-headings-tiny-text" id="recipient"></span>
@@ -444,28 +388,12 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
                             </div>
 							<div id = "paypal-button-wrapper" >
                                 <div tabindex="-1" id="paypal-button-container" ></div>
-								<!--<button id = "buy-now" tabindex="-1" >
-                                    &nbsp;<i class="fas fa-shopping-cart" ></i> <span data-languagekey = "buy-now"></span> &nbsp;
-								</button>-->
                                 <button id="confirmButton" tabindex="-1">&nbsp;<i class="fas fa-shopping-cart" ></i><span data-languagekey = "paypal-complete-payment" ></span> &nbsp;
                                 </button>
                                 <div id = "paypal-edit-order-button">[ <a class = "edit-paypal" onClick="navigate(false);">Edit Order</a> ]</div>
 							</div>
 						</div>	
-                                                      
-                        <!--
-                        <div style = "display:none">
-                        <div class="order-form-headings" id = "pay-with-paypal-subheading-2" data-languagekey="pay-with-paypal-subheading" ></div>						
-                        <div style ="text-align: center;" tabindex="-1" id="paypal-button-container-2"></div>
-                        <div id="thanks" class="hidden">
-                        Thanks, <span id="thanksname"></span>!
-                        </div>
-                        </div>-->
-                        
                                 <div id="confirm" class="--hidden" >
-<!--                                <span class="order-form-headings-small" data-languagekey = "order-form-subheading-2" ></span>
-                                <div><span class="order-form-headings-small" id="recipient"></span>, <span class="order-form-headings-small" id="line1"></span>, <span id="paypal-city"></span></div>
-                                <div><span id="paypal-city"></span><span class="order-form-headings-small" id="paypal-state"></span>, <span class="order-form-headings-small" id="paypal-zip"></span>, <span class="order-form-headings-small" id="paypal-country"></span></div>-->
                                  <button id="confirmButton2" data-languagekey = "paypal-complete-payment" tabindex="-1"></button>
                             </div>                    
                         
@@ -475,10 +403,6 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
         </div>
         
   			<!-- Navigation -->
-        
-        
-
-        
         
             <div id="main">
 				<div id="back-button-container">
@@ -536,15 +460,12 @@ https://js.stripe.com/v3/fingerprinted/css/elements-inner-payment-request-18b2f2
         </div>
     </div> 
  
-    <div id="fourth" style ="width:100%;">
-        <div id="footer" class="footer" style ="display: inline-block; text-align: center;margin:0 auto;">
+    <div id="fourth">
+        <div id="footer" class="footer" >
             <a href="#">top</a> | <a href="#">about krane</a> | <a href="#">order</a> | <a href="#">contact</a> | <a href="dev">dev blog</a> | <a href="https://en.wikipedia.org/wiki/Copyright" target="_blank">©</a> <a href="https://en.wikipedia.org/wiki/Spacetime" target="_blank">2017</a> - <a href="https://en.wikipedia.org/wiki/Spacetime" target="_blank">2019</a>
             <br><br>
             <a onClick="divDebugMode();" id = "crazy-click" >cRaZy cLiCk</a>&nbsp;<span onClick="divDebugMode(false);" id = "stop-it">Make it stop please.</span>
-			<br><br> stackoverflow copy/pasta by <a href = "https://truthserum.io" target="_blank">truth sereum</a> <!--| CTRL+SHIFT+I, console:
-            <input id="name" placeholder="name"> 
-            <input id="chat" placeholder="message" > 
-            <span style ="cursor: pointer;" id = "chat-button-send" >send</span>-->
+			<br><br> stackoverflow copy/pasta by <a href = "https://truthserum.io" target="_blank">truth sereum</a>
             <br>
             <br>
             <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fkrane.tv%2F" target="_blank">W3C Validator</a> |
