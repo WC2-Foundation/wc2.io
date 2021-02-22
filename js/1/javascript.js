@@ -1,5 +1,5 @@
     //"use strict";		
-    var ipStackKey = "9d13d36c2a7e9e7bc30a79a295118ee7";
+    var ipStackKey = "5118ee7";
     ////https://openexchangerates.org/api/latest.json?app_id=3e824a6d77374740bffd916fd232efd1
     var paymentRequest, prButton;
     var exchangeRate;
